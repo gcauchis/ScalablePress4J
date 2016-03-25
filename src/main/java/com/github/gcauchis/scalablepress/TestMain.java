@@ -20,57 +20,42 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.services;
+package com.github.gcauchis.scalablepress;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.github.gcauchis.scalablepress.json.Category;
 import com.github.gcauchis.scalablepress.json.Product;
+import com.github.gcauchis.scalablepress.services.ProductServices;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ProductServices.class)
-public class ProductServicesTest {
+@SpringBootApplication
+public class TestMain implements CommandLineRunner {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
-
+    
     @Autowired
     private ProductServices productServices;
-
-    @Test
-    public void testContext() {
-        Assert.assertNotNull(productServices);
+    
+    public static void main(String[] args) {
+        SpringApplication.run(TestMain.class, args);
     }
-
-    @Test
-    public void getCategories() {
+    
+    @Override
+    public void run(String... arg0) throws Exception {
         List<Category> categories = productServices.getCategories();
-        Assert.assertNotNull(categories);
         log.info(categories.toString());
-        Assert.assertFalse(categories.isEmpty());
-    }
-
-    @Test
-    public void getCategoryProducts() {
-        Category category = productServices
-                .getCategoryProducts("short-sleeve-shirts");
-        Assert.assertNotNull(category);
-        log.info(category.toString());
-    }
-
-    @Test
-    public void getProductInformation() {
-        Product product = productServices
-                .getProductInformation("gildan-ultra-cotton-t-shirt");
-        Assert.assertNotNull(product);
+        Category category = categories.get(0);
+        Category filledCategory = productServices.getCategoryProducts(category.getCategoryId());
+        log.info(filledCategory.toString());
+        Product product = productServices.getProductInformation(filledCategory.getProducts().get(0).getId());
         log.info(product.toString());
     }
+
 }
