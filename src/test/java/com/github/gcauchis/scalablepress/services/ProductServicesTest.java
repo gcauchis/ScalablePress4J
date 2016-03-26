@@ -35,6 +35,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.github.gcauchis.scalablepress.json.Category;
 import com.github.gcauchis.scalablepress.json.Product;
+import com.github.gcauchis.scalablepress.json.ProductAvailability;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ProductServices.class)
@@ -60,17 +61,22 @@ public class ProductServicesTest {
 
     @Test
     public void getCategoryProducts() {
-        Category category = productServices
-                .getCategoryProducts("short-sleeve-shirts");
+        Category category = productServices.getCategoryProducts("short-sleeve-shirts");
         Assert.assertNotNull(category);
         log.info(category.toString());
     }
 
     @Test
     public void getProductInformation() {
-        Product product = productServices
-                .getProductInformation("gildan-ultra-cotton-t-shirt");
+        Product product = productServices.getProductInformation("gildan-ultra-cotton-t-shirt");
         Assert.assertNotNull(product);
         log.info(product.toString());
+    }
+
+    @Test
+    public void getProductAvailability() {
+        ProductAvailability productAvailability = productServices.getProductAvailability("gildan-ultra-cotton-t-shirt");
+        Assert.assertNotNull(productAvailability);
+        log.info(productAvailability.toString());
     }
 }

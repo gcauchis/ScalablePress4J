@@ -33,6 +33,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.github.gcauchis.scalablepress.json.Category;
 import com.github.gcauchis.scalablepress.json.Product;
+import com.github.gcauchis.scalablepress.json.ProductAvailability;
 import com.github.gcauchis.scalablepress.services.ProductServices;
 
 @SpringBootApplication
@@ -56,6 +57,8 @@ public class TestMain implements CommandLineRunner {
         log.info(filledCategory.toString());
         Product product = productServices.getProductInformation(filledCategory.getProducts().get(0).getId());
         log.info(product.toString());
+        ProductAvailability productAvailability = productServices.getProductAvailability(product.getProductId());
+        log.info(productAvailability.toString());
     }
 
 }

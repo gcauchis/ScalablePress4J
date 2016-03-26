@@ -24,11 +24,13 @@ package com.github.gcauchis.scalablepress.services;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.github.gcauchis.scalablepress.json.Category;
 import com.github.gcauchis.scalablepress.json.Product;
+import com.github.gcauchis.scalablepress.json.ProductAvailability;
 import com.github.gcauchis.scalablepress.json.ProductOveriew;
 
 @Service
@@ -63,5 +65,16 @@ public class ProductServices extends AbstractRestServices {
     public Product getProductInformation(String productId)
     {
         return getForObject(SCALABLE_PRESS_API_BASE_URL + "products/" + productId, Product.class);
+    }
+    
+    /**
+     * Specify a product id to receive product availability information.
+     * If a color/size combination is not specified then it is unavailable.
+     * @param productId
+     * @return a product availability object.
+     */
+    public ProductAvailability getProductAvailability(String productId)
+    {
+        return new ProductAvailability((Map<String, Object>) getForObject(SCALABLE_PRESS_API_BASE_URL + "products/" + productId + "/availability", Object.class));
     }
 }
