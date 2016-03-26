@@ -32,23 +32,27 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.github.gcauchis.scalablepress.json.Category;
 import com.github.gcauchis.scalablepress.json.Product;
 import com.github.gcauchis.scalablepress.json.ProductAvailability;
+import com.github.gcauchis.scalablepress.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ProductServices.class)
+@ContextConfiguration(classes = {ProductServices.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
 public class ProductServicesTest {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
-
+    
     @Autowired
     private ProductServices productServices;
 
     @Test
     public void testContext() {
         Assert.assertNotNull(productServices);
+        Assert.assertNotNull(productServices.getBaseUrl());
+        Assert.assertNotEquals("${scalablepress.api.baseurl}", productServices.getBaseUrl());
     }
 
     @Test

@@ -22,14 +22,20 @@
  */
 package com.github.gcauchis.scalablepress;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
 
 import com.github.gcauchis.scalablepress.json.Category;
 import com.github.gcauchis.scalablepress.json.Product;
@@ -39,7 +45,7 @@ import com.github.gcauchis.scalablepress.services.ProductServices;
 @SpringBootApplication
 public class TestMain implements CommandLineRunner {
 
-    private final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(TestMain.class);
     
     @Autowired
     private ProductServices productServices;

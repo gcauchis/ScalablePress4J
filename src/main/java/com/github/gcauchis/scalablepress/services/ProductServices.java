@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.github.gcauchis.scalablepress.json.Category;
@@ -34,37 +35,39 @@ import com.github.gcauchis.scalablepress.json.ProductAvailability;
 import com.github.gcauchis.scalablepress.json.ProductOveriew;
 
 @Service
+@PropertySource("classpath:application.properties")
 public class ProductServices extends AbstractRestServices {
     
-    private static final String SCALABLE_PRESS_API_BASE_URL = "https://api.scalablepress.com/v2/";
-
     /**
      * Get a list of available product categories.
      * The categories are not filled with the product, call {@link #getCategoryProducts(String)} the retrieve the {@link ProductOveriew}
      * @return an array with all available category objects.
+     * @see https://scalablepress.com/docs/#list-product-categories
      */
     public List<Category> getCategories()
     {
-        return Arrays.asList(getForObjectArray(SCALABLE_PRESS_API_BASE_URL + "categories", Category[].class));
+        return Arrays.asList(get("categories", Category[].class));
     }
     
     /**
      * Specify a category id to receive category information and a list of products in that category
      * @param categoryId
      * @return a category object which now contains an array of product overview objects.
+     * @see https://scalablepress.com/docs/#list-products
      */
     public Category getCategoryProducts(String categoryId) {
-        return getForObject(SCALABLE_PRESS_API_BASE_URL + "categories/" + categoryId, Category.class);
+        return get("categories/" + categoryId, Category.class);
     }
     
     /**
      * Specify a product id to receive product information. 
      * @param productId
      * @return a product object.
+     * @see https://scalablepress.com/docs/#list-product-information
      */
     public Product getProductInformation(String productId)
     {
-        return getForObject(SCALABLE_PRESS_API_BASE_URL + "products/" + productId, Product.class);
+        return get("products/" + productId, Product.class);
     }
     
     /**
@@ -72,9 +75,20 @@ public class ProductServices extends AbstractRestServices {
      * If a color/size combination is not specified then it is unavailable.
      * @param productId
      * @return a product availability object.
+     * @see https://scalablepress.com/docs/#list-product-availability
      */
     public ProductAvailability getProductAvailability(String productId)
     {
-        return new ProductAvailability((Map<String, Object>) getForObject(SCALABLE_PRESS_API_BASE_URL + "products/" + productId + "/availability", Object.class));
+        return new ProductAvailability((Map<String, Object>) get("products/" + productId + "/availability", Object.class));
+    }
+    
+    /**
+     * need authororized api key, postpone for now
+     * @param productId
+     * @param apiKey
+     * @see https://scalablepress.com/docs/#list-detailed-item-information
+     */
+    private void getDetailedProductItemsInformation(String productId, String apiKey)
+    {
     }
 }
