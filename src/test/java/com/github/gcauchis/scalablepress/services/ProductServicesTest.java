@@ -49,10 +49,8 @@ public class ProductServicesTest {
     private ProductServices productServices;
 
     @Test
-    public void testContext() {
+    public void context() {
         Assert.assertNotNull(productServices);
-        Assert.assertNotNull(productServices.getBaseUrl());
-        Assert.assertNotEquals("${scalablepress.api.baseurl}", productServices.getBaseUrl());
     }
 
     @Test
