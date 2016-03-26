@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
@@ -37,10 +38,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 
+import com.github.gcauchis.scalablepress.json.Address;
 import com.github.gcauchis.scalablepress.json.Category;
+import com.github.gcauchis.scalablepress.json.OrderProduct;
 import com.github.gcauchis.scalablepress.json.Product;
 import com.github.gcauchis.scalablepress.json.ProductAvailability;
+import com.github.gcauchis.scalablepress.json.Quote;
+import com.github.gcauchis.scalablepress.json.QuoteResponse;
 import com.github.gcauchis.scalablepress.services.ProductServices;
+import com.github.gcauchis.scalablepress.services.QuoteServices;
 
 @SpringBootApplication
 public class TestMain implements CommandLineRunner {
@@ -49,6 +55,9 @@ public class TestMain implements CommandLineRunner {
     
     @Autowired
     private ProductServices productServices;
+    
+    @Autowired
+    private QuoteServices quoteServices;
     
     public static void main(String[] args) {
         SpringApplication.run(TestMain.class, args);
@@ -65,6 +74,27 @@ public class TestMain implements CommandLineRunner {
         log.info(product.toString());
         ProductAvailability productAvailability = productServices.getProductAvailability(product.getProductId());
         log.info(productAvailability.toString());
+        
+        Quote quote = new Quote();
+        quote.setType("dtg");
+        List<OrderProduct> products = new ArrayList<>();
+        OrderProduct orderProduct = new OrderProduct();
+        orderProduct.setId("gildan-sweatshirt-crew");
+        orderProduct.setColor("ash");
+        orderProduct.setQuantity(12);
+        orderProduct.setSize("lrg");
+        products.add(orderProduct);
+        quote.setProducts(products);
+        Address address = new Address();
+        address.setName("My Customer");
+        address.setAddress1("123 Scalable Drive");
+        address.setCity("West Pressfield");
+        address.setState("CA");
+        address.setZip(12345);
+        quote.setAddress(address);
+        quote.setDesignId("53ed3a23b3730f0e27a66513");
+        QuoteResponse quoteResponse = quoteServices.quote(quote);
+        log.info(quoteResponse.toString());
     }
 
 }

@@ -26,6 +26,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * The Category json object.
+ * @author gcauchis
+ * @see https://scalablepress.com/docs/#list-product-categories
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Category {
 

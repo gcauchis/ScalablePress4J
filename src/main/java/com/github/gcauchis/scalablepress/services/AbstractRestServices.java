@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress.services;
 
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
@@ -65,6 +66,16 @@ public abstract class AbstractRestServices {
         this.basicAuth = basicAuth;
     }
 
+    private HttpEntity<?> getRequestEntry() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        if (basicAuth != null)
+        {
+            byte[] encodedAuth = Base64.encodeBase64(basicAuth.getBytes(Charset .forName("US-ASCII")));
+            httpHeaders.set("Authorization", "Basic " + new String(encodedAuth));
+        }
+        return new HttpEntity<>(httpHeaders);
+    }
+
     protected <T> T get(String url, Class<T> responseType) throws RestClientException {
         log.trace("Call GET {} url {}", responseType.toString(), url);
         return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url, HttpMethod.GET, getRequestEntry(), responseType)).getBody();
@@ -75,13 +86,14 @@ public abstract class AbstractRestServices {
         return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url, HttpMethod.GET, getRequestEntry(), responseType, urlVariables)).getBody();
     }
     
-    private HttpEntity<?> getRequestEntry() {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        if (basicAuth != null)
-        {
-            byte[] encodedAuth = Base64.encodeBase64(basicAuth.getBytes(Charset .forName("US-ASCII")));
-            httpHeaders.set("Authorization", "Basic " + new String(encodedAuth));
-        }
-        return new HttpEntity<>(httpHeaders);
+    protected <T> T post(String url, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
+        log.trace("Call POST {} url {} var {}", responseType.toString(), url, urlVariables);
+        return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url, HttpMethod.POST, getRequestEntry(), responseType, urlVariables)).getBody();
     }
+    
+    protected <T> T post(String url, Class<T> responseType, Object... uriVariables) throws RestClientException {
+        log.trace("Call POST {} url {} var {}", responseType.toString(), url, Arrays.toString(uriVariables));
+        return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url, HttpMethod.POST, getRequestEntry(), responseType, uriVariables)).getBody();
+    }
+    
 }

@@ -34,8 +34,12 @@ import com.github.gcauchis.scalablepress.json.Product;
 import com.github.gcauchis.scalablepress.json.ProductAvailability;
 import com.github.gcauchis.scalablepress.json.ProductOveriew;
 
+/**
+ * Implement the Product api.
+ * @author gcauchis
+ * @see https://scalablepress.com/docs/#product-api
+ */
 @Service
-@PropertySource("classpath:application.properties")
 public class ProductServices extends AbstractRestServices {
     
     /**
@@ -44,8 +48,7 @@ public class ProductServices extends AbstractRestServices {
      * @return an array with all available category objects.
      * @see https://scalablepress.com/docs/#list-product-categories
      */
-    public List<Category> getCategories()
-    {
+    public List<Category> getCategories() {
         return Arrays.asList(get("categories", Category[].class));
     }
     
@@ -65,8 +68,7 @@ public class ProductServices extends AbstractRestServices {
      * @return a product object.
      * @see https://scalablepress.com/docs/#list-product-information
      */
-    public Product getProductInformation(String productId)
-    {
+    public Product getProductInformation(String productId) {
         return get("products/" + productId, Product.class);
     }
     
@@ -77,8 +79,7 @@ public class ProductServices extends AbstractRestServices {
      * @return a product availability object.
      * @see https://scalablepress.com/docs/#list-product-availability
      */
-    public ProductAvailability getProductAvailability(String productId)
-    {
+    public ProductAvailability getProductAvailability(String productId) {
         return new ProductAvailability((Map<String, Object>) get("products/" + productId + "/availability", Object.class));
     }
     

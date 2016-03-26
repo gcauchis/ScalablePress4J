@@ -24,6 +24,11 @@ package com.github.gcauchis.scalablepress.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * The Product Overview json object.
+ * @author gcauchis
+ * @see https://scalablepress.com/docs/#list-products
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductOveriew {
 

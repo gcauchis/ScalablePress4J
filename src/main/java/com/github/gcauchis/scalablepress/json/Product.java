@@ -26,6 +26,11 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * The Product json object.
+ * @author gcauchis
+ * @see https://scalablepress.com/docs/#list-product-information
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 

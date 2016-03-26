@@ -25,6 +25,11 @@ package com.github.gcauchis.scalablepress.json;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * The Product Availability json object.
+ * @author gcauchis
+ * @see https://scalablepress.com/docs/#list-product-availability
+ */
 public class ProductAvailability {
 
     /** A map with the color name as key and the color sizes availability as value */
