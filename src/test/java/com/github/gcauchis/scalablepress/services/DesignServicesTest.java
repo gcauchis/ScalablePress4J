@@ -22,6 +22,8 @@
  */
 package com.github.gcauchis.scalablepress.services;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +33,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.web.client.HttpClientErrorException;
 
+import com.github.gcauchis.scalablepress.json.Design;
+import com.github.gcauchis.scalablepress.json.DesignResponse;
+import com.github.gcauchis.scalablepress.json.DesignSide;
+import com.github.gcauchis.scalablepress.json.DesignSides;
+import com.github.gcauchis.scalablepress.json.Dimension;
+import com.github.gcauchis.scalablepress.json.Position;
+import com.github.gcauchis.scalablepress.json.PositionOffset;
 import com.github.gcauchis.scalablepress.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,5 +56,33 @@ public class DesignServicesTest {
     @Test
     public void context() {
         Assert.assertNotNull(designServices);
+    }
+    
+    @Test(expected = HttpClientErrorException.class)//Need to find a good image for test
+    public void create() {
+        Design design = new Design();
+        design.setName("Test");
+        design.setType("mug");
+        DesignSides designSides = new DesignSides();
+        DesignSide front = new DesignSide();
+        front.setArtwork("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/300px-PNG_transparency_demonstration_1.png");
+//        front.setArtwork("https://avatars0.githubusercontent.com/u/975738?v=3&s=460");
+        front.setColors(Arrays.asList("Blue", "Royal", "Pink", "Charity Pink", "White", "Light Blue"));
+        Dimension dimension = new Dimension();
+        dimension.setWidth(5);
+        front.setDimensions(dimension);
+        Position position = new Position();
+        position.setHorizontal("C");
+        PositionOffset positionOffset = new PositionOffset();
+        positionOffset.setTop(1);
+        position.setOffset(positionOffset);
+        front.setPosition(position);
+        front.setResize(true);
+        designSides.setFront(front);
+        design.setSides(designSides);
+        DesignResponse response = designServices.create(design);
+        Assert.assertNotNull(response);
+        log.info(response.toString());
+        log.info("*********** designId => " + response.getDesignId());
     }
 }

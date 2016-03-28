@@ -50,7 +50,7 @@ public class DesignSide {
     private Boolean resize;
     /**
      * Screenprint only, list of each named color or PMS color used in design.
-     * Artwork requirements
+     * <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>
      */
     private List<String> colors;
     /** Screenprint/DTG only, dimension object */

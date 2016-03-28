@@ -24,6 +24,9 @@ package com.github.gcauchis.scalablepress.services;
 
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress.json.Design;
+import com.github.gcauchis.scalablepress.json.DesignResponse;
+
 /**
  * Implement the Design api
  * @author gcauchis
@@ -32,4 +35,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class DesignServices extends AbstractRestServices {
 
+    /**
+     * Provide the details on your design in order to receive a designId, which is required to place an order.
+     * @param design
+     * @return
+     * @see https://scalablepress.com/docs/#create-design-object
+     */
+    public DesignResponse create(Design design) {
+        return post("design", design, DesignResponse.class);
+    }
 }
