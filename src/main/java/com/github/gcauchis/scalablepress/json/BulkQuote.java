@@ -24,11 +24,14 @@ package com.github.gcauchis.scalablepress.json;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * The Bulk Quote json object.
  * @author gcauchis
  * @see https://scalablepress.com/docs/#bulk-quote
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BulkQuote {
     /** Array of quote objects */
     private List<Quote> items;

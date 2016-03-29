@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Sides json object
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see https://scalablepress.com/docs/#standard-quote
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Sides {
     /**
      * DTG: set to any positive number to indicate printing on this side,

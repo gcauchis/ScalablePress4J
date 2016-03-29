@@ -22,12 +22,17 @@
  */
 package com.github.gcauchis.scalablepress.json;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * The Address json Object
  * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#standard-quote
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Address {
     /** Name of customer receiving the product */
     private String name;

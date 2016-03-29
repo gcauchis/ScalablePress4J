@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress.json;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Quote json object
@@ -33,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see https://scalablepress.com/docs/#standard-quote
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Quote {
     /** Type of product this design is for: screenprint, dtg, case or mug */
     private String type;
