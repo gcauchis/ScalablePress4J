@@ -86,24 +86,16 @@ public abstract class AbstractRestServices {
     protected <T> T get(String url, Class<T> responseType) throws RestClientException {
         log.trace("Call GET {} url {}", responseType.toString(), url);
         return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
-        // return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url,
-        // HttpMethod.GET, getBasicRequestEntry(), responseType)).getBody();
     }
 
     protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
         log.trace("Call GET {} url {} var {}", responseType.toString(), url, urlVariables);
         return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
-        // return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url,
-        // HttpMethod.GET, getBasicRequestEntry(), responseType,
-        // urlVariables)).getBody();
     }
 
     protected <T> T post(String url, Object request, Class<T> responseType) throws RestClientException {
         log.trace("Call POST {} url {} req {}", responseType.toString(), url, request);
         return getRestTemplate().postForEntity(baseUrl + url, request, responseType) .getBody();
-        // return ((ResponseEntity<T>) restTemplate.exchange(baseUrl + url,
-        // HttpMethod.POST, getDataRequestEntry(request),
-        // responseType)).getBody();
     }
 
 }
