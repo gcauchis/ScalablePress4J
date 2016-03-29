@@ -42,7 +42,7 @@ public abstract class AbstractRestServices {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The base url */
-    @Value("${scalablepress.api.baseurl}")
+    @Value("${scalablepress.api.baseurl:https://api.scalablepress.com/v2/}")
     private String baseUrl;
     /** The basic auth */
     @Value("${scalablepress.api.basicauth}")
