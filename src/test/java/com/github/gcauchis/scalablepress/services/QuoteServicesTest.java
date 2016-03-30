@@ -34,8 +34,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.web.client.HttpClientErrorException;
 
+import com.github.gcauchis.scalablepress.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress.model.Address;
 import com.github.gcauchis.scalablepress.model.Features;
 import com.github.gcauchis.scalablepress.model.OrderProduct;
@@ -60,7 +60,7 @@ private final Logger log = LoggerFactory.getLogger(getClass());
     }
 
     //Invalid designId : found a valid one for testing
-    @Test(expected = HttpClientErrorException.class)
+    @Test(expected = ScalablePressBadRequestException.class)
     public void quote()
     {
         Quote quote = new Quote();

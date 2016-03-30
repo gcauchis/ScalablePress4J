@@ -22,6 +22,7 @@
  */
 package com.github.gcauchis.scalablepress.services;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Map;
@@ -33,9 +34,15 @@ import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.gcauchis.scalablepress.ScalablePressBadRequestException;
+import com.github.gcauchis.scalablepress.model.ErrorResponse;
 
 public abstract class AbstractRestServices {
 
@@ -49,12 +56,33 @@ public abstract class AbstractRestServices {
     private String basicAuth;
     /** The rest template */
     private RestTemplate restTemplate;
+    /** The json object mapper */
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     private RestTemplate getRestTemplate() {
         if (restTemplate == null) {
             restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create()
                                     .setDefaultHeaders(Arrays.asList(getBasicAuthenticateHeader()))
                                     .build()));
+            restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
+
+                @Override
+                public void handleError(ClientHttpResponse response) throws IOException {
+                    log.error("Response error: {} {}", response.getStatusCode(), response.getStatusText());
+                    ErrorResponse errorResponse = null;
+                    try {
+                    errorResponse = objectMapper.readValue( response.getBody(), ErrorResponse.class);
+                    } catch (IOException ioe) {
+                        log.error("Fail to parse error", ioe);
+                    }
+                    if (errorResponse != null) {
+                        log.error("Response error object: {}", errorResponse);
+                        throw new ScalablePressBadRequestException(errorResponse);
+                    }
+
+                    super.handleError(response);
+                }
+            });
         }
         return restTemplate;
     }

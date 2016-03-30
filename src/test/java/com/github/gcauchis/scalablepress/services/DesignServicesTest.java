@@ -33,8 +33,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.web.client.HttpClientErrorException;
 
+import com.github.gcauchis.scalablepress.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress.model.Design;
 import com.github.gcauchis.scalablepress.model.DesignResponse;
 import com.github.gcauchis.scalablepress.model.DesignSide;
@@ -58,7 +58,7 @@ public class DesignServicesTest {
         Assert.assertNotNull(designServices);
     }
     
-    @Test(expected = HttpClientErrorException.class)//Need to find a good image for test
+    @Test(expected = ScalablePressBadRequestException.class)//Need to find a good image for test
     public void create() {
         Design design = new Design();
         design.setName("Test");
