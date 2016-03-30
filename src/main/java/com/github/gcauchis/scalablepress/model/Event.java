@@ -22,26 +22,28 @@
  */
 package com.github.gcauchis.scalablepress.model;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Product Overview json object.
+ * The Event json object
+ * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#product-overview-object
+ * @see https://scalablepress.com/docs/#event-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductOveriew {
-
-    /** Product name */
-    private String name;
-    /** Reference code associated with the product */
-    private String style;
-    /** Image object */
-    private Image image;
-    /** Unique identifier for the product */
-    private String id;
-    /** API endpoint for product details */
-    private String url;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Event {
+    /** Name of the event (quote, order, etc.) */
+    public String name;
+    /** Description of the event */
+    public String description;
+    /** Optional additional data. Event examples */
+    public Map<String, Object> meta;
+    /** Time at which the event occurred */
+    public String createdAt;
 
     public String getName() {
         return name;
@@ -51,42 +53,33 @@ public class ProductOveriew {
         this.name = name;
     }
 
-    public String getStyle() {
-        return style;
+    public String getDescription() {
+        return description;
     }
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Image getImage() {
-        return image;
+    public Map<String, Object> getMeta() {
+        return meta;
     }
 
-    public void setImage(Image image) {
-        this.image = image;
+    public void setMeta(Map<String, Object> meta) {
+        this.meta = meta;
     }
 
-    public String getId() {
-        return id;
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override
     public String toString() {
-        return "ProductOveriew [name=" + name + ", style=" + style + ", image="
-                + image + ", id=" + id + ", url=" + url + "]";
+        return "Event [name=" + name + ", description=" + description
+                + ", meta=" + meta + ", createdAt=" + createdAt + "]";
     }
-
 }
