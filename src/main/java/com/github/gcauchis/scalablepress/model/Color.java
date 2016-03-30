@@ -20,26 +20,28 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Design json object
- * 
+ * The Color json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#list-product-information
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Design {
-    /** Optional reference name for design */
+public class Color {
+
+    /** Name of the color */
     private String name;
-    /** Type of product this design is for. screenprint, dtg, case, or mug */
-    private String type;
-    /** Design sides object */
-    private DesignSides sides;
-    /** Design validation object */
-    private DesignValidation validation;
+    /** Hex color code of the color */
+    private String hex;
+    /** Array of image objects */
+    private List<Image> image;
+    /** Array of available sizes */
+    private List<String> sizes;
 
     public String getName() {
         return name;
@@ -49,33 +51,33 @@ public class Design {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getHex() {
+        return hex;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setHex(String hex) {
+        this.hex = hex;
     }
 
-    public DesignSides getSides() {
-        return sides;
+    public List<Image> getImage() {
+        return image;
     }
 
-    public void setSides(DesignSides sides) {
-        this.sides = sides;
+    public void setImage(List<Image> image) {
+        this.image = image;
     }
 
-    public DesignValidation getValidation() {
-        return validation;
+    public List<String> getSizes() {
+        return sizes;
     }
 
-    public void setValidation(DesignValidation validation) {
-        this.validation = validation;
+    public void setSizes(List<String> sizes) {
+        this.sizes = sizes;
     }
 
     @Override
     public String toString() {
-        return "Design [name=" + name + ", type=" + type + ", sides=" + sides
-                + ", validation=" + validation + "]";
+        return "Color [name=" + name + ", hex=" + hex + ", image=" + image
+                + ", sizes=" + sizes + "]";
     }
 }

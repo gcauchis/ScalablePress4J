@@ -20,42 +20,30 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Design Validation json object
- * 
+ * The Customization json object
  * @author gcauchis
  * @see https://scalablepress.com/docs/#create-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DesignValidation {
-    /** Result of validation - will return null for now */
-    private String result;
-    /** Status of the validation object */
-    private String status;
+public class Customization {
+    /** Name of the desired customization */
+    private String id;
 
-    public String getResult() {
-        return result;
+    public String getId() {
+        return id;
     }
 
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "DesignValidation [result=" + result + ", status=" + status
-                + "]";
+        return "Customization [id=" + id + "]";
     }
 }

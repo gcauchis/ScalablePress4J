@@ -20,65 +20,73 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Design Sides json object
- * 
+ * The Product Overview json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#list-products
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class DesignSides {
+public class ProductOveriew {
 
-    /** Design side object */
-    private DesignSide front;
-    /** Design side object */
-    private DesignSide back;
-    /** Design side object */
-    private DesignSide left;
-    /** Design side object */
-    private DesignSide right;
+    /** Product name */
+    private String name;
+    /** Reference code associated with the product */
+    private String style;
+    /** Image object */
+    private Image image;
+    /** Unique identifier for the product */
+    private String id;
+    /** API endpoint for product details */
+    private String url;
 
-    public DesignSide getFront() {
-        return front;
+    public String getName() {
+        return name;
     }
 
-    public void setFront(DesignSide front) {
-        this.front = front;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public DesignSide getBack() {
-        return back;
+    public String getStyle() {
+        return style;
     }
 
-    public void setBack(DesignSide back) {
-        this.back = back;
+    public void setStyle(String style) {
+        this.style = style;
     }
 
-    public DesignSide getLeft() {
-        return left;
+    public Image getImage() {
+        return image;
     }
 
-    public void setLeft(DesignSide left) {
-        this.left = left;
+    public void setImage(Image image) {
+        this.image = image;
     }
 
-    public DesignSide getRight() {
-        return right;
+    public String getId() {
+        return id;
     }
 
-    public void setRight(DesignSide right) {
-        this.right = right;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
-        return "DesignSides [front=" + front + ", back=" + back + ", left="
-                + left + ", right=" + right + "]";
+        return "ProductOveriew [name=" + name + ", style=" + style + ", image="
+                + image + ", id=" + id + ", url=" + url + "]";
     }
+
 }

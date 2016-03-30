@@ -20,65 +20,49 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.github.gcauchis.scalablepress.model;
 
 /**
- * The Order Product json object
+ * The Error json object.
  * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#standard-quote
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class OrderProduct {
-    /**
-     * productId of the product you wish to order, retrieved from the Product
-     * API, this product must be compatible with the design provided
-     */
-    private String id;
-    /** Color of the product, see the Product API for available colors */
-    private String color;
-    /** Size of the product, see the Product API for available sizes */
-    private String size;
-    /** Quantity of this product/color/size to order */
-    private Integer quantity;
+public class Error {
+    /** Identifier for type of error message */
+    private String code;
+    /** Path in quote object causing error */
+    private String path;
+    /** User-friendly error message */
+    private String message;
 
-    public String getId() {
-        return id;
+    public String getCode() {
+        return code;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getColor() {
-        return color;
+    public String getPath() {
+        return path;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setPath(String path) {
+        this.path = path;
     }
 
-    public String getSize() {
-        return size;
+    public String getMessage() {
+        return message;
     }
 
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public String toString() {
-        return "OrderProduct [id=" + id + ", color=" + color + ", size=" + size
-                + ", quantity=" + quantity + "]";
+        return "Error [code=" + code + ", path=" + path + ", message="
+                + message + "]";
     }
 }

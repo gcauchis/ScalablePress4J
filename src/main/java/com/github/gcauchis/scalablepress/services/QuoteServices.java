@@ -24,9 +24,9 @@ package com.github.gcauchis.scalablepress.services;
 
 import org.springframework.stereotype.Service;
 
-import com.github.gcauchis.scalablepress.json.BulkQuote;
-import com.github.gcauchis.scalablepress.json.Quote;
-import com.github.gcauchis.scalablepress.json.QuoteResponse;
+import com.github.gcauchis.scalablepress.model.BulkQuote;
+import com.github.gcauchis.scalablepress.model.Quote;
+import com.github.gcauchis.scalablepress.model.QuoteResponse;
 
 /**
  * Implement the Quote api

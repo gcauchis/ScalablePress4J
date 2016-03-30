@@ -35,13 +35,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.github.gcauchis.scalablepress.json.Design;
-import com.github.gcauchis.scalablepress.json.DesignResponse;
-import com.github.gcauchis.scalablepress.json.DesignSide;
-import com.github.gcauchis.scalablepress.json.DesignSides;
-import com.github.gcauchis.scalablepress.json.Dimension;
-import com.github.gcauchis.scalablepress.json.Position;
-import com.github.gcauchis.scalablepress.json.PositionOffset;
+import com.github.gcauchis.scalablepress.model.Design;
+import com.github.gcauchis.scalablepress.model.DesignResponse;
+import com.github.gcauchis.scalablepress.model.DesignSide;
+import com.github.gcauchis.scalablepress.model.DesignSides;
+import com.github.gcauchis.scalablepress.model.Dimension;
+import com.github.gcauchis.scalablepress.model.Position;
+import com.github.gcauchis.scalablepress.model.PositionOffset;
 import com.github.gcauchis.scalablepress.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)

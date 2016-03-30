@@ -20,43 +20,42 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Product Availability json object.
+ * The Design Validation json object
+ * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-availability
+ * @see https://scalablepress.com/docs/#create-design-object
  */
-public class ProductAvailability {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class DesignValidation {
+    /** Result of validation - will return null for now */
+    private String result;
+    /** Status of the validation object */
+    private String status;
 
-    /** A map with the color name as key and the color sizes availability as value */
-    private Map<String, ColorAvailability> colorsAvailability;
-
-    public Map<String, ColorAvailability> getColorsAvailability() {
-        return colorsAvailability;
+    public String getResult() {
+        return result;
     }
 
-    public ProductAvailability() {
-        super();
+    public void setResult(String result) {
+        this.result = result;
     }
 
-    public ProductAvailability(Map<String, Object> colorsAvailability) {
-        super();
-        this.colorsAvailability = colorsAvailability.entrySet().stream()
-                .collect(Collectors.toMap(e -> e.getKey(), e -> new ColorAvailability(e.getKey(), (Map<String, Object>) e.getValue())));
+    public String getStatus() {
+        return status;
     }
 
-    public void setColorsAvailability(
-            Map<String, ColorAvailability> colorsAvailability) {
-        this.colorsAvailability = colorsAvailability;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "ProductAvailability [colorsAvailability=" + colorsAvailability
+        return "DesignValidation [result=" + result + ", status=" + status
                 + "]";
     }
 }

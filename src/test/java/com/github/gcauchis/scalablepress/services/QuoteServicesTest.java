@@ -36,12 +36,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.github.gcauchis.scalablepress.json.Address;
-import com.github.gcauchis.scalablepress.json.Features;
-import com.github.gcauchis.scalablepress.json.OrderProduct;
-import com.github.gcauchis.scalablepress.json.Quote;
-import com.github.gcauchis.scalablepress.json.QuoteResponse;
-import com.github.gcauchis.scalablepress.json.Sides;
+import com.github.gcauchis.scalablepress.model.Address;
+import com.github.gcauchis.scalablepress.model.Features;
+import com.github.gcauchis.scalablepress.model.OrderProduct;
+import com.github.gcauchis.scalablepress.model.Quote;
+import com.github.gcauchis.scalablepress.model.QuoteResponse;
+import com.github.gcauchis.scalablepress.model.Sides;
 import com.github.gcauchis.scalablepress.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)

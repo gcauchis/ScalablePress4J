@@ -20,64 +20,45 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
-
-import java.util.List;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Color json object.
+ * The Feature json object
+ * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-information
+ * @see https://scalablepress.com/docs/#custom-order-features
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Color {
+public class Features {
 
-    /** Name of the color */
-    private String name;
-    /** Hex color code of the color */
-    private String hex;
-    /** Array of image objects */
-    private List<Image> image;
-    /** Array of available sizes */
-    private List<String> sizes;
+    /**
+     * Shipping service code. Available service codes
+     * @see https://scalablepress.com/docs/#shipping-service-codes
+     */
+    private String shipping;
+    /** Absolute URL for a PDF packing slip */
+    private String packing;
 
-    public String getName() {
-        return name;
+    public String getShipping() {
+        return shipping;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShipping(String shipping) {
+        this.shipping = shipping;
     }
 
-    public String getHex() {
-        return hex;
+    public String getPacking() {
+        return packing;
     }
 
-    public void setHex(String hex) {
-        this.hex = hex;
-    }
-
-    public List<Image> getImage() {
-        return image;
-    }
-
-    public void setImage(List<Image> image) {
-        this.image = image;
-    }
-
-    public List<String> getSizes() {
-        return sizes;
-    }
-
-    public void setSizes(List<String> sizes) {
-        this.sizes = sizes;
+    public void setPacking(String packing) {
+        this.packing = packing;
     }
 
     @Override
     public String toString() {
-        return "Color [name=" + name + ", hex=" + hex + ", image=" + image
-                + ", sizes=" + sizes + "]";
+        return "Features [shipping=" + shipping + ", packing=" + packing + "]";
     }
 }

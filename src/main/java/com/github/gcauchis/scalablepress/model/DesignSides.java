@@ -20,76 +20,65 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Sides json object
+ * The Design Sides json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#create-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Sides {
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
-    private Integer front;
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
-    private Integer back;
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
-    private Integer right;
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
-    private Integer left;
+public class DesignSides {
 
-    public Integer getFront() {
+    /** Design side object */
+    private DesignSide front;
+    /** Design side object */
+    private DesignSide back;
+    /** Design side object */
+    private DesignSide left;
+    /** Design side object */
+    private DesignSide right;
+
+    public DesignSide getFront() {
         return front;
     }
 
-    public void setFront(Integer front) {
+    public void setFront(DesignSide front) {
         this.front = front;
     }
 
-    public Integer getBack() {
+    public DesignSide getBack() {
         return back;
     }
 
-    public void setBack(Integer back) {
+    public void setBack(DesignSide back) {
         this.back = back;
     }
 
-    public Integer getRight() {
-        return right;
-    }
-
-    public void setRight(Integer right) {
-        this.right = right;
-    }
-
-    public Integer getLeft() {
+    public DesignSide getLeft() {
         return left;
     }
 
-    public void setLeft(Integer left) {
+    public void setLeft(DesignSide left) {
         this.left = left;
+    }
+
+    public DesignSide getRight() {
+        return right;
+    }
+
+    public void setRight(DesignSide right) {
+        this.right = right;
     }
 
     @Override
     public String toString() {
-        return "Sides [front=" + front + ", back=" + back + ", right=" + right
-                + ", left=" + left + "]";
+        return "DesignSides [front=" + front + ", back=" + back + ", left="
+                + left + ", right=" + right + "]";
     }
 }

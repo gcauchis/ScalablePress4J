@@ -20,73 +20,32 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Product Overview json object.
+ * The Bulk Quote json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-products
+ * @see https://scalablepress.com/docs/#bulk-quote
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductOveriew {
+public class BulkQuote {
+    /** Array of quote objects */
+    private List<Quote> items;
 
-    /** Product name */
-    private String name;
-    /** Reference code associated with the product */
-    private String style;
-    /** Image object */
-    private Image image;
-    /** Unique identifier for the product */
-    private String id;
-    /** API endpoint for product details */
-    private String url;
-
-    public String getName() {
-        return name;
+    public List<Quote> getItems() {
+        return items;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStyle() {
-        return style;
-    }
-
-    public void setStyle(String style) {
-        this.style = style;
-    }
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setItems(List<Quote> items) {
+        this.items = items;
     }
 
     @Override
     public String toString() {
-        return "ProductOveriew [name=" + name + ", style=" + style + ", image="
-                + image + ", id=" + id + ", url=" + url + "]";
+        return "BulkQuote [items=" + items + "]";
     }
-
 }

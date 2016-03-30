@@ -20,46 +20,65 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Position json object
+ * The Order Product json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#standard-quote
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Position {
+public class OrderProduct {
     /**
-     * Screenprint/DTG only, horizontal position. <a
-     * href="https://scalablepress.com/services#artwork_requirements">Artwork
-     * requirements</a>
+     * productId of the product you wish to order, retrieved from the Product
+     * API, this product must be compatible with the design provided
      */
-    private String horizontal;
-    /** Screenprint/DTG only, position offset object */
-    private PositionOffset offset;
+    private String id;
+    /** Color of the product, see the Product API for available colors */
+    private String color;
+    /** Size of the product, see the Product API for available sizes */
+    private String size;
+    /** Quantity of this product/color/size to order */
+    private Integer quantity;
 
-    public String getHorizontal() {
-        return horizontal;
+    public String getId() {
+        return id;
     }
 
-    public void setHorizontal(String horizontal) {
-        this.horizontal = horizontal;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public PositionOffset getOffset() {
-        return offset;
+    public String getColor() {
+        return color;
     }
 
-    public void setOffset(PositionOffset offset) {
-        this.offset = offset;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     @Override
     public String toString() {
-        return "Position [horizontal=" + horizontal + ", offset=" + offset
-                + "]";
+        return "OrderProduct [id=" + id + ", color=" + color + ", size=" + size
+                + ", quantity=" + quantity + "]";
     }
 }

@@ -20,32 +20,62 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
-
-import java.util.List;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Bulk Quote json object.
+ * The Design json object
+ * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#bulk-quote
+ * @see https://scalablepress.com/docs/#create-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BulkQuote {
-    /** Array of quote objects */
-    private List<Quote> items;
+public class Design {
+    /** Optional reference name for design */
+    private String name;
+    /** Type of product this design is for. screenprint, dtg, case, or mug */
+    private String type;
+    /** Design sides object */
+    private DesignSides sides;
+    /** Design validation object */
+    private DesignValidation validation;
 
-    public List<Quote> getItems() {
-        return items;
+    public String getName() {
+        return name;
     }
 
-    public void setItems(List<Quote> items) {
-        this.items = items;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public DesignSides getSides() {
+        return sides;
+    }
+
+    public void setSides(DesignSides sides) {
+        this.sides = sides;
+    }
+
+    public DesignValidation getValidation() {
+        return validation;
+    }
+
+    public void setValidation(DesignValidation validation) {
+        this.validation = validation;
     }
 
     @Override
     public String toString() {
-        return "BulkQuote [items=" + items + "]";
+        return "Design [name=" + name + ", type=" + type + ", sides=" + sides
+                + ", validation=" + validation + "]";
     }
 }

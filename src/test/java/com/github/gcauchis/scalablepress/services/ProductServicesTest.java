@@ -34,9 +34,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.github.gcauchis.scalablepress.json.Category;
-import com.github.gcauchis.scalablepress.json.Product;
-import com.github.gcauchis.scalablepress.json.ProductAvailability;
+import com.github.gcauchis.scalablepress.model.Category;
+import com.github.gcauchis.scalablepress.model.Product;
+import com.github.gcauchis.scalablepress.model.ProductAvailability;
 import com.github.gcauchis.scalablepress.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -20,41 +20,43 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
- * The Image json object.
+ * The Product Availability json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-products
+ * @see https://scalablepress.com/docs/#list-product-availability
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Image {
+public class ProductAvailability {
 
-    /** Type of image */
-    private String label;
-    /** URL to the image */
-    private String url;
+    /** A map with the color name as key and the color sizes availability as value */
+    private Map<String, ColorAvailability> colorsAvailability;
 
-    public String getLabel() {
-        return label;
+    public Map<String, ColorAvailability> getColorsAvailability() {
+        return colorsAvailability;
     }
 
-    public void setLabel(String label) {
-        this.label = label;
+    public ProductAvailability() {
+        super();
     }
 
-    public String getUrl() {
-        return url;
+    public ProductAvailability(Map<String, Object> colorsAvailability) {
+        super();
+        this.colorsAvailability = colorsAvailability.entrySet().stream()
+                .collect(Collectors.toMap(e -> e.getKey(), e -> new ColorAvailability(e.getKey(), (Map<String, Object>) e.getValue())));
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setColorsAvailability(
+            Map<String, ColorAvailability> colorsAvailability) {
+        this.colorsAvailability = colorsAvailability;
     }
 
     @Override
     public String toString() {
-        return "Image [label=" + label + ", url=" + url + "]";
+        return "ProductAvailability [colorsAvailability=" + colorsAvailability
+                + "]";
     }
 }

@@ -20,49 +20,54 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
- * The Error json object.
- * 
+ * The Color Availability json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#list-product-availability
  */
-public class Error {
-    /** Identifier for type of error message */
-    private String code;
-    /** Path in quote object causing error */
-    private String path;
-    /** User-friendly error message */
-    private String message;
+public class ColorAvailability {
 
-    public String getCode() {
-        return code;
+    /** Name of the color */
+    private String name;
+    /** A map with the size as key and the number of availability as value */
+    private Map<String, Integer> sizesAvailability;
+
+    public ColorAvailability() {
+        super();
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public ColorAvailability(String name, Map<String, Object> sizesAvailability) {
+        super();
+        this.name = name;
+        this.sizesAvailability = sizesAvailability.entrySet().stream()
+                .collect(Collectors.toMap(e -> e.getKey(), e -> Integer.valueOf(e.getValue().toString())));
     }
 
-    public String getPath() {
-        return path;
+    public String getName() {
+        return name;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMessage() {
-        return message;
+    public Map<String, Integer> getSizesAvailability() {
+        return sizesAvailability;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setSizesAvailability(Map<String, Integer> sizesAvailability) {
+        this.sizesAvailability = sizesAvailability;
     }
 
     @Override
     public String toString() {
-        return "Error [code=" + code + ", path=" + path + ", message="
-                + message + "]";
+        return "ColorAvailability [name=" + name + ", sizesAvailability="
+                + sizesAvailability + "]";
     }
+
 }

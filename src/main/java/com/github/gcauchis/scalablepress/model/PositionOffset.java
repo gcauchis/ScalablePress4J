@@ -20,45 +20,41 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Feature json object
+ * The Position Offset json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#custom-order-features
+ * @see https://scalablepress.com/docs/#create-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Features {
+public class PositionOffset {
+    /** top offset in inches, specify this OR the bottom offset of the print */
+    private Number top;
+    /** bottom offset in inches, specify this OR the top offset of the print */
+    private Number bottom;
 
-    /**
-     * Shipping service code. Available service codes
-     * @see https://scalablepress.com/docs/#shipping-service-codes
-     */
-    private String shipping;
-    /** Absolute URL for a PDF packing slip */
-    private String packing;
-
-    public String getShipping() {
-        return shipping;
+    public Number getTop() {
+        return top;
     }
 
-    public void setShipping(String shipping) {
-        this.shipping = shipping;
+    public void setTop(Number top) {
+        this.top = top;
     }
 
-    public String getPacking() {
-        return packing;
+    public Number getBottom() {
+        return bottom;
     }
 
-    public void setPacking(String packing) {
-        this.packing = packing;
+    public void setBottom(Number bottom) {
+        this.bottom = bottom;
     }
 
     @Override
     public String toString() {
-        return "Features [shipping=" + shipping + ", packing=" + packing + "]";
+        return "PositionOffset [top=" + top + ", bottom=" + bottom + "]";
     }
 }

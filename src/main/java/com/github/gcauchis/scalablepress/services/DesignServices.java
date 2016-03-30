@@ -24,8 +24,8 @@ package com.github.gcauchis.scalablepress.services;
 
 import org.springframework.stereotype.Service;
 
-import com.github.gcauchis.scalablepress.json.Design;
-import com.github.gcauchis.scalablepress.json.DesignResponse;
+import com.github.gcauchis.scalablepress.model.Design;
+import com.github.gcauchis.scalablepress.model.DesignResponse;
 
 /**
  * Implement the Design api

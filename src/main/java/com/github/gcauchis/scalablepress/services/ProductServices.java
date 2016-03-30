@@ -28,10 +28,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.github.gcauchis.scalablepress.json.Category;
-import com.github.gcauchis.scalablepress.json.Product;
-import com.github.gcauchis.scalablepress.json.ProductAvailability;
-import com.github.gcauchis.scalablepress.json.ProductOveriew;
+import com.github.gcauchis.scalablepress.model.Category;
+import com.github.gcauchis.scalablepress.model.Product;
+import com.github.gcauchis.scalablepress.model.ProductAvailability;
+import com.github.gcauchis.scalablepress.model.ProductOveriew;
 
 /**
  * Implement the Product api.

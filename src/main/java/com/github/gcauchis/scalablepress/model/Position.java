@@ -20,47 +20,46 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Dimension json object
+ * The Position json object
  * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#create-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dimension {
+public class Position {
     /**
-     * Screenprint/DTG only, width in inches of the print on the garment,
-     * specify this OR the height of the print
+     * Screenprint/DTG only, horizontal position. <a
+     * href="https://scalablepress.com/services#artwork_requirements">Artwork
+     * requirements</a>
      */
-    private Number width;
-    /**
-     * Screenprint/DTG only, height in inches of the print on the garment,
-     * specify this OR the width of the print
-     */
-    private Number height;
+    private String horizontal;
+    /** Screenprint/DTG only, position offset object */
+    private PositionOffset offset;
 
-    public Number getWidth() {
-        return width;
+    public String getHorizontal() {
+        return horizontal;
     }
 
-    public void setWidth(Number width) {
-        this.width = width;
+    public void setHorizontal(String horizontal) {
+        this.horizontal = horizontal;
     }
 
-    public Number getHeight() {
-        return height;
+    public PositionOffset getOffset() {
+        return offset;
     }
 
-    public void setHeight(Number height) {
-        this.height = height;
+    public void setOffset(PositionOffset offset) {
+        this.offset = offset;
     }
 
     @Override
     public String toString() {
-        return "Dimension [width=" + width + ", height=" + height + "]";
+        return "Position [horizontal=" + horizontal + ", offset=" + offset
+                + "]";
     }
 }

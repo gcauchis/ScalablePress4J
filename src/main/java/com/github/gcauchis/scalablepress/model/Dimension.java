@@ -20,41 +20,47 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Position Offset json object
+ * The Dimension json object
  * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#create-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PositionOffset {
-    /** top offset in inches, specify this OR the bottom offset of the print */
-    private Number top;
-    /** bottom offset in inches, specify this OR the top offset of the print */
-    private Number bottom;
+public class Dimension {
+    /**
+     * Screenprint/DTG only, width in inches of the print on the garment,
+     * specify this OR the height of the print
+     */
+    private Number width;
+    /**
+     * Screenprint/DTG only, height in inches of the print on the garment,
+     * specify this OR the width of the print
+     */
+    private Number height;
 
-    public Number getTop() {
-        return top;
+    public Number getWidth() {
+        return width;
     }
 
-    public void setTop(Number top) {
-        this.top = top;
+    public void setWidth(Number width) {
+        this.width = width;
     }
 
-    public Number getBottom() {
-        return bottom;
+    public Number getHeight() {
+        return height;
     }
 
-    public void setBottom(Number bottom) {
-        this.bottom = bottom;
+    public void setHeight(Number height) {
+        this.height = height;
     }
 
     @Override
     public String toString() {
-        return "PositionOffset [top=" + top + ", bottom=" + bottom + "]";
+        return "Dimension [width=" + width + ", height=" + height + "]";
     }
 }

@@ -20,30 +20,51 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Customization json object
+ * The Product Propeties json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#list-product-information
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Customization {
-    /** Name of the desired customization */
-    private String id;
+public class ProductProperties {
+    /** Brand of the product */
+    private String brand;
+    /** Material the product is made from */
+    private String material;
+    /** Style code associated with the product */
+    private String style;
 
-    public String getId() {
-        return id;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     @Override
     public String toString() {
-        return "Customization [id=" + id + "]";
+        return "ProductProperties [brand=" + brand + ", material=" + material
+                + ", style=" + style + "]";
     }
 }

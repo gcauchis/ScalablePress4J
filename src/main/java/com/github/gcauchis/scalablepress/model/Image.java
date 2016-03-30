@@ -20,51 +20,41 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress.json;
+package com.github.gcauchis.scalablepress.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Product Propeties json object.
+ * The Image json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-information
+ * @see https://scalablepress.com/docs/#list-products
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductProperties {
-    /** Brand of the product */
-    private String brand;
-    /** Material the product is made from */
-    private String material;
-    /** Style code associated with the product */
-    private String style;
+public class Image {
 
-    public String getBrand() {
-        return brand;
+    /** Type of image */
+    private String label;
+    /** URL to the image */
+    private String url;
+
+    public String getLabel() {
+        return label;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
-    public String getMaterial() {
-        return material;
+    public String getUrl() {
+        return url;
     }
 
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
-    public String getStyle() {
-        return style;
-    }
-
-    public void setStyle(String style) {
-        this.style = style;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
-        return "ProductProperties [brand=" + brand + ", material=" + material
-                + ", style=" + style + "]";
+        return "Image [label=" + label + ", url=" + url + "]";
     }
 }

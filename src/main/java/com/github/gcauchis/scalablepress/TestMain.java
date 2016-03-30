@@ -31,9 +31,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.github.gcauchis.scalablepress.json.Category;
-import com.github.gcauchis.scalablepress.json.Product;
-import com.github.gcauchis.scalablepress.json.ProductAvailability;
+import com.github.gcauchis.scalablepress.model.Category;
+import com.github.gcauchis.scalablepress.model.Product;
+import com.github.gcauchis.scalablepress.model.ProductAvailability;
 import com.github.gcauchis.scalablepress.services.ProductServices;
 import com.github.gcauchis.scalablepress.services.QuoteServices;
 
