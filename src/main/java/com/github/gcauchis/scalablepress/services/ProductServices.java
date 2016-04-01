@@ -23,15 +23,20 @@
 package com.github.gcauchis.scalablepress.services;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gcauchis.scalablepress.model.Category;
+import com.github.gcauchis.scalablepress.model.ColorSizesItem;
+import com.github.gcauchis.scalablepress.model.ColorsItem;
 import com.github.gcauchis.scalablepress.model.Product;
 import com.github.gcauchis.scalablepress.model.ProductAvailability;
 import com.github.gcauchis.scalablepress.model.ProductOveriew;
+import com.github.gcauchis.scalablepress.model.Size;
 
 /**
  * Implement the Product api.
@@ -83,12 +88,24 @@ public class ProductServices extends AbstractRestServices {
     }
     
     /**
-     * need authororized api key, postpone for now
+     * Specify a product id to receive product information. For each color of the product, this information includes the following
+     * WARNING: Item information requests output a large amount of data. As a result, an authorized API key is required to make this request. To authorize your API key, contact api@scalablepress.com.
      * @param productId
-     * @param apiKey
      * @see https://scalablepress.com/docs/#list-detailed-item-information
      */
-    private void getDetailedProductItemsInformation(String productId, String apiKey)
-    {
+    public ColorsItem getDetailedProductItemsInformation(String productId) {
+        Map<String, Object> response = (Map<String, Object>) get("products/" + productId + "/items", Object.class);
+        Map<String, ColorSizesItem> colorsItem = new LinkedHashMap<>();
+        ObjectMapper mapper = getObjectMapper();
+        for (Map.Entry<String, Object> entryResponse : response.entrySet()) {
+            String color = entryResponse.getKey();
+            Map<String, Object> colorSizes = (Map<String, Object>) entryResponse .getValue();
+            Map<String, Size> colorSizesItem = new LinkedHashMap<>();
+            for (Map.Entry<String, Object> entrySize : colorSizes.entrySet()) {
+                colorSizesItem.put(entrySize.getKey(), mapper.convertValue(entrySize.getValue(), Size.class));
+            }
+            colorsItem.put(color, new ColorSizesItem(colorSizesItem));
+        }
+        return new ColorsItem(colorsItem);
     }
 }

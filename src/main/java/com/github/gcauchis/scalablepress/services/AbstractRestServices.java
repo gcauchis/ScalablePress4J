@@ -71,7 +71,7 @@ public abstract class AbstractRestServices {
                     log.error("Response error: {} {}", response.getStatusCode(), response.getStatusText());
                     ErrorResponse errorResponse = null;
                     try {
-                    errorResponse = objectMapper.readValue( response.getBody(), ErrorResponse.class);
+                        errorResponse = objectMapper.readValue(response.getBody(), ErrorResponse.class);
                     } catch (IOException ioe) {
                         log.error("Fail to parse error", ioe);
                     }
@@ -109,6 +109,14 @@ public abstract class AbstractRestServices {
 
     public void setBasicAuth(String basicAuth) {
         this.basicAuth = basicAuth;
+    }
+
+    public ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
+    public void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
     }
 
     protected <T> T get(String url, Class<T> responseType) throws RestClientException {

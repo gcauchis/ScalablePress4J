@@ -22,8 +22,6 @@
  */
 package com.github.gcauchis.scalablepress.services;
 
-import java.util.Arrays;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,14 +65,14 @@ public class DesignServicesTest {
         DesignSide front = new DesignSide();
         front.setArtwork("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/300px-PNG_transparency_demonstration_1.png");
 //        front.setArtwork("https://avatars0.githubusercontent.com/u/975738?v=3&s=460");
-        front.setColors(Arrays.asList("Blue", "Royal", "Pink", "Charity Pink", "White", "Light Blue"));
+//        front.setColors(Arrays.asList("Blue", "Royal", "Pink", "Charity Pink", "White", "Light Blue"));
         Dimension dimension = new Dimension();
         dimension.setWidth(5);
         front.setDimensions(dimension);
         Position position = new Position();
         position.setHorizontal("C");
         PositionOffset positionOffset = new PositionOffset();
-        positionOffset.setTop(1);
+        positionOffset.setTop(2.5);
         position.setOffset(positionOffset);
         front.setPosition(position);
         front.setResize(true);
