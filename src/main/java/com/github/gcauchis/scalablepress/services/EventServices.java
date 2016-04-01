@@ -89,4 +89,14 @@ public class EventServices extends AbstractRestServices {
         }
         return Arrays.asList(get("event?" + args.toString(), Event[].class));
     }
+    
+    /**
+     * Provide the eventId in order to receive the details of an event.
+     * 
+     * @return event object.
+     * @seehttps://scalablepress.com/docs/#retrieve-single-event
+     */
+    public Event retreive(String eventId) {
+        return get("event/" + eventId, Event.class);
+    }
 }
