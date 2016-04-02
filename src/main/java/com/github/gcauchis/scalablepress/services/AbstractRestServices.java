@@ -34,6 +34,7 @@ import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
@@ -131,7 +132,12 @@ public abstract class AbstractRestServices {
 
     protected <T> T post(String url, Object request, Class<T> responseType) throws RestClientException {
         log.trace("Call POST {} url {} req {}", responseType.toString(), url, request);
-        return getRestTemplate().postForEntity(baseUrl + url, request, responseType) .getBody();
+        return getRestTemplate().postForEntity(baseUrl + url, request, responseType).getBody();
+    }
+
+    protected <T> T delete(String url, Class<T> responseType) throws RestClientException {
+        log.trace("Call GET {} url {}", responseType.toString(), url);
+        return getRestTemplate().exchange(baseUrl + url, HttpMethod.DELETE, null, responseType).getBody();
     }
 
 }

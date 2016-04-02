@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Design Response json object
@@ -33,11 +34,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see https://scalablepress.com/docs/#retrieve-design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DesignResponse {
     /** the type of product this design is for. screenprint, dtg, case, or mug */
     private String type;
     /** Time when design was created */
     private String createdAt;
+    /** Time when design was deleted */
+    private String deletedAt;
     /** Design validation object */
     private DesignValidation validation;
     /** Array of customization objects */
@@ -63,6 +67,14 @@ public class DesignResponse {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
     }
 
     public DesignValidation getValidation() {
@@ -108,8 +120,8 @@ public class DesignResponse {
     @Override
     public String toString() {
         return "DesignResponse [type=" + type + ", createdAt=" + createdAt
-                + ", validation=" + validation + ", customization="
-                + customization + ", sides=" + sides + ", mode=" + mode
-                + ", designId=" + designId + "]";
+                + ", deletedAt=" + deletedAt + ", validation=" + validation
+                + ", customization=" + customization + ", sides=" + sides
+                + ", mode=" + mode + ", designId=" + designId + "]";
     }
 }

@@ -38,10 +38,30 @@ public class DesignServices extends AbstractRestServices {
     /**
      * Provide the details on your design in order to receive a designId, which is required to place an order.
      * @param design
-     * @return
+     * @return a design response object.
      * @see https://scalablepress.com/docs/#create-design-object
      */
     public DesignResponse create(Design design) {
         return post("design", design, DesignResponse.class);
+    }
+    
+    /**
+     * Provide the designId in order to receive the details of a previously submitted design.
+     * @param designId
+     * @return a design response object.
+     * @see https://scalablepress.com/docs/#retrieve-design-object
+     */
+    public DesignResponse retrieve(String designId) {
+        return get("design/" + designId, DesignResponse.class);
+    }
+    
+    /**
+     * Provide the designId in order to delete a previously submitted design.
+     * @param designId
+     * @return adesign response object with an extra deletedAt number that records the time at which the design was deleted.
+     * @see https://scalablepress.com/docs/#delete-design
+     */
+    public DesignResponse delete(String designId) {
+        return delete("design/" + designId, DesignResponse.class);
     }
 }
