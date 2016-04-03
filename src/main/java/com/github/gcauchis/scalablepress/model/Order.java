@@ -28,17 +28,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Quote Response json object.
+ * The Order json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#order-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class QuoteResponse {
-    /** The returned status code */
-    private Number statusCode;
-    /** Quoted price for the order */
+public class Order {
+    /** Name of the last event that occurred */
+    private String status;
+    /** Price for the order */
     private Number total;
     /** Shipping component of quote total */
     private Number shipping;
@@ -48,29 +48,33 @@ public class QuoteResponse {
     private Number tax;
     /** Other fee components of quote total */
     private Number fees;
-    /** List of warnings as human readable strings */
-    private List<String> warnings;
-    /** Array of error objects which are preventing a successful quote */
-    private List<Error> issues;
-    /**
-     * Array of error objects which are preventing your quote from being
-     * order-ready
-     */
-    private List<Error> orderIssues;
     /**
      * Unique identifier which can be used to place an order, can also be used
      * to retrieve a quote
      */
     private String orderToken;
-    /** “test” or “live” */
+    /** Time at which order object was created */
+    private String createdAt;
+    /** Array of item objects */
+    private List<OrderItem> items;
+    /** Array of event objects */
+    private List<Event> events;
+    /**
+     * Unique id for the order, can be used to get order information using the
+     * Order API (only exists when an order has been placed)
+     */
+    private String orderId;
+    /** test or live */
     private String mode;
+    /** Array of warningIDs */
+    private List<String> warnings;
 
-    public Number getStatusCode() {
-        return statusCode;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatusCode(Number statusCode) {
-        this.statusCode = statusCode;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Number getTotal() {
@@ -113,36 +117,44 @@ public class QuoteResponse {
         this.fees = fees;
     }
 
-    public List<String> getWarnings() {
-        return warnings;
-    }
-
-    public void setWarnings(List<String> warnings) {
-        this.warnings = warnings;
-    }
-
-    public List<Error> getIssues() {
-        return issues;
-    }
-
-    public void setIssues(List<Error> issues) {
-        this.issues = issues;
-    }
-
-    public List<Error> getOrderIssues() {
-        return orderIssues;
-    }
-
-    public void setOrderIssues(List<Error> orderIssues) {
-        this.orderIssues = orderIssues;
-    }
-
     public String getOrderToken() {
         return orderToken;
     }
 
     public void setOrderToken(String orderToken) {
         this.orderToken = orderToken;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public String getMode() {
@@ -153,13 +165,21 @@ public class QuoteResponse {
         this.mode = mode;
     }
 
-    @Override
-    public String toString() {
-        return "QuoteResponse [statusCode=" + statusCode + ", total=" + total
-                + ", shipping=" + shipping + ", subtotal=" + subtotal
-                + ", tax=" + tax + ", fees=" + fees + ", warnings=" + warnings
-                + ", issues=" + issues + ", orderIssues=" + orderIssues
-                + ", orderToken=" + orderToken + ", mode=" + mode + "]";
+    public List<String> getWarnings() {
+        return warnings;
     }
 
+    public void setWarnings(List<String> warnings) {
+        this.warnings = warnings;
+    }
+
+    @Override
+    public String toString() {
+        return "Order [status=" + status + ", total=" + total + ", shipping="
+                + shipping + ", subtotal=" + subtotal + ", tax=" + tax
+                + ", fees=" + fees + ", orderToken=" + orderToken
+                + ", createdAt=" + createdAt + ", items=" + items + ", events="
+                + events + ", orderId=" + orderId + ", mode=" + mode
+                + ", warnings=" + warnings + "]";
+    }
 }

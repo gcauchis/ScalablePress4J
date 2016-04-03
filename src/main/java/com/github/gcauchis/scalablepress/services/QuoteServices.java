@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress.services;
 import org.springframework.stereotype.Service;
 
 import com.github.gcauchis.scalablepress.model.BulkQuote;
+import com.github.gcauchis.scalablepress.model.Order;
 import com.github.gcauchis.scalablepress.model.Quote;
 import com.github.gcauchis.scalablepress.model.QuoteResponse;
 
@@ -63,5 +64,15 @@ public class QuoteServices extends AbstractRestServices {
      */
     public QuoteResponse bulkQuote(BulkQuote bulkQuote) {
         return post("quote/bulk", bulkQuote, QuoteResponse.class);
+    }
+    
+    /**
+     * After you have made a successful order-ready quote, you will be provided with an orderToken. This order token can be used to retrieve the quote it is associated with.
+     * @param orderToken
+     * @return an order object.
+     * @see https://scalablepress.com/docs/#retrieve-quote
+     */
+    public Order retreive(String orderToken) {
+        return get("quote/" + orderToken, Order.class);
     }
 }
