@@ -36,6 +36,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderItem {
+    /** The item index */
+    private Number itemIndex;
     /** Type of printing (dtg, screenprint, mug, or case) */
     private String type;
     /** Unique identifier for a design object provided by the Design API */
@@ -61,6 +63,14 @@ public class OrderItem {
     private Features features;
     /** Reference name provided by the user */
     private String name;
+
+    public Number getItemIndex() {
+        return itemIndex;
+    }
+
+    public void setItemIndex(Number itemIndex) {
+        this.itemIndex = itemIndex;
+    }
 
     public String getType() {
         return type;
@@ -136,10 +146,10 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "OrderItem [type=" + type + ", designId=" + designId
-                + ", address=" + address + ", products=" + products
-                + ", designUrl=" + designUrl + ", status=" + status
-                + ", tracking=" + tracking + ", features=" + features
-                + ", name=" + name + "]";
+        return "OrderItem [itemIndex=" + itemIndex + ", type=" + type
+                + ", designId=" + designId + ", address=" + address
+                + ", products=" + products + ", designUrl=" + designUrl
+                + ", status=" + status + ", tracking=" + tracking
+                + ", features=" + features + ", name=" + name + "]";
     }
 }

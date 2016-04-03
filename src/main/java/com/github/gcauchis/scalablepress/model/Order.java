@@ -55,6 +55,8 @@ public class Order {
     private String orderToken;
     /** Time at which order object was created */
     private String createdAt;
+    /** Time at which order object was deleted */
+    private String deletedAt;
     /** Array of item objects */
     private List<OrderItem> items;
     /** Array of event objects */
@@ -133,6 +135,14 @@ public class Order {
         this.createdAt = createdAt;
     }
 
+    public String getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(String deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
     public List<OrderItem> getItems() {
         return items;
     }
@@ -178,8 +188,9 @@ public class Order {
         return "Order [status=" + status + ", total=" + total + ", shipping="
                 + shipping + ", subtotal=" + subtotal + ", tax=" + tax
                 + ", fees=" + fees + ", orderToken=" + orderToken
-                + ", createdAt=" + createdAt + ", items=" + items + ", events="
-                + events + ", orderId=" + orderId + ", mode=" + mode
-                + ", warnings=" + warnings + "]";
+                + ", createdAt=" + createdAt + ", deletedAt=" + deletedAt
+                + ", items=" + items + ", events=" + events + ", orderId="
+                + orderId + ", mode=" + mode + ", warnings=" + warnings + "]";
     }
+
 }
