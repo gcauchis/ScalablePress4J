@@ -75,7 +75,6 @@ import com.github.gcauchis.scalablepress.model.QuoteResponse;
  * label</li>
  * </ul>
  * 
- * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#quote-api
  */
