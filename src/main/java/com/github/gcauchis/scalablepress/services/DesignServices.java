@@ -28,7 +28,12 @@ import com.github.gcauchis.scalablepress.model.Design;
 import com.github.gcauchis.scalablepress.model.DesignResponse;
 
 /**
- * Implement the Design api
+ * The Design API takes in information about your print design (dimensions,
+ * files, position, etc.) and provides you with a designId which can be used to
+ * place an order.<br/>
+ * 
+ * Designs cannot be modified once created.<br/>
+ * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#design-api
  */

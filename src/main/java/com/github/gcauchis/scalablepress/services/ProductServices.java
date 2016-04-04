@@ -39,7 +39,11 @@ import com.github.gcauchis.scalablepress.model.ProductOveriew;
 import com.github.gcauchis.scalablepress.model.Size;
 
 /**
- * Implement the Product api.
+ * The Products API provides specifications and pictures of all products
+ * available for printing.
+ * 
+ * The Product API powers product catalog
+ * 
  * @author gcauchis
  * @see https://scalablepress.com/docs/#product-api
  */
