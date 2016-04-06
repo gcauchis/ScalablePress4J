@@ -115,7 +115,7 @@ public class QuoteServices extends AbstractRestServices {
      * @return an order object.
      * @see https://scalablepress.com/docs/#retrieve-quote
      */
-    public Order retreive(String orderToken) {
+    public Order retrieve(String orderToken) {
         return get("quote/" + orderToken, Order.class);
     }
 }

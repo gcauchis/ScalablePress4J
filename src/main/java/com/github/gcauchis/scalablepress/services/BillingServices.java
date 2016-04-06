@@ -75,7 +75,7 @@ public class BillingServices extends AbstractRestServices {
      * @return
      * @see https://scalablepress.com/docs/#retrieve-invoice-object
      */
-    public Invoice retreiveInvoice(String invoiceId) {
+    public Invoice retrieveInvoice(String invoiceId) {
         return get("billing/invoice/" + invoiceId, Invoice.class);
     }
     

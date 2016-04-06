@@ -96,7 +96,7 @@ public class EventServices extends AbstractRestServices {
      * @return event object.
      * @seehttps://scalablepress.com/docs/#retrieve-single-event
      */
-    public Event retreive(String eventId) {
+    public Event retrieve(String eventId) {
         return get("event/" + eventId, Event.class);
     }
 }

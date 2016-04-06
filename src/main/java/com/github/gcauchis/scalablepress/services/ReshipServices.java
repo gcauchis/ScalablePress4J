@@ -48,7 +48,7 @@ public class ReshipServices extends AbstractRestServices {
      * @return Array of reship objects
      * @see https://scalablepress.com/docs/#retrieve-reship-orders
      */
-    public List<Reship> retreive() {
+    public List<Reship> retrieve() {
         return Arrays.asList(get("reship", Reship[].class));
     }
 
@@ -61,7 +61,7 @@ public class ReshipServices extends AbstractRestServices {
      * @return a reship object
      * @see https://scalablepress.com/docs/#retrieve-single-reship-order
      */
-    public Reship retreive(String reshipId) {
+    public Reship retrieve(String reshipId) {
         return get("reship/" + reshipId, Reship.class);
     }
 

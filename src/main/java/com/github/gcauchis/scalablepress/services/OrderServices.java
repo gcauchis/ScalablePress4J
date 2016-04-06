@@ -83,7 +83,7 @@ public class OrderServices extends AbstractRestServices{
      * @return an array of order objects.
      * @see https://scalablepress.com/docs/#retrieve-orders
      */
-    public List<Order> retreive() {
+    public List<Order> retrieve() {
         return Arrays.asList(get("order", Order[].class));
     }
     
