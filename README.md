@@ -8,4 +8,5 @@ Spring Beans:
 - OrderServices implement [Order API](https://scalablepress.com/docs/#order-api)
 - EventServices implement [Event API](https://scalablepress.com/docs/#event-api)
 - DesignServices implement [Design  API](https://scalablepress.com/docs/#design-api)
-- ... incoming
+- BillingServices implement [Billing  API](https://scalablepress.com/docs/#billing-api)
+- ReshipServices implement [Reship  API](https://scalablepress.com/docs/#reship-api)
