@@ -56,16 +56,14 @@ public class DesignServicesTest {
         Assert.assertNotNull(designServices);
     }
     
-    @Test(expected = ScalablePressBadRequestException.class)//Need to find a good image for test
-    public void create() {
+    @Test//(expected = ScalablePressBadRequestException.class)//Need to find a good image for test
+    public void design() {
         Design design = new Design();
         design.setName("Test");
-        design.setType("mug");
+        design.setType("dtg");
         DesignSides designSides = new DesignSides();
         DesignSide front = new DesignSide();
-        front.setArtwork("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/300px-PNG_transparency_demonstration_1.png");
-//        front.setArtwork("https://avatars0.githubusercontent.com/u/975738?v=3&s=460");
-//        front.setColors(Arrays.asList("Blue", "Royal", "Pink", "Charity Pink", "White", "Light Blue"));
+        front.setArtwork("https://raw.githubusercontent.com/gcauchis/ScalablePressWrapper/master/src/test/resources/lena_150dpi.png");
         Dimension dimension = new Dimension();
         dimension.setWidth(5);
         front.setDimensions(dimension);
@@ -78,9 +76,33 @@ public class DesignServicesTest {
         front.setResize(true);
         designSides.setFront(front);
         design.setSides(designSides);
+        log.info("Create design");
         DesignResponse response = designServices.create(design);
         Assert.assertNotNull(response);
-        log.info(response.toString());
-        log.info("*********** designId => " + response.getDesignId());
+        Assert.assertNotNull(response.getDesignId());
+        log.info("Returned design: {} ",response.toString());
+        log.info("Design created with designId = {}", response.getDesignId());
+        String designId = response.getDesignId();
+        
+        log.info("Retreive design: {} ", designId);
+        DesignResponse retieveDesign = designServices.retrieve(designId);
+        Assert.assertNotNull(retieveDesign);
+        Assert.assertEquals(designId, retieveDesign.getDesignId());
+        log.info("Returned design: {} ", retieveDesign.toString());
+        
+        log.info("Delete design: {} ", designId);
+        DesignResponse deleted = designServices.delete(designId);
+        Assert.assertNotNull(deleted);
+        Assert.assertEquals(designId, deleted.getDesignId());
+        log.info("Returned design: {} ", deleted.toString());
+        
+        try {
+            log.info("Retreive deleted design: {}", designId);
+            designServices.retrieve(designId);
+            Assert.fail("Error 404 must occur, the desing doesn't exist anymore");
+        } catch (ScalablePressBadRequestException e) {
+            Assert.assertEquals("404", e.getErrorResponse().getStatusCode());
+            log.info("Design deleted successfully");
+        }
     }
 }

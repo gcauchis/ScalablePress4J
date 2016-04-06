@@ -22,60 +22,52 @@
  */
 package com.github.gcauchis.scalablepress.model;
 
-import java.util.Map;
+public class PaginatedResult<R> {
+    /** The result */
+    private R result;
+    /** The current page number */
+    private int pageNumber;
+    /** Total number of pages for this query. */
+    private int pagesCount;
+    /** Total number of items of the query. */
+    private int itemsCount;
 
-/**
- * The Error json object.
- * 
- * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
- */
-public class Error {
-    /** Identifier for type of error message */
-    private String code;
-    /** Path in quote object causing error */
-    private String path;
-    /** User-friendly error message */
-    private String message;
-    /** Optional specification */
-    private Map<String, Object> spec;
-
-    public String getCode() {
-        return code;
+    public R getResult() {
+        return result;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setResult(R result) {
+        this.result = result;
     }
 
-    public String getPath() {
-        return path;
+    public int getPageNumber() {
+        return pageNumber;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
-    public String getMessage() {
-        return message;
+    public int getPagesCount() {
+        return pagesCount;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setPagesCount(int pagesCount) {
+        this.pagesCount = pagesCount;
     }
 
-    public Map<String, Object> getSpec() {
-        return spec;
+    public int getItemsCount() {
+        return itemsCount;
     }
 
-    public void setSpec(Map<String, Object> spec) {
-        this.spec = spec;
+    public void setItemsCount(int itemsCount) {
+        this.itemsCount = itemsCount;
     }
 
     @Override
     public String toString() {
-        return "Error [code=" + code + ", path=" + path + ", message="
-                + message + ", spec=" + spec + "]";
+        return "PaginatedResult [result=" + result + ", pageNumber="
+                + pageNumber + ", pagesCount=" + pagesCount + ", itemsCount="
+                + itemsCount + "]";
     }
-
 }
