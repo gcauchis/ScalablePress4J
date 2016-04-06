@@ -22,42 +22,38 @@
  */
 package com.github.gcauchis.scalablepress.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Invoice json object
+ * The Reship json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#invoice-object
+ * @see https://scalablepress.com/docs/#reship-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Invoice {
-    /**
-     * Unique id for the order, can be used to get invoice information or pay
-     * the invoice
-     */
-    private String invoiceId;
-    /** The time at which the invoice object was created */
+public class Reship {
+    /** Time at which order object was returned to facility */
     private String createdAt;
-    /** The order that this invoice is for */
-    private String orderId;
-    /** The dollar total charges on the invoice, matches the order total */
-    private Number total;
     /**
-     * The dollar total that remains unpaid on the invoice. A negative balance
-     * indicates overpayment
+     * Unique identifier which can be used to retrieve information about, place,
+     * and cancel this reship order
      */
-    private Number balance;
-
-    public String getInvoiceId() {
-        return invoiceId;
-    }
-
-    public void setInvoiceId(String invoiceId) {
-        this.invoiceId = invoiceId;
-    }
+    private String reshipId;
+    /** Name of the last event that occurred to this particular order item */
+    private String status;
+    /**
+     * Unique identifier which can be used to retrieve information about the
+     * order that was returned
+     */
+    private String orderId;
+    /** Array of indices that correspond to the order items array */
+    private List<Number> orderItemIndices;
+    /** Shipping price for an order that has been reshipped after being returned */
+    private Number price;
 
     public String getCreatedAt() {
         return createdAt;
@@ -65,6 +61,22 @@ public class Invoice {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getReshipId() {
+        return reshipId;
+    }
+
+    public void setReshipId(String reshipId) {
+        this.reshipId = reshipId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getOrderId() {
@@ -75,27 +87,27 @@ public class Invoice {
         this.orderId = orderId;
     }
 
-    public Number getTotal() {
-        return total;
+    public List<Number> getOrderItemIndices() {
+        return orderItemIndices;
     }
 
-    public void setTotal(Number total) {
-        this.total = total;
+    public void setOrderItemIndices(List<Number> orderItemIndices) {
+        this.orderItemIndices = orderItemIndices;
     }
 
-    public Number getBalance() {
-        return balance;
+    public Number getPrice() {
+        return price;
     }
 
-    public void setBalance(Number balance) {
-        this.balance = balance;
+    public void setPrice(Number price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        return "Invoice [invoiceId=" + invoiceId + ", createdAt=" + createdAt
-                + ", orderId=" + orderId + ", total=" + total + ", balance="
-                + balance + "]";
+        return "Reship [createdAt=" + createdAt + ", reshipId=" + reshipId
+                + ", status=" + status + ", orderId=" + orderId
+                + ", orderItemIndices=" + orderItemIndices + ", price=" + price
+                + "]";
     }
-
 }

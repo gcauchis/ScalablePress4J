@@ -121,22 +121,22 @@ public abstract class AbstractRestServices {
     }
 
     protected <T> T get(String url, Class<T> responseType) throws RestClientException {
-        log.trace("Call GET {} url {}", responseType.toString(), url);
+        log.trace("Call GET for: {}, to url: {}", responseType.toString(), url);
         return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
     }
 
     protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
-        log.trace("Call GET {} url {} var {}", responseType.toString(), url, urlVariables);
+        log.trace("Call GET for: {}, to url: {}, with var: {}", responseType.toString(), url, urlVariables);
         return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
     }
 
     protected <T> T post(String url, Object request, Class<T> responseType) throws RestClientException {
-        log.trace("Call POST {} url {} req {}", responseType.toString(), url, request);
+        log.trace("Call POST for: {}, to url: {}, with req {}", responseType.toString(), url, request);
         return getRestTemplate().postForEntity(baseUrl + url, request, responseType).getBody();
     }
 
     protected <T> T delete(String url, Class<T> responseType) throws RestClientException {
-        log.trace("Call GET {} url {}", responseType.toString(), url);
+        log.trace("Call DELETE for: {}, to url: {}", responseType.toString(), url);
         return getRestTemplate().exchange(baseUrl + url, HttpMethod.DELETE, null, responseType).getBody();
     }
 
