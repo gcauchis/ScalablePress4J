@@ -2,7 +2,7 @@
 
 This is a java 8 wrapper for [Scalable Press Api](https://scalablepress.com/docs/)
 
-Spring Beans:
+##Spring Beans:
 - ProductServices implement [Product API](https://scalablepress.com/docs/#product-api)
 - QuoteServices implement [Quote API](https://scalablepress.com/docs/#quote-api)
 - OrderServices implement [Order API](https://scalablepress.com/docs/#order-api)
