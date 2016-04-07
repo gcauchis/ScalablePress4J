@@ -22,8 +22,21 @@
  */
 package com.github.gcauchis.scalablepress.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class PaginatedResultList<R> extends PaginatedResult<List<R>> {
+
+    public PaginatedResultList() {
+        super();
+    }
+    
+    public PaginatedResultList(PaginatedResult<R[]> arrayResult) {
+        super();
+        setItemsCount(arrayResult.getItemsCount());
+        setPageNumber(arrayResult.getPageNumber());
+        setPagesCount(arrayResult.getPagesCount());
+        setResult(Arrays.asList(arrayResult.getResult()));
+    }
 
 }

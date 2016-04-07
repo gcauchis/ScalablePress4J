@@ -22,13 +22,11 @@
  */
 package com.github.gcauchis.scalablepress.services;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.github.gcauchis.scalablepress.model.Event;
+import com.github.gcauchis.scalablepress.model.PaginatedResultList;
 import com.github.gcauchis.scalablepress.model.QueryEvent;
 
 /**
@@ -43,51 +41,54 @@ public class EventServices extends AbstractRestServices {
      * Events contain useful information about the state of your order.
      *
      * @param query the query
+     * @param page the page to view
      * @return Returns an array of event objects.
      * @see https://scalablepress.com/docs/#query-events
      */
-    public List<Event> queryEvents(QueryEvent query) {
+    public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) {
         StringBuilder args = new StringBuilder();
-        if (StringUtils.isNotBlank(query.getOrderId())) {
-            args.append("orderId=").append(query.getOrderId());
-        }
-        if (StringUtils.isNotBlank(query.getName())) {
-            if (args.length() > 0) {
-                args.append("&");
+        if (query != null) {
+            if (StringUtils.isNotBlank(query.getOrderId())) {
+                args.append("orderId=").append(query.getOrderId());
             }
-            args.append("name=").append(query.getName());
-        }
-        if (StringUtils.isNotBlank(query.getStart())) {
-            if (args.length() > 0) {
-                args.append("&");
+            if (StringUtils.isNotBlank(query.getName())) {
+                if (args.length() > 0) {
+                    args.append("&");
+                }
+                args.append("name=").append(query.getName());
             }
-            args.append("start=").append(query.getStart());
-        }
-        if (StringUtils.isNotBlank(query.getEnd())) {
-            if (args.length() > 0) {
-                args.append("&");
+            if (StringUtils.isNotBlank(query.getStart())) {
+                if (args.length() > 0) {
+                    args.append("&");
+                }
+                args.append("start=").append(query.getStart());
             }
-            args.append("end=").append(query.getEnd());
-        }
-        if (StringUtils.isNotBlank(query.getItemIndex())) {
-            if (args.length() > 0) {
-                args.append("&");
+            if (StringUtils.isNotBlank(query.getEnd())) {
+                if (args.length() > 0) {
+                    args.append("&");
+                }
+                args.append("end=").append(query.getEnd());
             }
-            args.append("itemIndex=").append(query.getItemIndex());
-        }
-        if (StringUtils.isNotBlank(query.getItemName())) {
-            if (args.length() > 0) {
-                args.append("&");
+            if (StringUtils.isNotBlank(query.getItemIndex())) {
+                if (args.length() > 0) {
+                    args.append("&");
+                }
+                args.append("itemIndex=").append(query.getItemIndex());
             }
-            args.append("itemName=").append(query.getItemName());
-        }
-        if (StringUtils.isNotBlank(query.getSort())) {
-            if (args.length() > 0) {
-                args.append("&");
+            if (StringUtils.isNotBlank(query.getItemName())) {
+                if (args.length() > 0) {
+                    args.append("&");
+                }
+                args.append("itemName=").append(query.getItemName());
             }
-            args.append("sort=").append(query.getSort());
+            if (StringUtils.isNotBlank(query.getSort())) {
+                if (args.length() > 0) {
+                    args.append("&");
+                }
+                args.append("sort=").append(query.getSort());
+            }
         }
-        return Arrays.asList(get("event?" + args.toString(), Event[].class));
+        return new PaginatedResultList<>(get("event?" + args.toString(), page, Event[].class));
     }
     
     /**

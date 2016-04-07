@@ -31,6 +31,8 @@ public class PaginatedResult<R> {
     private int pagesCount;
     /** Total number of items of the query. */
     private int itemsCount;
+    /** Items per page. Defaults to 50. */
+    private int limit;
 
     public R getResult() {
         return result;
@@ -64,10 +66,19 @@ public class PaginatedResult<R> {
         this.itemsCount = itemsCount;
     }
 
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
     @Override
     public String toString() {
         return "PaginatedResult [result=" + result + ", pageNumber="
                 + pageNumber + ", pagesCount=" + pagesCount + ", itemsCount="
-                + itemsCount + "]";
+                + itemsCount + ", limit=" + limit + "]";
     }
+
 }

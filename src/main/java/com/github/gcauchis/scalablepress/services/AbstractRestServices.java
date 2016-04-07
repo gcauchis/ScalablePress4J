@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress.services;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
@@ -34,7 +35,9 @@ import org.apache.http.message.BasicHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
@@ -44,9 +47,12 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gcauchis.scalablepress.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress.model.ErrorResponse;
+import com.github.gcauchis.scalablepress.model.PaginatedResult;
 
 public abstract class AbstractRestServices {
 
+    /** The default items per page number. */
+    public static final int DEFAULT_LIMIT = 50;
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The base url */
@@ -59,6 +65,8 @@ public abstract class AbstractRestServices {
     private RestTemplate restTemplate;
     /** The json object mapper */
     private ObjectMapper objectMapper = new ObjectMapper();
+    /** Items per page. Defaults to 50. */
+    private int limit = DEFAULT_LIMIT;
 
     private RestTemplate getRestTemplate() {
         if (restTemplate == null) {
@@ -120,19 +128,71 @@ public abstract class AbstractRestServices {
         this.objectMapper = objectMapper;
     }
 
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+    
+    private String preparePaginatedUrl(String url, int page) {
+        int argSeparatorIndex = url.indexOf("?");
+        if (argSeparatorIndex < 0) {
+            url += "?";
+        } else if (argSeparatorIndex < url.length() - 1) {
+            url += "&";
+        }
+        url += "page=" + Math.max(page, 1);
+        if (limit != DEFAULT_LIMIT) {
+            url += "&limit=" + limit;
+        }
+        return url;
+    }
+    
+    private <T> PaginatedResult<T> buildPaginatedResult(ResponseEntity<T> resultEntity, int page) {
+        PaginatedResult<T> paginatedResult = new PaginatedResult<T>();
+        paginatedResult.setResult(resultEntity.getBody());
+        paginatedResult.setPageNumber(page);
+        paginatedResult.setLimit(limit);
+        HttpHeaders headers = resultEntity.getHeaders();
+        List<String> xspPages = headers.get("X-SP-Pages");
+        if (xspPages != null && !xspPages.isEmpty())
+            paginatedResult.setPagesCount(Integer.parseInt(xspPages.get(0).toString()));
+        List<String> xspCount = headers.get("X-SP-Count");
+        if (xspCount != null && !xspCount.isEmpty())
+            paginatedResult.setItemsCount(Integer.parseInt(xspCount.get(0).toString()));
+        return paginatedResult;
+    }
+
     protected <T> T get(String url, Class<T> responseType) throws RestClientException {
         log.trace("Call GET for: {}, to url: {}", responseType.toString(), url);
         return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
+    }
+    
+    protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType) throws RestClientException {
+        log.trace("Call GET page {} for: {}, to url: {}", page, responseType.toString(), url);
+        return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType), page);
     }
 
     protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
         log.trace("Call GET for: {}, to url: {}, with var: {}", responseType.toString(), url, urlVariables);
         return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
     }
+    
+    protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
+        log.trace("Call GET page {} for: {}, to url: {}, with var: {}", page, responseType.toString(), url, urlVariables);
+        return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType, urlVariables), page);
+    }
 
     protected <T> T post(String url, Object request, Class<T> responseType) throws RestClientException {
         log.trace("Call POST for: {}, to url: {}, with req {}", responseType.toString(), url, request);
         return getRestTemplate().postForEntity(baseUrl + url, request, responseType).getBody();
+    }
+
+    protected <T> PaginatedResult<T> post(String url, int page, Object request, Class<T> responseType) throws RestClientException {
+        log.trace("Call POST page {} for: {}, to url: {}, with req {}", page, responseType.toString(), url, request);
+        return buildPaginatedResult(getRestTemplate().postForEntity(preparePaginatedUrl(baseUrl + url, page), request, responseType), page);
     }
 
     protected <T> T delete(String url, Class<T> responseType) throws RestClientException {
