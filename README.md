@@ -1,4 +1,4 @@
-# Scalable Press java Wrapper [![Build Status](https://travis-ci.org/gcauchis/ScalablePressWrapper.svg?branch=master)](https://travis-ci.org/gcauchis/ScalablePressWrapper)
+# Scalable Press java Wrapper [![Build Status](https://travis-ci.org/gcauchis/ScalablePress4J.svg?branch=master)](https://travis-ci.org/gcauchis/ScalablePress4J)
 
 This is a java 8 wrapper for [Scalable Press Api](https://scalablepress.com/docs/)
 
