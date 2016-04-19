@@ -47,6 +47,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.gcauchis.scalablepress4j.ScalablePressBadRequestException;
+import fr.gcauchis.scalablepress4j.model.Error;
 import fr.gcauchis.scalablepress4j.model.ErrorResponse;
 import fr.gcauchis.scalablepress4j.model.PaginatedResult;
 
@@ -138,13 +139,22 @@ public abstract class AbstractRestServices {
     }
     
     private String preparePaginatedUrl(String url, int page) {
+        if (page < 1) {
+            ErrorResponse errorResponse = new ErrorResponse();
+            errorResponse.setStatusCode("500");
+            Error error = new Error();
+            error.setCode("");
+            error.setMessage("Page number cannot be less than 1.");
+            errorResponse.setIssues(Arrays.asList(error));
+            throw new ScalablePressBadRequestException(errorResponse);
+        }
         int argSeparatorIndex = url.indexOf("?");
         if (argSeparatorIndex < 0) {
             url += "?";
         } else if (argSeparatorIndex < url.length() - 1) {
             url += "&";
         }
-        url += "page=" + Math.max(page, 1);
+        url += "page=" + page;
         if (limit != DEFAULT_LIMIT) {
             url += "&limit=" + limit;
         }
