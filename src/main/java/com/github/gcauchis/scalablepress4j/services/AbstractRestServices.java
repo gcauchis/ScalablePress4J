@@ -57,10 +57,8 @@ public abstract class AbstractRestServices {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The base url */
-    @Value("${scalablepress.api.baseurl:https://api.scalablepress.com/v2/}")
     private String baseUrl;
     /** The basic auth */
-    @Value("${scalablepress.api.basicauth}")
     private String basicAuth;
     /** The rest template */
     private RestTemplate restTemplate;
@@ -109,6 +107,7 @@ public abstract class AbstractRestServices {
         return baseUrl;
     }
 
+    @Value("${scalablepress.api.baseurl.v2:https://api.scalablepress.com/v2/}")
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
@@ -117,6 +116,7 @@ public abstract class AbstractRestServices {
         return basicAuth;
     }
 
+    @Value("${scalablepress.api.basicauth}")
     public void setBasicAuth(String basicAuth) {
         this.basicAuth = basicAuth;
     }

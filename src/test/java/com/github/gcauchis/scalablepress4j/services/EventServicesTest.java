@@ -1,7 +1,6 @@
 package com.github.gcauchis.scalablepress4j.services;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
-import com.github.gcauchis.scalablepress4j.services.EventServices;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,11 +22,6 @@ public class EventServicesTest {
     @Autowired
     private EventServices eventServices;
     
-    @Before
-    public void init() {
-        eventServices.setBaseUrl(eventServices.getBaseUrl().replaceAll("v2", "v3"));
-    }
-
     @Test
     public void context() {
         Assert.assertNotNull(eventServices);

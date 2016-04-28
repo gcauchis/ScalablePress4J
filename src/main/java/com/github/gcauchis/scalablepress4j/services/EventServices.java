@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.services;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.github.gcauchis.scalablepress4j.model.Event;
@@ -37,6 +38,11 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
 @Service
 public class EventServices extends AbstractRestServices {
 
+    @Value("${scalablepress.api.baseurl.v3:https://api.scalablepress.com/v3/}")
+    public void setBaseUrl(String baseUrl) {
+        super.setBaseUrl(baseUrl);
+    }
+    
     /**
      * Events contain useful information about the state of your order.
      *
