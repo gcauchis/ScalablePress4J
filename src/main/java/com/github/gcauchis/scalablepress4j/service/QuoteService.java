@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import org.springframework.stereotype.Service;
 
@@ -80,7 +80,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * @see https://scalablepress.com/docs/#quote-api
  */
 @Service
-public class QuoteServices extends AbstractRestServices {
+public class QuoteService extends AbstractRestService {
 
     /**
      * The standard quote API allows a quote for a single design printed on one

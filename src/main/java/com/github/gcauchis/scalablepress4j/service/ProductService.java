@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -49,7 +49,7 @@ import com.github.gcauchis.scalablepress4j.model.Size;
  * @see https://scalablepress.com/docs/#product-api
  */
 @Service
-public class ProductServices extends AbstractRestServices {
+public class ProductService extends AbstractRestService {
     
     /**
      * Get a list of available product categories.

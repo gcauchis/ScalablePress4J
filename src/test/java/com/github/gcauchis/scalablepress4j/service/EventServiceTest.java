@@ -1,4 +1,4 @@
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,15 +12,16 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
+import com.github.gcauchis.scalablepress4j.service.EventService;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { EventServices.class, PropertyTestConfiguration.class }, loader = AnnotationConfigContextLoader.class)
-public class EventServicesTest {
+@ContextConfiguration(classes = { EventService.class, PropertyTestConfiguration.class }, loader = AnnotationConfigContextLoader.class)
+public class EventServiceTest {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private EventServices eventServices;
+    private EventService eventServices;
     
     @Test
     public void context() {

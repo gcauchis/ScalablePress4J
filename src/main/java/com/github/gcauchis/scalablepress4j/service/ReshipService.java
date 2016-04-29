@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -40,7 +40,7 @@ import com.github.gcauchis.scalablepress4j.model.Reship;
  * @see https://scalablepress.com/docs/#reship-api
  */
 @Service
-public class ReshipServices extends AbstractRestServices {
+public class ReshipService extends AbstractRestService {
 
     /**
      * You can get the status and other information on all orders that have been

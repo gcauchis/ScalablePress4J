@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -50,7 +50,7 @@ import com.github.gcauchis.scalablepress4j.model.Error;
 import com.github.gcauchis.scalablepress4j.model.ErrorResponse;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResult;
 
-public abstract class AbstractRestServices {
+public abstract class AbstractRestService {
 
     /** The default items per page number. */
     public static final int DEFAULT_LIMIT = 50;

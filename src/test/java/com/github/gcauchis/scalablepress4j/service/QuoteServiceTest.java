@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,17 +42,17 @@ import com.github.gcauchis.scalablepress4j.model.OrderProduct;
 import com.github.gcauchis.scalablepress4j.model.Quote;
 import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 import com.github.gcauchis.scalablepress4j.model.Sides;
-import com.github.gcauchis.scalablepress4j.services.QuoteServices;
+import com.github.gcauchis.scalablepress4j.service.QuoteService;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {QuoteServices.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
-public class QuoteServicesTest {
+@ContextConfiguration(classes = {QuoteService.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
+public class QuoteServiceTest {
 
 private final Logger log = LoggerFactory.getLogger(getClass());
     
     @Autowired
-    private QuoteServices quoteServices;
+    private QuoteService quoteServices;
     
 
     @Test

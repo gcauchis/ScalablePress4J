@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,17 +40,17 @@ import com.github.gcauchis.scalablepress4j.model.DesignSides;
 import com.github.gcauchis.scalablepress4j.model.Dimension;
 import com.github.gcauchis.scalablepress4j.model.Position;
 import com.github.gcauchis.scalablepress4j.model.PositionOffset;
-import com.github.gcauchis.scalablepress4j.services.DesignServices;
+import com.github.gcauchis.scalablepress4j.service.DesignService;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DesignServices.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
-public class DesignServicesTest {
+@ContextConfiguration(classes = {DesignService.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
+public class DesignServiceTest {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     
     @Autowired
-    private DesignServices designServices;
+    private DesignService designServices;
 
     @Test
     public void context() {

@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,7 +37,7 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
  * @see https://scalablepress.com/docs/#event-api
  */
 @Service
-public class EventServices extends AbstractRestServices {
+public class EventService extends AbstractRestService {
 
     @Value("${scalablepress.api.baseurl.v3:https://api.scalablepress.com/v3/}")
     public void setBaseUrl(String baseUrl) {

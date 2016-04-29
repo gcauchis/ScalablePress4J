@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.services;
+package com.github.gcauchis.scalablepress4j.service;
 
 import org.springframework.stereotype.Service;
 
@@ -39,7 +39,7 @@ import com.github.gcauchis.scalablepress4j.model.DesignResponse;
  * @see https://scalablepress.com/docs/#design-api
  */
 @Service
-public class DesignServices extends AbstractRestServices {
+public class DesignService extends AbstractRestService {
 
     /**
      * Provide the details on your design in order to receive a designId, which is required to place an order.
