@@ -62,7 +62,7 @@ public class QuoteResponse {
      * to retrieve a quote
      */
     private String orderToken;
-    /** â€œtestâ€? or â€œliveâ€? */
+    /** "test" or "live" */
     private String mode;
 
     public Number getStatusCode() {
