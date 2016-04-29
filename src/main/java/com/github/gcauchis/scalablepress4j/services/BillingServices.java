@@ -29,6 +29,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Invoice;
 
 /**
@@ -59,11 +60,12 @@ public class BillingServices extends AbstractRestServices {
 
     /**
      * Shows all invoices for an account, sorted descending.
-     * 
-     * @return
+     *
+     * @return the list
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#list-invoice-objects
      */
-    public List<Invoice> listInvoice() {
+    public List<Invoice> listInvoice() throws ScalablePressBadRequestException {
         // "billing/invoice" or "billing" ? definition and example different...
         return Arrays.asList(get("billing/invoice", Invoice[].class));
     }
@@ -73,9 +75,10 @@ public class BillingServices extends AbstractRestServices {
      * 
      * @param invoiceId
      * @return
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-invoice-object
      */
-    public Invoice retrieveInvoice(String invoiceId) {
+    public Invoice retrieveInvoice(String invoiceId) throws ScalablePressBadRequestException {
         return get("billing/invoice/" + invoiceId, Invoice.class);
     }
     
@@ -101,9 +104,10 @@ public class BillingServices extends AbstractRestServices {
      * @param email
      *            Email address of payer of PayPal transaction
      * @return a Invoice object with updated balance.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction
      */
-    public Invoice payInvoiceWithPayPalTransaction(String invoiceId, String transactionId, Number amount, String email) {
+    public Invoice payInvoiceWithPayPalTransaction(String invoiceId, String transactionId, Number amount, String email) throws ScalablePressBadRequestException {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("transactionId", transactionId);
         args.put("amount", amount);

@@ -29,6 +29,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Order;
 import com.github.gcauchis.scalablepress4j.model.OrderItem;
@@ -53,9 +54,10 @@ public class OrderServices extends AbstractRestServices{
      * 
      * @param orderToken
      * @return an order object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#place-order
      */
-    public Order place(String orderToken) {
+    public Order place(String orderToken) throws ScalablePressBadRequestException {
         Map<String, String> args = new LinkedHashMap<>();
         args.put("orderToken", orderToken);
         return post("order", args, Order.class);
@@ -70,9 +72,10 @@ public class OrderServices extends AbstractRestServices{
      * @param orderId
      * @param orderItems
      * @return a quote response object
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#reprint-order
      */
-    public QuoteResponse reprint(String orderId, List<OrderItem> orderItems) {
+    public QuoteResponse reprint(String orderId, List<OrderItem> orderItems) throws ScalablePressBadRequestException {
         return post("order/" + orderId + "/reprint", orderItems.toArray(new OrderItem[orderItems.size()]), QuoteResponse.class);
     }
     
@@ -81,9 +84,10 @@ public class OrderServices extends AbstractRestServices{
      * on each of your orders.
      * 
      * @return an array of order objects.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-orders
      */
-    public List<Order> retrieve() {
+    public List<Order> retrieve() throws ScalablePressBadRequestException {
         return Arrays.asList(get("order", Order[].class));
     }
     
@@ -94,9 +98,10 @@ public class OrderServices extends AbstractRestServices{
      * 
      * @param orderId
      * @return an order object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-single-order
      */
-    public Order retrieve(String orderId) {
+    public Order retrieve(String orderId) throws ScalablePressBadRequestException {
         return get("order/" + orderId, Order.class);
     }
     
@@ -112,9 +117,10 @@ public class OrderServices extends AbstractRestServices{
      * @param newAddress
      * @return an order object with an additional event with a meta that
      *         documents the original and new to address
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#change-order-address
      */
-    public Order changeAddress(String orderId, int itemIndex, Address newAddress) {
+    public Order changeAddress(String orderId, int itemIndex, Address newAddress) throws ScalablePressBadRequestException {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("itemIndex", itemIndex);
         args.put("address", newAddress);
@@ -130,9 +136,10 @@ public class OrderServices extends AbstractRestServices{
      * @param orderId
      * @return an order object with an deletedAt timestamp that records the time
      *         the order object was cancelled.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#cancel-entire-order
      */
-    public Order cancel(String orderId) {
+    public Order cancel(String orderId) throws ScalablePressBadRequestException {
         return delete("order/" + orderId, Order.class);
     }
 }

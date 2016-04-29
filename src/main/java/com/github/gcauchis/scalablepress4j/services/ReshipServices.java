@@ -29,6 +29,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Reship;
 
@@ -46,9 +47,10 @@ public class ReshipServices extends AbstractRestServices {
      * shipped and returned.
      * 
      * @return Array of reship objects
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-reship-orders
      */
-    public List<Reship> retrieve() {
+    public List<Reship> retrieve() throws ScalablePressBadRequestException {
         return Arrays.asList(get("reship", Reship[].class));
     }
 
@@ -59,9 +61,10 @@ public class ReshipServices extends AbstractRestServices {
      * 
      * @param reshipId
      * @return a reship object
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-single-reship-order
      */
-    public Reship retrieve(String reshipId) {
+    public Reship retrieve(String reshipId) throws ScalablePressBadRequestException {
         return get("reship/" + reshipId, Reship.class);
     }
 
@@ -74,9 +77,10 @@ public class ReshipServices extends AbstractRestServices {
      * @param reshipId
      * @param address
      * @return
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#place-reship-order
      */
-    public Reship place(String reshipId, Address address) {
+    public Reship place(String reshipId, Address address) throws ScalablePressBadRequestException {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("address", address);
         return post("reship/" + reshipId + "/request", args, Reship.class);
@@ -89,9 +93,10 @@ public class ReshipServices extends AbstractRestServices {
      * 
      * @param reshipId
      * @return
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#cancel-reship-order
      */
-    public Reship cancel(String reshipId) {
+    public Reship cancel(String reshipId) throws ScalablePressBadRequestException {
         return post("reship/" + reshipId + "/cancel", null, Reship.class);
     }
 }

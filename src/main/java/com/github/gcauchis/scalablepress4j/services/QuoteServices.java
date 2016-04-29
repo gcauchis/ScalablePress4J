@@ -24,6 +24,7 @@ package com.github.gcauchis.scalablepress4j.services;
 
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.BulkQuote;
 import com.github.gcauchis.scalablepress4j.model.Order;
 import com.github.gcauchis.scalablepress4j.model.Quote;
@@ -87,9 +88,10 @@ public class QuoteServices extends AbstractRestServices {
      * 
      * @param quote
      * @return a quote response object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#standard-quote
      */
-    public QuoteResponse quote(Quote quote) {
+    public QuoteResponse quote(Quote quote) throws ScalablePressBadRequestException {
         return post("quote", quote, QuoteResponse.class);
     }
 
@@ -103,9 +105,10 @@ public class QuoteServices extends AbstractRestServices {
      * 
      * @param bulkQuote
      * @return a quote response object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#bulk-quote
      */
-    public QuoteResponse bulkQuote(BulkQuote bulkQuote) {
+    public QuoteResponse bulkQuote(BulkQuote bulkQuote) throws ScalablePressBadRequestException {
         return post("quote/bulk", bulkQuote, QuoteResponse.class);
     }
     
@@ -113,9 +116,10 @@ public class QuoteServices extends AbstractRestServices {
      * After you have made a successful order-ready quote, you will be provided with an orderToken. This order token can be used to retrieve the quote it is associated with.
      * @param orderToken
      * @return an order object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-quote
      */
-    public Order retrieve(String orderToken) {
+    public Order retrieve(String orderToken) throws ScalablePressBadRequestException {
         return get("quote/" + orderToken, Order.class);
     }
 }

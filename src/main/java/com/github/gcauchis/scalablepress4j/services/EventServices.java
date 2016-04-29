@@ -26,6 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 import com.github.gcauchis.scalablepress4j.model.QueryEvent;
@@ -49,9 +50,10 @@ public class EventServices extends AbstractRestServices {
      * @param query the query
      * @param page the page to view
      * @return Returns an array of event objects.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#query-events
      */
-    public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) {
+    public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) throws ScalablePressBadRequestException {
         StringBuilder args = new StringBuilder();
         if (query != null) {
             if (StringUtils.isNotBlank(query.getOrderId())) {
@@ -101,9 +103,10 @@ public class EventServices extends AbstractRestServices {
      * Provide the eventId in order to receive the details of an event.
      * 
      * @return event object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @seehttps://scalablepress.com/docs/#retrieve-single-event
      */
-    public Event retrieve(String eventId) {
+    public Event retrieve(String eventId) throws ScalablePressBadRequestException {
         return get("event/" + eventId, Event.class);
     }
 }

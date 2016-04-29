@@ -30,6 +30,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.ColorSizesItem;
 import com.github.gcauchis.scalablepress4j.model.ColorsItem;
@@ -54,9 +55,10 @@ public class ProductServices extends AbstractRestServices {
      * Get a list of available product categories.
      * The categories are not filled with the product, call {@link #getCategoryProducts(String)} the retrieve the {@link ProductOveriew}
      * @return an array with all available category objects.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#list-product-categories
      */
-    public List<Category> getCategories() {
+    public List<Category> getCategories() throws ScalablePressBadRequestException {
         return Arrays.asList(get("categories", Category[].class));
     }
     
@@ -64,9 +66,10 @@ public class ProductServices extends AbstractRestServices {
      * Specify a category id to receive category information and a list of products in that category
      * @param categoryId
      * @return a category object which now contains an array of product overview objects.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#list-products
      */
-    public Category getCategoryProducts(String categoryId) {
+    public Category getCategoryProducts(String categoryId) throws ScalablePressBadRequestException {
         return get("categories/" + categoryId, Category.class);
     }
     
@@ -74,9 +77,10 @@ public class ProductServices extends AbstractRestServices {
      * Specify a product id to receive product information. 
      * @param productId
      * @return a product object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#list-product-information
      */
-    public Product getProductInformation(String productId) {
+    public Product getProductInformation(String productId) throws ScalablePressBadRequestException {
         return get("products/" + productId, Product.class);
     }
     
@@ -85,19 +89,23 @@ public class ProductServices extends AbstractRestServices {
      * If a color/size combination is not specified then it is unavailable.
      * @param productId
      * @return a product availability object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#list-product-availability
      */
-    public ProductAvailability getProductAvailability(String productId) {
+    public ProductAvailability getProductAvailability(String productId) throws ScalablePressBadRequestException {
         return new ProductAvailability((Map<String, Object>) get("products/" + productId + "/availability", Object.class));
     }
     
     /**
      * Specify a product id to receive product information. For each color of the product, this information includes the following
      * WARNING: Item information requests output a large amount of data. As a result, an authorized API key is required to make this request. To authorize your API key, contact api@scalablepress.com.
+     *
      * @param productId
+     * @return the detailed product items information
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#list-detailed-item-information
      */
-    public ColorsItem getDetailedProductItemsInformation(String productId) {
+    public ColorsItem getDetailedProductItemsInformation(String productId) throws ScalablePressBadRequestException {
         Map<String, Object> response = (Map<String, Object>) get("products/" + productId + "/items", Object.class);
         Map<String, ColorSizesItem> colorsItem = new LinkedHashMap<>();
         ObjectMapper mapper = getObjectMapper();

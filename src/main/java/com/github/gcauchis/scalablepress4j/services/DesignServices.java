@@ -24,6 +24,7 @@ package com.github.gcauchis.scalablepress4j.services;
 
 import org.springframework.stereotype.Service;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignResponse;
 
@@ -44,9 +45,10 @@ public class DesignServices extends AbstractRestServices {
      * Provide the details on your design in order to receive a designId, which is required to place an order.
      * @param design
      * @return a design response object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#create-design-object
      */
-    public DesignResponse create(Design design) {
+    public DesignResponse create(Design design) throws ScalablePressBadRequestException {
         return post("design", design, DesignResponse.class);
     }
     
@@ -54,9 +56,10 @@ public class DesignServices extends AbstractRestServices {
      * Provide the designId in order to receive the details of a previously submitted design.
      * @param designId
      * @return a design response object.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#retrieve-design-object
      */
-    public DesignResponse retrieve(String designId) {
+    public DesignResponse retrieve(String designId) throws ScalablePressBadRequestException {
         return get("design/" + designId, DesignResponse.class);
     }
     
@@ -64,9 +67,10 @@ public class DesignServices extends AbstractRestServices {
      * Provide the designId in order to delete a previously submitted design.
      * @param designId
      * @return adesign response object with an extra deletedAt number that records the time at which the design was deleted.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see https://scalablepress.com/docs/#delete-design
      */
-    public DesignResponse delete(String designId) {
+    public DesignResponse delete(String designId) throws ScalablePressBadRequestException {
         return delete("design/" + designId, DesignResponse.class);
     }
 }
