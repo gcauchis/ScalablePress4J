@@ -21,5 +21,15 @@
 				<gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
 			</properties>
 		</profile>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<properties.passphrase>${env.PROPTERTIES_PASSPHRASE}</properties.passphrase>
+			</properties>
+		</profile>
     </profiles>
+	
 </settings>

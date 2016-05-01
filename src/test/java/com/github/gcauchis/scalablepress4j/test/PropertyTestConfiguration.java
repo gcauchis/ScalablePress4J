@@ -25,6 +25,8 @@ package com.github.gcauchis.scalablepress4j.test;
 import java.io.IOException;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.spring3.properties.EncryptablePropertyPlaceholderConfigurer;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,12 +37,13 @@ public class PropertyTestConfiguration {
 
     @Bean
     public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() throws IOException {
-        final PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
+        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
+        encryptor.setPassword(System.getenv("PROPERTIES_PASSPHRASE"));
+        final EncryptablePropertyPlaceholderConfigurer ppc = new EncryptablePropertyPlaceholderConfigurer(encryptor);
         ppc.setLocations(ArrayUtils.addAll(
                         new PathMatchingResourcePatternResolver().getResources("classpath*:application.properties")
                 )
         );
-
         return ppc;
     }
 

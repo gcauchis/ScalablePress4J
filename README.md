@@ -10,3 +10,7 @@ This is a java 8 wrapper for [Scalable Press Api](https://scalablepress.com/docs
 - DesignService implement [Design  API](https://scalablepress.com/docs/#design-api)
 - BillingService implement [Billing  API](https://scalablepress.com/docs/#billing-api)
 - ReshipService implement [Reship  API](https://scalablepress.com/docs/#reship-api)
+
+##Usage
+- You need an application.properties with the property scalablepress.api.basicauth who contain your api key.
+

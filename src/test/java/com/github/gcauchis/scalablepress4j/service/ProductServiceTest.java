@@ -37,7 +37,6 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
-import com.github.gcauchis.scalablepress4j.service.ProductService;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
