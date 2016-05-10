@@ -27,8 +27,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Category;
@@ -48,7 +46,6 @@ import com.github.gcauchis.scalablepress4j.model.Size;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#product-api
  */
-@Service
 public class ProductService extends AbstractRestService {
     
     /**

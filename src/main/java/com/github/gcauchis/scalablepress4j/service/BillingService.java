@@ -27,8 +27,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
-
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Invoice;
 
@@ -55,7 +53,6 @@ import com.github.gcauchis.scalablepress4j.model.Invoice;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#billing-api
  */
-@Service
 public class BillingService extends AbstractRestService {
 
     /**

@@ -22,8 +22,6 @@
  */
 package com.github.gcauchis.scalablepress4j.service;
 
-import org.springframework.stereotype.Service;
-
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.BulkQuote;
 import com.github.gcauchis.scalablepress4j.model.Order;
@@ -79,7 +77,6 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#quote-api
  */
-@Service
 public class QuoteService extends AbstractRestService {
 
     /**

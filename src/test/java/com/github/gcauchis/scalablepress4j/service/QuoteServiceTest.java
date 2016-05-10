@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -42,19 +43,25 @@ import com.github.gcauchis.scalablepress4j.model.OrderProduct;
 import com.github.gcauchis.scalablepress4j.model.Quote;
 import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 import com.github.gcauchis.scalablepress4j.model.Sides;
-import com.github.gcauchis.scalablepress4j.service.QuoteService;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {QuoteService.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {ScalablePress4J.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
 public class QuoteServiceTest {
 
 private final Logger log = LoggerFactory.getLogger(getClass());
     
     @Autowired
-    private QuoteService quoteServices;
+    private ScalablePress4J scalablePress;
     
+    private QuoteService quoteServices;
 
+    @Before
+    public void init()
+    {
+        quoteServices = scalablePress.quote();
+    }
+    
     @Test
     public void context() {
         Assert.assertNotNull(quoteServices);

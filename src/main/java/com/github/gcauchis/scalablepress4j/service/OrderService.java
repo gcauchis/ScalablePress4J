@@ -27,8 +27,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
-
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Order;
@@ -44,7 +42,6 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#order-api
  */
-@Service
 public class OrderService extends AbstractRestService{
 
     /**

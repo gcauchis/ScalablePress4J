@@ -22,8 +22,6 @@
  */
 package com.github.gcauchis.scalablepress4j.service;
 
-import org.springframework.stereotype.Service;
-
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignResponse;
@@ -38,7 +36,6 @@ import com.github.gcauchis.scalablepress4j.model.DesignResponse;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#design-api
  */
-@Service
 public class DesignService extends AbstractRestService {
 
     /**
