@@ -44,20 +44,19 @@ public class EventServiceTest {
 
     @Autowired
     private ScalablePress4J scalablePress;
-    
+
     private EventService eventServices;
-    
+
     @Before
-    public void init()
-    {
+    public void init() {
         eventServices = scalablePress.event();
     }
-    
+
     @Test
     public void context() {
         Assert.assertNotNull(eventServices);
     }
-    
+
     @Test
     public void retrieve() {
         PaginatedResultList<Event> paginatedEventsList = eventServices.queryEvents(null, 1);

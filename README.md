@@ -3,14 +3,15 @@
 This is a java 8 wrapper for [Scalable Press Api](https://scalablepress.com/docs/)
 
 ##Spring Beans:
-- ProductService implement [Product API](https://scalablepress.com/docs/#product-api)
-- QuoteService implement [Quote API](https://scalablepress.com/docs/#quote-api)
-- OrderService implement [Order API](https://scalablepress.com/docs/#order-api)
-- EventService implement [Event API](https://scalablepress.com/docs/#event-api)
-- DesignService implement [Design  API](https://scalablepress.com/docs/#design-api)
-- BillingService implement [Billing  API](https://scalablepress.com/docs/#billing-api)
-- ReshipService implement [Reship  API](https://scalablepress.com/docs/#reship-api)
+- ScalablePress4J is the service provider bean who provide the api services:
+  - ProductService implement [Product API](https://scalablepress.com/docs/#product-api)
+  - QuoteService implement [Quote API](https://scalablepress.com/docs/#quote-api)
+  - OrderService implement [Order API](https://scalablepress.com/docs/#order-api)
+  - EventService implement [Event API](https://scalablepress.com/docs/#event-api)
+  - DesignService implement [Design  API](https://scalablepress.com/docs/#design-api)
+  - BillingService implement [Billing  API](https://scalablepress.com/docs/#billing-api)
+  - ReshipService implement [Reship  API](https://scalablepress.com/docs/#reship-api)
 
-##Usage
+##Configuration
 - You need an application.properties with the property scalablepress.api.basicauth who contain your api key.
 

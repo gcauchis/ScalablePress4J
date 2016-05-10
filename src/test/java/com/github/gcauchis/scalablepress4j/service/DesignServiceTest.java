@@ -48,18 +48,17 @@ import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 public class DesignServiceTest {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
-    
+
     @Autowired
     private ScalablePress4J scalablePress;
-    
+
     private DesignService designServices;
 
     @Before
-    public void init()
-    {
+    public void init() {
         designServices = scalablePress.design();
     }
-    
+
     @Test
     public void context() {
         Assert.assertNotNull(designServices);

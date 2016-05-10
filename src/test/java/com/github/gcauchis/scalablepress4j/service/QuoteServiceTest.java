@@ -53,15 +53,14 @@ private final Logger log = LoggerFactory.getLogger(getClass());
     
     @Autowired
     private ScalablePress4J scalablePress;
-    
+
     private QuoteService quoteServices;
 
     @Before
-    public void init()
-    {
+    public void init() {
         quoteServices = scalablePress.quote();
     }
-    
+
     @Test
     public void context() {
         Assert.assertNotNull(quoteServices);
