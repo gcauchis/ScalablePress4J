@@ -116,6 +116,7 @@ public abstract class AbstractRestService {
 
     public void setBasicAuth(String basicAuth) {
         this.basicAuth = basicAuth;
+        restTemplate = null;
     }
 
     public ObjectMapper getObjectMapper() {
