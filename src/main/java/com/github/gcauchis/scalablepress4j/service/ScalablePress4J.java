@@ -35,7 +35,7 @@ public class ScalablePress4J {
     public static final String SCALABLE_PRESS_V2_BASE_URL = "https://api.scalablepress.com/v2/";
 
     /** The Constant SCALABLE_PRESS_V3_BASE_URL. */
-    public static final String SCALABLE_PRESS_V3_BASE_URL = "https://api.scalablepress.com/v2/";
+    public static final String SCALABLE_PRESS_V3_BASE_URL = "https://api.scalablepress.com/v3/";
 
     /** The basic auth */
     private String basicAuth;
