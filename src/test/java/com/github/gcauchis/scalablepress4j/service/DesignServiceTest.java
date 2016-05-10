@@ -25,13 +25,6 @@ package com.github.gcauchis.scalablepress4j.service;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Design;
@@ -41,16 +34,8 @@ import com.github.gcauchis.scalablepress4j.model.DesignSides;
 import com.github.gcauchis.scalablepress4j.model.Dimension;
 import com.github.gcauchis.scalablepress4j.model.Position;
 import com.github.gcauchis.scalablepress4j.model.PositionOffset;
-import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ScalablePress4J.class, PropertyTestConfiguration.class}, loader = AnnotationConfigContextLoader.class)
-public class DesignServiceTest {
-
-    private final Logger log = LoggerFactory.getLogger(getClass());
-
-    @Autowired
-    private ScalablePress4J scalablePress;
+public class DesignServiceTest extends AbstractServiceTest {
 
     private DesignService designServices;
 
@@ -64,8 +49,8 @@ public class DesignServiceTest {
         Assert.assertNotNull(designServices);
     }
     
-    @Test//(expected = ScalablePressBadRequestException.class)//Need to find a good image for test
-    public void design() {
+    @Test
+    public void designWorkFlow() {
         Design design = new Design();
         design.setName("Test");
         design.setType("dtg");

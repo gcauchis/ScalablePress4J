@@ -27,28 +27,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
-import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ScalablePress4J.class,
-        PropertyTestConfiguration.class }, loader = AnnotationConfigContextLoader.class)
-public class ProductServiceTest {
-
-    private final Logger log = LoggerFactory.getLogger(getClass());
-
-    @Autowired
-    private ScalablePress4J scalablePress;
+public class ProductServiceTest extends AbstractServiceTest {
 
     private ProductService productServices;
 
