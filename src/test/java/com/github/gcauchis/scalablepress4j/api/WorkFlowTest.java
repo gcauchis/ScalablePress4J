@@ -1,4 +1,4 @@
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import java.util.List;
 
@@ -6,6 +6,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.gcauchis.scalablepress4j.api.BillingApi;
+import com.github.gcauchis.scalablepress4j.api.DesignApi;
+import com.github.gcauchis.scalablepress4j.api.EventService;
+import com.github.gcauchis.scalablepress4j.api.OrderApi;
+import com.github.gcauchis.scalablepress4j.api.ProductApi;
+import com.github.gcauchis.scalablepress4j.api.QuoteApi;
+import com.github.gcauchis.scalablepress4j.api.ReshipApi;
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Color;
 import com.github.gcauchis.scalablepress4j.model.ColorAvailability;
@@ -15,25 +22,25 @@ import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 import com.github.gcauchis.scalablepress4j.model.ProductOveriew;
 
-public class WorkFlowTest extends AbstractServiceTest {
+public class WorkFlowTest extends AbstractApiTest {
 
-    private BillingService billing;
-    private DesignService design;
+    private BillingApi billing;
+    private DesignApi design;
     private EventService event;
-    private OrderService order;
-    private ProductService product;
-    private QuoteService quote;
-    private ReshipService reship;
+    private OrderApi order;
+    private ProductApi product;
+    private QuoteApi quote;
+    private ReshipApi reship;
 
     @Before
     public void init() {
-        billing = scalablePress.billing();
-        design = scalablePress.design();
-        order = scalablePress.order();
-        event = scalablePress.event();
-        product = scalablePress.product();
-        quote = scalablePress.quote();
-        reship = scalablePress.reship();
+        billing = scalablePress.billingApi();
+        design = scalablePress.designApi();
+        order = scalablePress.orderApi();
+        event = scalablePress.eventApi();
+        product = scalablePress.productApi();
+        quote = scalablePress.quoteApi();
+        reship = scalablePress.reshipApi();
     }
 
     @Test

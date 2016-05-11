@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -53,7 +53,7 @@ import com.github.gcauchis.scalablepress4j.model.Invoice;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#billing-api
  */
-public class BillingService extends AbstractRestService {
+public class BillingApi extends AbstractRestApi {
 
     /**
      * Shows all invoices for an account, sorted descending.

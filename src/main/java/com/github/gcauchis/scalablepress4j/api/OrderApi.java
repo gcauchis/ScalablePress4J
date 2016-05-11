@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -42,7 +42,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#order-api
  */
-public class OrderService extends AbstractRestService{
+public class OrderApi extends AbstractRestApi{
 
     /**
      * In order to place an order, you first must make a quote request. After a

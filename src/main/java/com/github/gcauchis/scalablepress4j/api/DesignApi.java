@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Design;
@@ -36,7 +36,7 @@ import com.github.gcauchis.scalablepress4j.model.DesignResponse;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#design-api
  */
-public class DesignService extends AbstractRestService {
+public class DesignApi extends AbstractRestApi {
 
     /**
      * Provide the details on your design in order to receive a designId, which is required to place an order.

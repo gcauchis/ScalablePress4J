@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -34,7 +34,7 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#event-api
  */
-public class EventService extends AbstractRestService {
+public class EventService extends AbstractRestApi {
 
     /**
      * Events contain useful information about the state of your order.

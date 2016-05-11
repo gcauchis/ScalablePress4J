@@ -1,9 +1,9 @@
 # Scalable Press java Wrapper [![Build Status](https://travis-ci.org/gcauchis/ScalablePress4J.svg?branch=master)](https://travis-ci.org/gcauchis/ScalablePress4J)
 
-This is a java 8 wrapper for [Scalable Press Api](https://scalablepress.com/docs/)
+This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs/)
 
 ##Spring Beans:
-- ScalablePress4J is the service provider bean who provide the api services:
+- ScalablePress4J is a service provider bean who provide APIs:
   - ProductService implement [Product API](https://scalablepress.com/docs/#product-api)
   - QuoteService implement [Quote API](https://scalablepress.com/docs/#quote-api)
   - OrderService implement [Order API](https://scalablepress.com/docs/#order-api)
@@ -13,5 +13,5 @@ This is a java 8 wrapper for [Scalable Press Api](https://scalablepress.com/docs
   - ReshipService implement [Reship  API](https://scalablepress.com/docs/#reship-api)
 
 ##Configuration
-- You need an application.properties with the property scalablepress.api.basicauth who contain your api key.
+- You need an application.properties with the property scalablepress.api.basicauth who contain your API key.
 

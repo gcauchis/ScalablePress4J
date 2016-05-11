@@ -20,22 +20,23 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.gcauchis.scalablepress4j.api.EventService;
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 
-public class EventServiceTest extends AbstractServiceTest {
+public class EventApiTest extends AbstractApiTest {
 
     private EventService eventServices;
 
     @Before
     public void init() {
-        eventServices = scalablePress.event();
+        eventServices = scalablePress.eventApi();
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.github.gcauchis.scalablepress4j.ScalablePress4J;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignSide;
 import com.github.gcauchis.scalablepress4j.model.DesignSides;
@@ -23,7 +24,7 @@ import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
                 PropertyTestConfiguration.class
                 },
         loader = AnnotationConfigContextLoader.class)
-public abstract class AbstractServiceTest {
+public abstract class AbstractApiTest {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
 

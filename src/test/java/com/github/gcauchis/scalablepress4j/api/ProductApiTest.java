@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import java.util.List;
 
@@ -28,17 +28,18 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.gcauchis.scalablepress4j.api.ProductApi;
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 
-public class ProductServiceTest extends AbstractServiceTest {
+public class ProductApiTest extends AbstractApiTest {
 
-    private ProductService productServices;
+    private ProductApi productServices;
 
     @Before
     public void init() {
-        productServices = scalablePress.product();
+        productServices = scalablePress.productApi();
     }
 
     @Test

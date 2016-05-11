@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
+import com.github.gcauchis.scalablepress4j.api.QuoteApi;
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Features;
 import com.github.gcauchis.scalablepress4j.model.OrderProduct;
@@ -37,13 +38,13 @@ import com.github.gcauchis.scalablepress4j.model.Quote;
 import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 import com.github.gcauchis.scalablepress4j.model.Sides;
 
-public class QuoteServiceTest  extends AbstractServiceTest{
+public class QuoteApiTest  extends AbstractApiTest{
 
-    private QuoteService quoteServices;
+    private QuoteApi quoteServices;
 
     @Before
     public void init() {
-        quoteServices = scalablePress.quote();
+        quoteServices = scalablePress.quoteApi();
     }
 
     @Test

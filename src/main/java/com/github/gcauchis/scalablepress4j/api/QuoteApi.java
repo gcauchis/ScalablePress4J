@@ -20,7 +20,7 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.BulkQuote;
@@ -77,7 +77,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#quote-api
  */
-public class QuoteService extends AbstractRestService {
+public class QuoteApi extends AbstractRestApi {
 
     /**
      * The standard quote API allows a quote for a single design printed on one

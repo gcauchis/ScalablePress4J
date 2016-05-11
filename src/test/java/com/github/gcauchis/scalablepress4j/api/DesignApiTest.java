@@ -20,23 +20,24 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package com.github.gcauchis.scalablepress4j.service;
+package com.github.gcauchis.scalablepress4j.api;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
+import com.github.gcauchis.scalablepress4j.api.DesignApi;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignResponse;
 
-public class DesignServiceTest extends AbstractServiceTest {
+public class DesignApiTest extends AbstractApiTest {
 
-    private DesignService designServices;
+    private DesignApi designServices;
 
     @Before
     public void init() {
-        designServices = scalablePress.design();
+        designServices = scalablePress.designApi();
     }
 
     @Test
