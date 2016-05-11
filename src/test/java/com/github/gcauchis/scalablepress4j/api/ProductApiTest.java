@@ -28,28 +28,27 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.gcauchis.scalablepress4j.api.ProductApi;
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 
 public class ProductApiTest extends AbstractApiTest {
 
-    private ProductApi productServices;
+    private ProductApi productApi;
 
     @Before
     public void init() {
-        productServices = scalablePress.productApi();
+        productApi = scalablePress.productApi();
     }
 
     @Test
     public void context() {
-        Assert.assertNotNull(productServices);
+        Assert.assertNotNull(productApi);
     }
 
     @Test
     public void getCategories() {
-        List<Category> categories = productServices.getCategories();
+        List<Category> categories = productApi.getCategories();
         Assert.assertNotNull(categories);
         log.info(categories.toString());
         Assert.assertFalse(categories.isEmpty());
@@ -57,21 +56,21 @@ public class ProductApiTest extends AbstractApiTest {
 
     @Test
     public void getCategoryProducts() {
-        Category category = productServices.getCategoryProducts("short-sleeve-shirts");
+        Category category = productApi.getCategoryProducts("short-sleeve-shirts");
         Assert.assertNotNull(category);
         log.info(category.toString());
     }
 
     @Test
     public void getProductInformation() {
-        Product product = productServices.getProductInformation("gildan-ultra-cotton-t-shirt");
+        Product product = productApi.getProductInformation("gildan-ultra-cotton-t-shirt");
         Assert.assertNotNull(product);
         log.info(product.toString());
     }
 
     @Test
     public void getProductAvailability() {
-        ProductAvailability productAvailability = productServices.getProductAvailability("gildan-ultra-cotton-t-shirt");
+        ProductAvailability productAvailability = productApi.getProductAvailability("gildan-ultra-cotton-t-shirt");
         Assert.assertNotNull(productAvailability);
         log.info(productAvailability.toString());
     }
