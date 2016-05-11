@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 import com.github.gcauchis.scalablepress4j.api.AbstractRestApi;
 import com.github.gcauchis.scalablepress4j.api.BillingApi;
 import com.github.gcauchis.scalablepress4j.api.DesignApi;
-import com.github.gcauchis.scalablepress4j.api.EventService;
+import com.github.gcauchis.scalablepress4j.api.EventApi;
 import com.github.gcauchis.scalablepress4j.api.OrderApi;
 import com.github.gcauchis.scalablepress4j.api.ProductApi;
 import com.github.gcauchis.scalablepress4j.api.QuoteApi;
@@ -56,7 +56,7 @@ public class ScalablePress4J {
     private DesignApi designApi;
 
     /** The event. */
-    private EventService eventApi;
+    private EventApi eventApi;
 
     /** The order. */
     private OrderApi orderApi;
@@ -142,11 +142,11 @@ public class ScalablePress4J {
     /**
      * Retrieve the event api.
      *
-     * @return {@link EventService}
+     * @return {@link EventApi}
      */
-    public EventService eventApi() {
+    public EventApi eventApi() {
         if (eventApi == null) {
-            eventApi = new EventService();
+            eventApi = new EventApi();
             prepareV3Api(eventApi);
         }
         return eventApi;

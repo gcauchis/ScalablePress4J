@@ -40,16 +40,16 @@ import com.github.gcauchis.scalablepress4j.model.Sides;
 
 public class QuoteApiTest  extends AbstractApiTest{
 
-    private QuoteApi quoteServices;
+    private QuoteApi quoteApi;
 
     @Before
     public void init() {
-        quoteServices = scalablePress.quoteApi();
+        quoteApi = scalablePress.quoteApi();
     }
 
     @Test
     public void context() {
-        Assert.assertNotNull(quoteServices);
+        Assert.assertNotNull(quoteApi);
     }
 
     //Invalid designId : found a valid one for testing
@@ -80,7 +80,7 @@ public class QuoteApiTest  extends AbstractApiTest{
         Features features = new Features();
         features.setShipping("US-STD");
         quote.setFeatures(features);
-        QuoteResponse quoteResponse = quoteServices.quote(quote);
+        QuoteResponse quoteResponse = quoteApi.quote(quote);
         Assert.assertNotNull(quoteResponse);
         log.info(quoteResponse.toString());
     }

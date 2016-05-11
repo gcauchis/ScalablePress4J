@@ -34,7 +34,7 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
  * @author gcauchis
  * @see https://scalablepress.com/docs/#event-api
  */
-public class EventService extends AbstractRestApi {
+public class EventApi extends AbstractRestApi {
 
     /**
      * Events contain useful information about the state of your order.

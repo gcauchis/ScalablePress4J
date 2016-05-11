@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.github.gcauchis.scalablepress4j.api.BillingApi;
 import com.github.gcauchis.scalablepress4j.api.DesignApi;
-import com.github.gcauchis.scalablepress4j.api.EventService;
+import com.github.gcauchis.scalablepress4j.api.EventApi;
 import com.github.gcauchis.scalablepress4j.api.OrderApi;
 import com.github.gcauchis.scalablepress4j.api.ProductApi;
 import com.github.gcauchis.scalablepress4j.api.QuoteApi;
@@ -24,34 +24,34 @@ import com.github.gcauchis.scalablepress4j.model.ProductOveriew;
 
 public class WorkFlowTest extends AbstractApiTest {
 
-    private BillingApi billing;
-    private DesignApi design;
-    private EventService event;
-    private OrderApi order;
-    private ProductApi product;
-    private QuoteApi quote;
-    private ReshipApi reship;
+    private BillingApi billingApi;
+    private DesignApi designApi;
+    private EventApi eventApi;
+    private OrderApi orderApi;
+    private ProductApi productApi;
+    private QuoteApi quoteApi;
+    private ReshipApi reshipApi;
 
     @Before
     public void init() {
-        billing = scalablePress.billingApi();
-        design = scalablePress.designApi();
-        order = scalablePress.orderApi();
-        event = scalablePress.eventApi();
-        product = scalablePress.productApi();
-        quote = scalablePress.quoteApi();
-        reship = scalablePress.reshipApi();
+        billingApi = scalablePress.billingApi();
+        designApi = scalablePress.designApi();
+        orderApi = scalablePress.orderApi();
+        eventApi = scalablePress.eventApi();
+        productApi = scalablePress.productApi();
+        quoteApi = scalablePress.quoteApi();
+        reshipApi = scalablePress.reshipApi();
     }
 
     @Test
     public void context() {
-        Assert.assertNotNull(billing);
-        Assert.assertNotNull(design);
-        Assert.assertNotNull(order);
-        Assert.assertNotNull(event);
-        Assert.assertNotNull(product);
-        Assert.assertNotNull(quote);
-        Assert.assertNotNull(reship);
+        Assert.assertNotNull(billingApi);
+        Assert.assertNotNull(designApi);
+        Assert.assertNotNull(orderApi);
+        Assert.assertNotNull(eventApi);
+        Assert.assertNotNull(productApi);
+        Assert.assertNotNull(quoteApi);
+        Assert.assertNotNull(reshipApi);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class WorkFlowTest extends AbstractApiTest {
         log.info("###################################################################################");
         log.info("############################### Start workflow test ###############################");
         log.info("###################################################################################");
-        final List<Category> categories = product.getCategories();
+        final List<Category> categories = productApi.getCategories();
         Assert.assertNotNull(categories);
         Assert.assertFalse(categories.isEmpty());
         log.info("Categories: {}", categories.toString());
@@ -70,7 +70,7 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertEquals(categoryId, category.getCategoryId());
         Assert.assertNull(category.getProducts());
 
-        category = product.getCategoryProducts(categoryId);
+        category = productApi.getCategoryProducts(categoryId);
         Assert.assertNotNull("category " + categoryId + " not found", category);
         Assert.assertNotNull(category.getProducts());
         Assert.assertEquals(categoryId, category.getCategoryId());
@@ -81,7 +81,7 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertNotNull("Product " + productId + " not found in category " + categoryId, productOveriew);
         Assert.assertEquals(productId, productOveriew.getId());
 
-        final Product productItem = product.getProductInformation(productId);
+        final Product productItem = productApi.getProductInformation(productId);
         Assert.assertNotNull("Product " + productId + " not found", productItem);
         Assert.assertEquals(productId, productItem.getProductId());
         log.info("Product: {}", productItem);
@@ -96,7 +96,7 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertNotNull(productColor.getSizes());
         Assert.assertTrue("Size " + productColorSize + " not fond in color " + productColorId + " of product " + productId, productColor.getSizes().stream().filter(s -> productColorSize.equals(s)).findFirst().isPresent());
         
-        final ProductAvailability productAvailability = product.getProductAvailability(productId);
+        final ProductAvailability productAvailability = productApi.getProductAvailability(productId);
         Assert.assertNotNull(productAvailability);
         log.info("ProductAvailability: {}", productAvailability);
         Assert.assertNotNull(productAvailability.getColorsAvailability());
@@ -107,14 +107,14 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertTrue("Size " + productColorSize + " unavailable for color " + productColorId, colorAvailability.getSizesAvailability().get(productColorSize) > 0);
         
         Design designRequest = buildTestDesign();
-        DesignResponse response = design.create(designRequest);
+        DesignResponse response = designApi.create(designRequest);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getDesignId());
         log.info("Design created: {} ",response.toString());
         log.info("Design created with designId = {}", response.getDesignId());
         final String designId = response.getDesignId();
         
-        DesignResponse retieveDesign = design.retrieve(designId);
+        DesignResponse retieveDesign = designApi.retrieve(designId);
         Assert.assertNotNull(retieveDesign);
         Assert.assertEquals(designId, retieveDesign.getDesignId());
         log.info("Design retrieved: {} ", retieveDesign.toString());
@@ -129,7 +129,7 @@ public class WorkFlowTest extends AbstractApiTest {
         
         
         
-        DesignResponse deleted = design.delete(designId);
+        DesignResponse deleted = designApi.delete(designId);
         Assert.assertNotNull(deleted);
         Assert.assertEquals(designId, deleted.getDesignId());
         log.info("Deleted design: {} ", deleted.toString());

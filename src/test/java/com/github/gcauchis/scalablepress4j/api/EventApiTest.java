@@ -26,27 +26,27 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.gcauchis.scalablepress4j.api.EventService;
+import com.github.gcauchis.scalablepress4j.api.EventApi;
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 
 public class EventApiTest extends AbstractApiTest {
 
-    private EventService eventServices;
+    private EventApi eventApi;
 
     @Before
     public void init() {
-        eventServices = scalablePress.eventApi();
+        eventApi = scalablePress.eventApi();
     }
 
     @Test
     public void context() {
-        Assert.assertNotNull(eventServices);
+        Assert.assertNotNull(eventApi);
     }
 
     @Test
     public void retrieve() {
-        PaginatedResultList<Event> paginatedEventsList = eventServices.queryEvents(null, 1);
+        PaginatedResultList<Event> paginatedEventsList = eventApi.queryEvents(null, 1);
         Assert.assertNotNull(paginatedEventsList);
         Assert.assertNotNull(paginatedEventsList.getResult());
         log.info("Result: {}", paginatedEventsList);

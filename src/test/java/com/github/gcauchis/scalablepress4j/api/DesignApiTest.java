@@ -33,23 +33,23 @@ import com.github.gcauchis.scalablepress4j.model.DesignResponse;
 
 public class DesignApiTest extends AbstractApiTest {
 
-    private DesignApi designServices;
+    private DesignApi designApi;
 
     @Before
     public void init() {
-        designServices = scalablePress.designApi();
+        designApi = scalablePress.designApi();
     }
 
     @Test
     public void context() {
-        Assert.assertNotNull(designServices);
+        Assert.assertNotNull(designApi);
     }
     
     @Test
     public void designWorkFlow() {
         Design design = buildTestDesign();
         log.info("Create design");
-        DesignResponse response = designServices.create(design);
+        DesignResponse response = designApi.create(design);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getDesignId());
         log.info("Returned design: {} ",response.toString());
@@ -57,20 +57,20 @@ public class DesignApiTest extends AbstractApiTest {
         String designId = response.getDesignId();
         
         log.info("Retreive design: {} ", designId);
-        DesignResponse retieveDesign = designServices.retrieve(designId);
+        DesignResponse retieveDesign = designApi.retrieve(designId);
         Assert.assertNotNull(retieveDesign);
         Assert.assertEquals(designId, retieveDesign.getDesignId());
         log.info("Returned design: {} ", retieveDesign.toString());
         
         log.info("Delete design: {} ", designId);
-        DesignResponse deleted = designServices.delete(designId);
+        DesignResponse deleted = designApi.delete(designId);
         Assert.assertNotNull(deleted);
         Assert.assertEquals(designId, deleted.getDesignId());
         log.info("Returned design: {} ", deleted.toString());
         
         try {
             log.info("Retreive deleted design: {}", designId);
-            designServices.retrieve(designId);
+            designApi.retrieve(designId);
             Assert.fail("Error 404 must occur, the desing doesn't exist anymore");
         } catch (ScalablePressBadRequestException e) {
             Assert.assertEquals("404", e.getErrorResponse().getStatusCode());
