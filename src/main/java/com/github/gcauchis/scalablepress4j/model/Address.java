@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Address json Object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#address-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -48,72 +48,198 @@ public class Address {
     private String state;
     /** Zip code or postal code of customer */
     private String zip;
-    /**
-     * <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>,
-     * defaults to US
-     */
-    private String country;
+    /** <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to <code>US</code> */
+    private String country = "US";
 
+    /**
+     * Instantiates a new address.
+     */
+    public Address() {
+    }
+
+    /**
+     * Instantiates a new address.
+     *
+     * @param name the Name of customer receiving the product
+     * @param address1 the Address line 1 of customer
+     * @param city the City of customer
+     * @param state the State or province where customer resides
+     * @param zip the Zip code or postal code of customer
+     * @param country the <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to US
+     */
+    public Address(String name, String address1, String city, String state,
+            String zip, String country) {
+        this.name = name;
+        this.address1 = address1;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.country = country;
+    }
+
+    /**
+     * Instantiates a new address.
+     *
+     * @param name the Name of customer receiving the product
+     * @param address1 the Address line 1 of customer
+     * @param address2 the Optional address line 2 of customer
+     * @param city the City of customer
+     * @param state the State or province where customer resides
+     * @param zip the Zip code or postal code of customer
+     * @param country the <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to US
+     */
+    public Address(String name, String address1, String address2, String city,
+            String state, String zip, String country) {
+        super();
+        this.name = name;
+        this.address1 = address1;
+        this.address2 = address2;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.country = country;
+    }
+
+    /**
+     * Gets Name of customer receiving the product .
+     *
+     * @return Name of customer receiving the product 
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the Name of customer receiving the product .
+     *
+     * @param name the new Name of customer receiving the product 
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets Optional company associated with the customer.
+     *
+     * @return Optional company associated with the customer
+     */
     public String getCompany() {
         return company;
     }
 
+    /**
+     * Sets the Optional company associated with the customer.
+     *
+     * @param company the new Optional company associated with the customer
+     */
     public void setCompany(String company) {
         this.company = company;
     }
 
+    /**
+     * Gets the Address line 1 of customer.
+     *
+     * @return the Address line 1 of customer
+     */
     public String getAddress1() {
         return address1;
     }
 
+    /**
+     * Sets the Address line 1 of customer.
+     *
+     * @param address1 the new Address line 1 of customer
+     */
     public void setAddress1(String address1) {
         this.address1 = address1;
     }
 
+    /**
+     * Gets the Optional address line 2 of customer.
+     *
+     * @return the Optional address line 2 of customer
+     */
     public String getAddress2() {
         return address2;
     }
 
+    /**
+     * Sets the Optional address line 2 of customer.
+     *
+     * @param address2 the new Optional address line 2 of customer
+     */
     public void setAddress2(String address2) {
         this.address2 = address2;
     }
 
+    /**
+     * Gets the City of customer.
+     *
+     * @return the City of customer
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     * Sets the City of customer.
+     *
+     * @param city the new City of customer
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     * Gets the State or province where customer resides.
+     *
+     * @return the State or province where customer resides
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     * Sets the State or province where customer resides.
+     *
+     * @param state the new State or province where customer resides
+     */
     public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     * Gets the Zip code or postal code of customer.
+     *
+     * @return the Zip code or postal code of customer
+     */
     public String getZip() {
         return zip;
     }
 
+    /**
+     * Sets the Zip code or postal code of customer.
+     *
+     * @param zip the new Zip code or postal code of customer
+     */
     public void setZip(String zip) {
         this.zip = zip;
     }
 
+    /**
+     * Gets the <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to <code>US</code>.
+     *
+     * @return the <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to <code>US</code>
+     */
     public String getCountry() {
         return country;
     }
 
+    /**
+     * Sets the <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to <code>US</code>.
+     *
+     * @param country the new <a href="https://www.iso.org/obp/ui/#search">ISO3166 country code</a>, defaults to <code>US</code>
+     */
     public void setCountry(String country) {
         this.country = country;
     }

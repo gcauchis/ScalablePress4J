@@ -33,13 +33,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BulkQuote {
-    /** Array of quote objects */
+    /** Array of {@link Quote quote objects} */
     private List<Quote> items;
 
+    /**
+     * Gets the Array of {@link Quote quote objects}.
+     *
+     * @return the Array of {@link Quote quote objects}
+     */
     public List<Quote> getItems() {
         return items;
     }
 
+    /**
+     * Sets the Array of {@link Quote quote objects}.
+     *
+     * @param items the new Array of {@link Quote quote objects}
+     */
     public void setItems(List<Quote> items) {
         this.items = items;
     }

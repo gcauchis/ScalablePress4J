@@ -34,15 +34,27 @@ public class ColorSizesItem {
     /** The color sizes */
     private Map<String, Size> sizes;
 
+    public ColorSizesItem() {
+    }
+
     public ColorSizesItem(Map<String, Size> sizes) {
-        super();
         this.sizes = sizes;
     }
 
+    /**
+     * Gets the sizes.
+     *
+     * @return the sizes
+     */
     public Map<String, Size> getSizes() {
         return sizes;
     }
 
+    /**
+     * Sets the sizes.
+     *
+     * @param sizes the sizes
+     */
     public void setSizes(Map<String, Size> sizes) {
         this.sizes = sizes;
     }

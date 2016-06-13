@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Color json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-information
+ * @see https://scalablepress.com/docs/#color-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Color {
@@ -38,39 +38,79 @@ public class Color {
     private String name;
     /** Hex color code of the color */
     private String hex;
-    /** Array of image objects */
+    /** Array of {@link Image image objects} */
     private List<Image> image;
     /** Array of available sizes */
     private List<String> sizes;
 
+    /**
+     * Gets the Name of the color.
+     *
+     * @return the Name of the color
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the Name of the color.
+     *
+     * @param name the new Name of the color
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the Hex color code of the color.
+     *
+     * @return the Hex color code of the color
+     */
     public String getHex() {
         return hex;
     }
 
+    /**
+     * Sets the Hex color code of the color.
+     *
+     * @param hex the new Hex color code of the color
+     */
     public void setHex(String hex) {
         this.hex = hex;
     }
 
+    /**
+     * Gets the Array of {@link Image image objects}.
+     *
+     * @return the Array of {@link Image image objects}
+     */
     public List<Image> getImage() {
         return image;
     }
 
+    /**
+     * Sets the Array of {@link Image image objects}.
+     *
+     * @param image the new Array of {@link Image image objects}
+     */
     public void setImage(List<Image> image) {
         this.image = image;
     }
 
+    /**
+     * Gets the Array of available sizes.
+     *
+     * @return the Array of available sizes
+     */
     public List<String> getSizes() {
         return sizes;
     }
 
+    /**
+     * Sets the Array of available sizes.
+     *
+     * @param sizes the new Array of available sizes
+     */
     public void setSizes(List<String> sizes) {
         this.sizes = sizes;
     }

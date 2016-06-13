@@ -27,17 +27,27 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Customization json object
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#customization-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customization {
     /** Name of the desired customization */
     private String id;
 
+    /**
+     * Gets the Name of the desired customization.
+     *
+     * @return the Name of the desired customization
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets the Name of the desired customization.
+     *
+     * @param id the new Name of the desired customization
+     */
     public void setId(String id) {
         this.id = id;
     }

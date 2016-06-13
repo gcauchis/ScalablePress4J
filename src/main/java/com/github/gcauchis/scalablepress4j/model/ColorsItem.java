@@ -35,14 +35,23 @@ public class ColorsItem {
     private Map<String, ColorSizesItem> colors;
 
     public ColorsItem(Map<String, ColorSizesItem> colors) {
-        super();
         this.colors = colors;
     }
 
+    /**
+     * Gets the colors.
+     *
+     * @return the colors
+     */
     public Map<String, ColorSizesItem> getColors() {
         return colors;
     }
 
+    /**
+     * Sets the colors.
+     *
+     * @param colors the colors
+     */
     public void setColors(Map<String, ColorSizesItem> colors) {
         this.colors = colors;
     }

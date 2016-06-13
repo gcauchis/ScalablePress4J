@@ -28,47 +28,87 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Design json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#design-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Design {
     /** Optional reference name for design */
     private String name;
-    /** Type of product this design is for. screenprint, dtg, case, or mug */
+    /** Type of product this design is for. <code>screenprint</code>, <code>dtg</code>, <code>case</code>, <code>mug</code>, or <code>poster</code> */
     private String type;
-    /** Design sides object */
+    /** {@link DesignSides Design sides object} */
     private DesignSides sides;
-    /** Design validation object */
+    /** {@link DesignValidation Design validation object} */
     private DesignValidation validation;
 
+    /**
+     * Gets the Optional reference name for design.
+     *
+     * @return the Optional reference name for design
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the Optional reference name for design.
+     *
+     * @param name the new Optional reference name for design
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the Type of product this design is for. <code>screenprint</code>, <code>dtg</code>, <code>case</code>, <code>mug</code>, or <code>poster</code>.
+     *
+     * @return the Type of product this design is for. <code>screenprint</code>, <code>dtg</code>, <code>case</code>, <code>mug</code>, or <code>poster</code>
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Sets the Type of product this design is for. <code>screenprint</code>, <code>dtg</code>, <code>case</code>, <code>mug</code>, or <code>poster</code>.
+     *
+     * @param type the new Type of product this design is for. <code>screenprint</code>, <code>dtg</code>, <code>case</code>, <code>mug</code>, or <code>poster</code>
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /**
+     * Gets the {@link DesignSides Design sides object}.
+     *
+     * @return the {@link DesignSides Design sides object}
+     */
     public DesignSides getSides() {
         return sides;
     }
 
+    /**
+     * Sets the {@link DesignSides Design sides object}.
+     *
+     * @param sides the new {@link DesignSides Design sides object}
+     */
     public void setSides(DesignSides sides) {
         this.sides = sides;
     }
 
+    /**
+     * Gets the {@link DesignValidation Design validation object}.
+     *
+     * @return the {@link DesignValidation Design validation object}
+     */
     public DesignValidation getValidation() {
         return validation;
     }
 
+    /**
+     * Sets the {@link DesignValidation Design validation object}.
+     *
+     * @param validation the new {@link DesignValidation Design validation object}
+     */
     public void setValidation(DesignValidation validation) {
         this.validation = validation;
     }
