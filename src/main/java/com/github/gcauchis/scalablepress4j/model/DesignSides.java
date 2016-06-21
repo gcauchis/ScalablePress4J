@@ -29,49 +29,89 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Design Sides json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#design-sides-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DesignSides {
 
-    /** Design side object */
+    /** Front {@link DesignSide Design side object} */
     private DesignSide front;
-    /** Design side object */
+    /** Back {@link DesignSide Design side object} */
     private DesignSide back;
-    /** Design side object */
+    /** Left {@link DesignSide Design side object} */
     private DesignSide left;
-    /** Design side object */
+    /** Right {@link DesignSide Design side object} */
     private DesignSide right;
 
+    /**
+     * Gets the Front {@link DesignSide Design side object}.
+     *
+     * @return the Front {@link DesignSide Design side object}
+     */
     public DesignSide getFront() {
         return front;
     }
 
+    /**
+     * Sets the Front {@link DesignSide Design side object}.
+     *
+     * @param front the new Front {@link DesignSide Design side object}
+     */
     public void setFront(DesignSide front) {
         this.front = front;
     }
 
+    /**
+     * Gets the Back {@link DesignSide Design side object}.
+     *
+     * @return the Back {@link DesignSide Design side object}
+     */
     public DesignSide getBack() {
         return back;
     }
 
+    /**
+     * Sets the Back {@link DesignSide Design side object}.
+     *
+     * @param back the new Back {@link DesignSide Design side object}
+     */
     public void setBack(DesignSide back) {
         this.back = back;
     }
 
+    /**
+     * Gets the Left {@link DesignSide Design side object}.
+     *
+     * @return the Left {@link DesignSide Design side object}
+     */
     public DesignSide getLeft() {
         return left;
     }
 
+    /**
+     * Sets the Left {@link DesignSide Design side object}.
+     *
+     * @param left the new Left {@link DesignSide Design side object}
+     */
     public void setLeft(DesignSide left) {
         this.left = left;
     }
 
+    /**
+     * Gets the Right {@link DesignSide Design side object}.
+     *
+     * @return the Right {@link DesignSide Design side object}
+     */
     public DesignSide getRight() {
         return right;
     }
 
+    /**
+     * Sets the Right {@link DesignSide Design side object}.
+     *
+     * @param right the new Right {@link DesignSide Design side object}
+     */
     public void setRight(DesignSide right) {
         this.right = right;
     }

@@ -30,86 +30,147 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Design Side json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#design-side-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DesignSide {
-    /**
-     * Artwork file or absolute URL for this side of the design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>
-     */
+    /** Artwork file or absolute URL for this side of the design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a> */
     private String artwork;
-    /**
-     * Optional proof image file or absolute URL showing position of artwork on
-     * the product, used by our artists to make sure the print dimensions and
-     * position are as intended
-     */
+    /** Optional proof image file or absolute URL showing position of artwork on the product, used by our artists to make sure the print dimensions and position are as intended */
     private String proof;
     /** Aspect ratio */
     private Number aspect;
     /** Boolean checking if design should be resized */
     private Boolean resize;
-    /**
-     * Screenprint only, list of each named color or PMS color used in design.
-     * <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>
-     */
+    /** <b>Screenprint only</b>, list of each named color or PMS color used in design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a> */
     private List<String> colors;
-    /** Screenprint/DTG only, dimension object */
+    /** <b>Screenprint/DTG/poster only</b>, {@link Dimension dimension object} */
     private Dimension dimensions;
-    /** Screenprint/DTG only, position object */
+    /** <b>Screenprint/DTG only</b>, {@link Position position object} */
     private Position position;
 
+    /**
+     * Gets the Artwork file or absolute URL for this side of the design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>.
+     *
+     * @return the Artwork file or absolute URL for this side of the design
+     */
     public String getArtwork() {
         return artwork;
     }
 
+    /**
+     * Sets the Artwork file or absolute URL for this side of the design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>.
+     *
+     * @param artwork the new Artwork file or absolute URL for this side of the design
+     */
     public void setArtwork(String artwork) {
         this.artwork = artwork;
     }
 
+    /**
+     * Gets the Optional proof image file or absolute URL showing position of artwork on the product, used by our artists to make sure the print dimensions and position are as intended.
+     *
+     * @return the Optional proof image file or absolute
+     */
     public String getProof() {
         return proof;
     }
 
+    /**
+     * Sets the Optional proof image file or absolute URL showing position of artwork on the product, used by our artists to make sure the print dimensions and position are as intended.
+     *
+     * @param proof the new Optional proof image file or absolute
+     */
     public void setProof(String proof) {
         this.proof = proof;
     }
 
+    /**
+     * Gets the Aspect ratio.
+     *
+     * @return the Aspect ratio
+     */
     public Number getAspect() {
         return aspect;
     }
 
+    /**
+     * Sets the Aspect ratio.
+     *
+     * @param aspect the new Aspect ratio
+     */
     public void setAspect(Number aspect) {
         this.aspect = aspect;
     }
 
+    /**
+     * Gets the Boolean checking if design should be resized.
+     *
+     * @return the Boolean checking if design should be resized
+     */
     public Boolean getResize() {
         return resize;
     }
 
+    /**
+     * Sets the Boolean checking if design should be resized.
+     *
+     * @param resize the new Boolean checking if design should be resized
+     */
     public void setResize(Boolean resize) {
         this.resize = resize;
     }
 
+    /**
+     * Gets the <b>Screenprint only</b>, list of each named color or PMS color used in design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>.
+     *
+     * @return the list of each named color or PMS color used in design
+     */
     public List<String> getColors() {
         return colors;
     }
 
+    /**
+     * Sets the <b>Screenprint only</b>, list of each named color or PMS color used in design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>.
+     *
+     * @param colors the new list of each named color or PMS color used in design
+     */
     public void setColors(List<String> colors) {
         this.colors = colors;
     }
 
+    /**
+     * Gets the <b>Screenprint/DTG/poster only</b>, {@link Dimension dimension object}.
+     *
+     * @return the {@link Dimension dimension object}
+     */
     public Dimension getDimensions() {
         return dimensions;
     }
 
+    /**
+     * Sets the <b>Screenprint/DTG/poster only</b>, {@link Dimension dimension object}.
+     *
+     * @param dimensions the new {@link Dimension dimension object}
+     */
     public void setDimensions(Dimension dimensions) {
         this.dimensions = dimensions;
     }
 
+    /**
+     * Gets the <b>Screenprint/DTG only</b>, {@link Position position object}.
+     *
+     * @return the {@link Position position object}
+     */
     public Position getPosition() {
         return position;
     }
 
+    /**
+     * Sets the <b>Screenprint/DTG only</b>, {@link Position position object}.
+     *
+     * @param position the new {@link Position position object}
+     */
     public void setPosition(Position position) {
         this.position = position;
     }

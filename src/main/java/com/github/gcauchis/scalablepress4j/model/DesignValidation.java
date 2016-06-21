@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Design Validation json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#design-validation-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DesignValidation {
@@ -37,18 +37,38 @@ public class DesignValidation {
     /** Status of the validation object */
     private String status;
 
+    /**
+     * Gets the Result of validation - will return null for now.
+     *
+     * @return the Result of validation - will return null for now
+     */
     public String getResult() {
         return result;
     }
 
+    /**
+     * Sets the Result of validation - will return null for now.
+     *
+     * @param result the new Result of validation - will return null for now
+     */
     public void setResult(String result) {
         this.result = result;
     }
 
+    /**
+     * Gets the Status of the validation object.
+     *
+     * @return the Status of the validation object
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * Sets the Status of the validation object.
+     *
+     * @param status the new Status of the validation object
+     */
     public void setStatus(String status) {
         this.status = status;
     }
