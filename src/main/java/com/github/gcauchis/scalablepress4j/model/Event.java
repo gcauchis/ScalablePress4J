@@ -28,8 +28,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Event json object
- * 
+ * The Event json object.
+ *
  * @author gcauchis
  * @see https://scalablepress.com/docs/#event-object
  */
@@ -38,45 +38,88 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Event {
     /** Name of the event (quote, order, etc.) */
     public String name;
-    /** Description of the event */
+    /** Description of the event. */
     public String description;
-    /** Optional additional data. Event examples */
+    /** Optional additional data. <a href="https://scalablepress.com/docs/#order-status">Event examples</a> */
     public Map<String, Object> meta;
-    /** Time at which the event occurred */
+    /** Time at which the event occurred. */
     public String createdAt;
 
+    /**
+     * Gets the Name of the event (quote, order, etc.).
+     *
+     * @return the Name of the event
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the Name of the event (quote, order, etc.).
+     *
+     * @param name the new Name of the event
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the Description of the event.
+     *
+     * @return the Description of the event
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets the Description of the event.
+     *
+     * @param description the new Description of the event
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Gets the Optional additional data. <a href="https://scalablepress.com/docs/#order-status">Event examples</a>.
+     *
+     * @return the Optional additional data
+     */
     public Map<String, Object> getMeta() {
         return meta;
     }
 
+    /**
+     * Sets the Optional additional data. <a href="https://scalablepress.com/docs/#order-status">Event examples</a>.
+     *
+     * @param meta the Optional additional data
+     */
     public void setMeta(Map<String, Object> meta) {
         this.meta = meta;
     }
 
+    /**
+     * Gets the Time at which the event occurred.
+     *
+     * @return the Time at which the event occurred
+     */
     public String getCreatedAt() {
         return createdAt;
     }
 
+    /**
+     * Sets the Time at which the event occurred.
+     *
+     * @param createdAt the new Time at which the event occurred
+     */
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Event [name=" + name + ", description=" + description

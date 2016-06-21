@@ -27,32 +27,56 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Image json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-products
+ * @see https://scalablepress.com/docs/#image-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Image {
 
-    /** Type of image */
+    /** Type of image. */
     private String label;
-    /** URL to the image */
+    
+    /** URL to the image. */
     private String url;
 
+    /**
+     * Gets the Type of image.
+     *
+     * @return the Type of image
+     */
     public String getLabel() {
         return label;
     }
 
+    /**
+     * Sets the Type of image.
+     *
+     * @param label the new Type of image
+     */
     public void setLabel(String label) {
         this.label = label;
     }
 
+    /**
+     * Gets the URL to the image.
+     *
+     * @return the URL to the image
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets the URL to the image.
+     *
+     * @param url the new URL to the image
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Image [label=" + label + ", url=" + url + "]";

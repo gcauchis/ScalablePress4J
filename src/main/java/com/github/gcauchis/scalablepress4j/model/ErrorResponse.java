@@ -27,32 +27,58 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Error Response Object
+ * The Error Response Object.
+ *
  * @author gcauchis
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorResponse {
-    /** The Status Code */
+    
+    /** The Status Code. */
     private String statusCode;
-    /** Array of error objects which are preventing a successful call */
+    
+    /** Array of {@link Error error objects} which are preventing a successful call. */
     private List<Error> issues;
 
+    /**
+     * Gets The Status Code.
+     *
+     * @return The Status Code
+     */
     public String getStatusCode() {
         return statusCode;
     }
 
+    /**
+     * Sets The Status Code.
+     *
+     * @param statusCode the new Status Code
+     */
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
     }
 
+    /**
+     * Gets the Array of {@link Error error objects} which are preventing a successful call.
+     *
+     * @return the Array of {@link Error error objects} which are preventing a successful call
+     */
     public List<Error> getIssues() {
         return issues;
     }
 
+    /**
+     * Sets the Array of {@link Error error objects} which are preventing a successful call.
+     *
+     * @param issues the new Array of {@link Error error objects} which are preventing a successful call
+     */
     public void setIssues(List<Error> issues) {
         this.issues = issues;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "ErrorResponse [statusCode=" + statusCode + ", issues=" + issues

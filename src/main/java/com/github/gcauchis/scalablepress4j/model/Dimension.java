@@ -28,33 +28,47 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Dimension json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#dimension-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Dimension {
-    /**
-     * Screenprint/DTG only, width in inches of the print on the garment,
-     * specify this OR the height of the print
-     */
+    /** <b>Screenprint/DTG/poster only</b>, width in inches of the print on the garment, or the width of the poster, specify this OR the height of the print */
     private Number width;
-    /**
-     * Screenprint/DTG only, height in inches of the print on the garment,
-     * specify this OR the width of the print
-     */
+    /** <b>Screenprint/DTG/poster only</b>, height in inches of the print on the garment, or the height of the poster, specify this OR the width of the print */
     private Number height;
 
+    /**
+     * Gets the <b>Screenprint/DTG/poster only</b>, width in inches of the print on the garment, or the width of the poster, specify this OR the height of the print.
+     *
+     * @return the width in inches of the print on the garment, or the width of the poster, specify this OR the height of the print.
+     */
     public Number getWidth() {
         return width;
     }
 
+    /**
+     * Sets the <b>Screenprint/DTG/poster only</b>, width in inches of the print on the garment, or the width of the poster, specify this OR the height of the print.
+     *
+     * @param width the new width in inches of the print on the garment, or the width of the poster, specify this OR the height of the print.
+     */
     public void setWidth(Number width) {
         this.width = width;
     }
 
+    /**
+     * Gets the <b>Screenprint/DTG/poster only</b>, height in inches of the print on the garment, or the height of the poster, specify this OR the width of the print.
+     *
+     * @return the height in inches of the print on the garment, or the height of the poster, specify this OR the width of the print.
+     */
     public Number getHeight() {
         return height;
     }
 
+    /**
+     * Sets the <b>Screenprint/DTG/poster only</b>, height in inches of the print on the garment, or the height of the poster, specify this OR the width of the print.
+     *
+     * @param height the new height in inches of the print on the garment, or the height of the poster, specify this OR the width of the print.
+     */
     public void setHeight(Number height) {
         this.height = height;
     }

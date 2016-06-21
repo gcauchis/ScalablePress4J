@@ -25,8 +25,8 @@ package com.github.gcauchis.scalablepress4j.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Feature json object
- * 
+ * The Feature json object.
+ *
  * @author gcauchis
  * @see https://scalablepress.com/docs/#custom-order-features
  */
@@ -34,29 +34,55 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Features {
 
     /**
-     * Shipping service code. Available service codes
+     * Shipping service code. <a href="https://scalablepress.com/docs/#shipping-service-codes">Available service codes</a>
      * @see https://scalablepress.com/docs/#shipping-service-codes
      */
     private String shipping;
-    /** Absolute URL for a PDF packing slip */
+    
+    /** Absolute URL for a PDF packing slip. */
     private String packing;
 
+    /**
+     * Gets the Shipping service code. <a href="https://scalablepress.com/docs/#shipping-service-codes">Available service codes</a>.
+     *
+     * @return the Shipping service code
+     * @see https://scalablepress.com/docs/#shipping-service-codes
+     */
     public String getShipping() {
         return shipping;
     }
 
+    /**
+     * Sets the Shipping service code. <a href="https://scalablepress.com/docs/#shipping-service-codes">Available service codes</a>.
+     *
+     * @param shipping the new Shipping service code
+     * @see https://scalablepress.com/docs/#shipping-service-codes
+     */
     public void setShipping(String shipping) {
         this.shipping = shipping;
     }
 
+    /**
+     * Gets the Absolute URL for a PDF packing slip.
+     *
+     * @return the Absolute URL for a PDF packing slip
+     */
     public String getPacking() {
         return packing;
     }
 
+    /**
+     * Sets the Absolute URL for a PDF packing slip.
+     *
+     * @param packing the new Absolute URL for a PDF packing slip
+     */
     public void setPacking(String packing) {
         this.packing = packing;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Features [shipping=" + shipping + ", packing=" + packing + "]";

@@ -28,50 +28,97 @@ import java.util.Map;
  * The Error json object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#error-object
  */
 public class Error {
-    /** Identifier for type of error message */
+    
+    /** Identifier for type of error message. */
     private String code;
-    /** Path in quote object causing error */
+    
+    /** Path causing error. */
     private String path;
-    /** User-friendly error message */
+    
+    /** User-friendly error message. */
     private String message;
-    /** Optional specification */
+    
+    /** Optional specification. */
     private Map<String, Object> spec;
 
+    /**
+     * Gets the Identifier for type of error message.
+     *
+     * @return the Identifier for type of error message.
+     */
     public String getCode() {
         return code;
     }
 
+    /**
+     * Sets the Identifier for type of error message.
+     *
+     * @param code the new Identifier for type of error message.
+     */
     public void setCode(String code) {
         this.code = code;
     }
 
+    /**
+     * Gets the Path causing error.
+     *
+     * @return the Path causing error
+     */
     public String getPath() {
         return path;
     }
 
+    /**
+     * Sets the Path causing error.
+     *
+     * @param path the new Path causing error
+     */
     public void setPath(String path) {
         this.path = path;
     }
 
+    /**
+     * Gets the User-friendly error message.
+     *
+     * @return the User-friendly error message
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Sets the User-friendly error message.
+     *
+     * @param message the new User-friendly error message
+     */
     public void setMessage(String message) {
         this.message = message;
     }
 
+    /**
+     * Gets the Optional specification.
+     *
+     * @return the Optional specification
+     */
     public Map<String, Object> getSpec() {
         return spec;
     }
 
+    /**
+     * Sets the Optional specification.
+     *
+     * @param spec the Optional specification
+     */
     public void setSpec(Map<String, Object> spec) {
         this.spec = spec;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Error [code=" + code + ", path=" + path + ", message="
