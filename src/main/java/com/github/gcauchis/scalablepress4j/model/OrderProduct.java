@@ -23,59 +23,110 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.github.gcauchis.scalablepress4j.api.ProductApi;
 
 /**
- * The Order Product json object
- * 
+ * The Order Product json object.
+ *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#order-product-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderProduct {
     /**
-     * productId of the product you wish to order, retrieved from the Product
-     * API, this product must be compatible with the design provided
+     * <code>productId</code> of the product you wish to order, retrieved from the {@link ProductApi Product API}, this product must be compatible with the
+     * design provided.
      */
     private String id;
-    /** Color of the product, see the Product API for available colors */
+
+    /** Color of the product, see the {@link ProductApi Product API} for available colors. */
     private String color;
-    /** Size of the product, see the Product API for available sizes */
+
+    /** Size of the product, see the {@link ProductApi Product API} for available sizes. */
     private String size;
-    /** Quantity of this product/color/size to order */
+
+    /** Quantity of this product/color/size to order. */
     private Integer quantity;
 
+    /**
+     * Gets the <code>productId</code> of the product you wish to order, retrieved from the {@link ProductApi Product API}, this product must be compatible with
+     * the design provided.
+     *
+     * @return the <code>productId</code> of the product you wish to order
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Sets the <code>productId</code> of the product you wish to order, retrieved from the {@link ProductApi Product API}, this product must be compatible with
+     * the design provided.
+     *
+     * @param id the new <code>productId</code> of the product you wish to order
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * Gets the Color of the product, see the {@link ProductApi Product API} for available colors.
+     *
+     * @return the Color of the product
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Sets the Color of the product, see the {@link ProductApi Product API} for available colors.
+     *
+     * @param color the new Color of the product
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
+    /**
+     * Gets the Size of the product, see the {@link ProductApi Product API} for available sizes.
+     *
+     * @return the Size of the product
+     */
     public String getSize() {
         return size;
     }
 
+    /**
+     * Sets the Size of the product, see the {@link ProductApi Product API} for available sizes.
+     *
+     * @param size the new Size of the product
+     */
     public void setSize(String size) {
         this.size = size;
     }
 
+    /**
+     * Gets the Quantity of this product/color/size to order.
+     *
+     * @return the Quantity of this product/color/size to order
+     */
     public Integer getQuantity() {
         return quantity;
     }
 
+    /**
+     * Sets the Quantity of this product/color/size to order.
+     *
+     * @param quantity the new Quantity of this product/color/size to order
+     */
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "OrderProduct [id=" + id + ", color=" + color + ", size=" + size

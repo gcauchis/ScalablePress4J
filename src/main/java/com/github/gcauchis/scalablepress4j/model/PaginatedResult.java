@@ -22,10 +22,16 @@
  */
 package com.github.gcauchis.scalablepress4j.model;
 
+/**
+ * The Class PaginatedResult.
+ *
+ * @param <R> the generic type
+ */
 public class PaginatedResult<R> {
-    /** The result */
+
+    /** The result. */
     private R result;
-    /** The current page number */
+    /** The current page number. */
     private int pageNumber;
     /** Total number of pages for this query. */
     private int pagesCount;
@@ -34,46 +40,101 @@ public class PaginatedResult<R> {
     /** Items per page. Defaults to 50. */
     private int limit;
 
+    /**
+     * Gets the result.
+     *
+     * @return the result
+     */
     public R getResult() {
         return result;
     }
 
+    /**
+     * Sets the result.
+     *
+     * @param result the new result
+     */
     public void setResult(R result) {
         this.result = result;
     }
 
+    /**
+     * Gets the current page number.
+     *
+     * @return the current page number
+     */
     public int getPageNumber() {
         return pageNumber;
     }
 
+    /**
+     * Sets the current page number.
+     *
+     * @param pageNumber the new current page number
+     */
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
     }
 
+    /**
+     * Gets the Total number of pages for this query.
+     *
+     * @return the Total number of pages for this query
+     */
     public int getPagesCount() {
         return pagesCount;
     }
 
+    /**
+     * Sets the Total number of pages for this query.
+     *
+     * @param pagesCount the new Total number of pages for this query
+     */
     public void setPagesCount(int pagesCount) {
         this.pagesCount = pagesCount;
     }
 
+    /**
+     * Gets the Total number of items of the query.
+     *
+     * @return the Total number of items of the query
+     */
     public int getItemsCount() {
         return itemsCount;
     }
 
+    /**
+     * Sets the Total number of items of the query.
+     *
+     * @param itemsCount the new Total number of items of the query
+     */
     public void setItemsCount(int itemsCount) {
         this.itemsCount = itemsCount;
     }
 
+    /**
+     * Gets the Items per page. Defaults to 50.
+     *
+     * @return the Items per page
+     */
     public int getLimit() {
         return limit;
     }
 
+    /**
+     * Sets the Items per page. Defaults to 50.
+     *
+     * @param limit the new Items per page
+     */
     public void setLimit(int limit) {
         this.limit = limit;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "PaginatedResult [result=" + result + ", pageNumber="

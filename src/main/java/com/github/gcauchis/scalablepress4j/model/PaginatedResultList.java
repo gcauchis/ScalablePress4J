@@ -25,12 +25,25 @@ package com.github.gcauchis.scalablepress4j.model;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The Class PaginatedResultList.
+ *
+ * @param <R> the generic type
+ */
 public class PaginatedResultList<R> extends PaginatedResult<List<R>> {
 
+    /**
+     * Instantiates a new paginated result list.
+     */
     public PaginatedResultList() {
         super();
     }
     
+    /**
+     * Instantiates a new paginated result list.
+     *
+     * @param arrayResult the array result
+     */
     public PaginatedResultList(PaginatedResult<R[]> arrayResult) {
         super();
         setItemsCount(arrayResult.getItemsCount());

@@ -25,38 +25,60 @@ package com.github.gcauchis.scalablepress4j.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Position json object
- * 
+ * The Position json object.
+ *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#position-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Position {
-    /**
-     * Screenprint/DTG only, horizontal position. <a
-     * href="https://scalablepress.com/services#artwork_requirements">Artwork
-     * requirements</a>
-     */
+    /** <b>Screenprint/DTG only</b>, horizontal position. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>. */
     private String horizontal;
-    /** Screenprint/DTG only, position offset object */
+
+    /** <b>Screenprint/DTG only</b>, {@link PositionOffset position offset object}. */
     private PositionOffset offset;
 
+    /**
+     * Gets the <b>Screenprint/DTG only</b>, horizontal position. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>..
+     *
+     * @return the horizontal position
+     */
     public String getHorizontal() {
         return horizontal;
     }
 
+    /**
+     * Sets the <b>Screenprint/DTG only</b>, horizontal position. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>..
+     *
+     * @param horizontal the new horizontal position
+     */
     public void setHorizontal(String horizontal) {
         this.horizontal = horizontal;
     }
 
+    /**
+     * Gets the <b>Screenprint/DTG only</b>, {@link PositionOffset position offset object}.
+     *
+     * @return the {@link PositionOffset position offset object}
+     */
     public PositionOffset getOffset() {
         return offset;
     }
 
+    /**
+     * Sets the <b>Screenprint/DTG only</b>, {@link PositionOffset position offset object}.
+     *
+     * @param offset the new {@link PositionOffset position offset object}
+     */
     public void setOffset(PositionOffset offset) {
         this.offset = offset;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Position [horizontal=" + horizontal + ", offset=" + offset

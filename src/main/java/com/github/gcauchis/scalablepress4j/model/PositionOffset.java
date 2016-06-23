@@ -25,34 +25,61 @@ package com.github.gcauchis.scalablepress4j.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * The Position Offset json object
- * 
+ * The Position Offset json object.
+ *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#create-design-object
+ * @see https://scalablepress.com/docs/#position-offset-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PositionOffset {
-    /** top offset in inches, specify this OR the bottom offset of the print */
+
+    /** top offset in inches, specify this OR the bottom offset of the print. */
     private Number top;
-    /** bottom offset in inches, specify this OR the top offset of the print */
+
+    /** bottom offset in inches, specify this OR the top offset of the print. */
     private Number bottom;
 
+    /**
+     * Gets the top offset in inches, specify this OR the bottom offset of the print.
+     *
+     * @return the top offset in inches
+     */
     public Number getTop() {
         return top;
     }
 
+    /**
+     * Sets the top offset in inches, specify this OR the bottom offset of the print.
+     *
+     * @param top the new top offset in inches
+     */
     public void setTop(Number top) {
         this.top = top;
     }
 
+    /**
+     * Gets the bottom offset in inches, specify this OR the top offset of the print.
+     *
+     * @return the bottom offset in inches
+     */
     public Number getBottom() {
         return bottom;
     }
 
+    /**
+     * Sets the bottom offset in inches, specify this OR the top offset of the print.
+     *
+     * @param bottom the new bottom offset in inches
+     */
     public void setBottom(Number bottom) {
         this.bottom = bottom;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "PositionOffset [top=" + top + ", bottom=" + bottom + "]";
