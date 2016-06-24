@@ -26,67 +26,102 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Sides json object
- * 
+ * The Sides json object.
+ *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#sides-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Sides {
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
+    
+    /** <b>DTG</b>: set to any positive number to indicate printing on the front,<br /> <b>Screenprint</b>: the number of colors used on the front. */
     private Integer front;
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
+    
+    /** <b>DTG</b>: set to any positive number to indicate printing on the back,<br /> <b>Screenprint</b>: the number of colors used on the back. */
     private Integer back;
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
+    
+    /** <b>DTG</b>: set to any positive number to indicate printing on the right,<br /> <b>Screenprint</b>: the number of colors used on the right. */
     private Integer right;
-    /**
-     * DTG: set to any positive number to indicate printing on this side,
-     * Screenprint: the number of colors used on this side
-     */
+    
+    /** <b>DTG</b>: set to any positive number to indicate printing on the left,<br /> <b>Screenprint</b>: the number of colors used on the left. */
     private Integer left;
 
+    /**
+     * Gets the <br /><b>DTG</b>: set to any positive number to indicate printing on the front,<br /> <b>Screenprint</b>: the number of colors used on the front.
+     *
+     * @return the front
+     */
     public Integer getFront() {
         return front;
     }
 
+    /**
+     * Sets the <br /><b>DTG</b>: set to any positive number to indicate printing on the front,<br /> <b>Screenprint</b>: the number of colors used on the front.
+     *
+     * @param front the new front
+     */
     public void setFront(Integer front) {
         this.front = front;
     }
 
+    /**
+     * Gets the <br /><b>DTG</b>: set to any positive number to indicate printing on the back,<br /> <b>Screenprint</b>: the number of colors used on the back.
+     *
+     * @return the back
+     */
     public Integer getBack() {
         return back;
     }
 
+    /**
+     * Sets the <br /><b>DTG</b>: set to any positive number to indicate printing on the back,<br /> <b>Screenprint</b>: the number of colors used on the back.
+     *
+     * @param back the new back
+     */
     public void setBack(Integer back) {
         this.back = back;
     }
 
+    /**
+     * Gets the <br /> <b>DTG</b>: set to any positive number to indicate printing on the right,<br /> <b>Screenprint</b>: the number of colors used on the right.
+     *
+     * @return the right
+     */
     public Integer getRight() {
         return right;
     }
 
+    /**
+     * Sets the <br /> <b>DTG</b>: set to any positive number to indicate printing on the right,<br /> <b>Screenprint</b>: the number of colors used on the right.
+     *
+     * @param right the new right
+     */
     public void setRight(Integer right) {
         this.right = right;
     }
 
+    /**
+     * Gets the <br /> <b>DTG</b>: set to any positive number to indicate printing on the left,<br /> <b>Screenprint</b>: the number of colors used on the left.
+     *
+     * @return the left
+     */
     public Integer getLeft() {
         return left;
     }
 
+    /**
+     * Sets the <br /> <b>DTG</b>: set to any positive number to indicate printing on the left,<br /> <b>Screenprint</b>: the number of colors used on the left.
+     *
+     * @param left the new left
+     */
     public void setLeft(Integer left) {
         this.left = left;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Sides [front=" + front + ", back=" + back + ", right=" + right

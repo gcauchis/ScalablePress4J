@@ -26,42 +26,81 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * The Product Propeties json object.
+ * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-information
+ * @see https://scalablepress.com/docs/#product-properties-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductProperties {
-    /** Brand of the product */
+
+    /** Brand of the product. */
     private String brand;
-    /** Material the product is made from */
+
+    /** Material the product is made from. */
     private String material;
-    /** Style code associated with the product */
+
+    /** Style code associated with the product. */
     private String style;
 
+    /**
+     * Gets the Brand of the product.
+     *
+     * @return the Brand of the product
+     */
     public String getBrand() {
         return brand;
     }
 
+    /**
+     * Sets the Brand of the product.
+     *
+     * @param brand the new Brand of the product
+     */
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
+    /**
+     * Gets the Material the product is made from.
+     *
+     * @return the Material the product is made from
+     */
     public String getMaterial() {
         return material;
     }
 
+    /**
+     * Sets the Material the product is made from.
+     *
+     * @param material the new Material the product is made from
+     */
     public void setMaterial(String material) {
         this.material = material;
     }
 
+    /**
+     * Gets the Style code associated with the product.
+     *
+     * @return the Style code associated with the product
+     */
     public String getStyle() {
         return style;
     }
 
+    /**
+     * Sets the Style code associated with the product.
+     *
+     * @param style the new Style code associated with the product
+     */
     public void setStyle(String style) {
         this.style = style;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "ProductProperties [brand=" + brand + ", material=" + material

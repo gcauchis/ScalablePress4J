@@ -28,81 +28,146 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * The Reship json object
- * 
+ * The Reship json object.
+ *
  * @author gcauchis
  * @see https://scalablepress.com/docs/#reship-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Reship {
-    /** Time at which order object was returned to facility */
+
+    /** Time at which order object was returned to facility. */
     private String createdAt;
-    /**
-     * Unique identifier which can be used to retrieve information about, place,
-     * and cancel this reship order
-     */
+
+    /** Unique identifier which can be used to retrieve information about, place, and cancel this reship order. */
     private String reshipId;
-    /** Name of the last event that occurred to this particular order item */
+
+    /** Name of the last event that occurred to this particular order item. */
     private String status;
-    /**
-     * Unique identifier which can be used to retrieve information about the
-     * order that was returned
-     */
+
+    /** Unique identifier which can be used to retrieve information about the order that was returned. */
     private String orderId;
-    /** Array of indices that correspond to the order items array */
+
+    /** Array of indices that correspond to the order items array. */
     private List<Number> orderItemIndices;
-    /** Shipping price for an order that has been reshipped after being returned */
+
+    /** Shipping price for an order that has been reshipped after being returned. */
     private Number price;
 
+    /**
+     * Gets the Time at which order object was returned to facility.
+     *
+     * @return the Time at which order object was returned to facility
+     */
     public String getCreatedAt() {
         return createdAt;
     }
 
+    /**
+     * Sets the Time at which order object was returned to facility.
+     *
+     * @param createdAt the new Time at which order object was returned to facility
+     */
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
+    /**
+     * Gets the Unique identifier which can be used to retrieve information about, place, and cancel this reship order.
+     *
+     * @return the Unique identifier which can be used to retrieve information about, place, and cancel this reship order
+     */
     public String getReshipId() {
         return reshipId;
     }
 
+    /**
+     * Sets the Unique identifier which can be used to retrieve information about, place, and cancel this reship order.
+     *
+     * @param reshipId the new Unique identifier which can be used to retrieve information about, place, and cancel this reship order
+     */
     public void setReshipId(String reshipId) {
         this.reshipId = reshipId;
     }
 
+    /**
+     * Gets the Name of the last event that occurred to this particular order item.
+     *
+     * @return the Name of the last event that occurred to this particular order item
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * Sets the Name of the last event that occurred to this particular order item.
+     *
+     * @param status the new Name of the last event that occurred to this particular order item
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     * Gets the Unique identifier which can be used to retrieve information about the order that was returned.
+     *
+     * @return the Unique identifier which can be used to retrieve information about the order that was returned
+     */
     public String getOrderId() {
         return orderId;
     }
 
+    /**
+     * Sets the Unique identifier which can be used to retrieve information about the order that was returned.
+     *
+     * @param orderId the new Unique identifier which can be used to retrieve information about the order that was returned
+     */
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
+    /**
+     * Gets the Array of indices that correspond to the order items array.
+     *
+     * @return the Array of indices that correspond to the order items array
+     */
     public List<Number> getOrderItemIndices() {
         return orderItemIndices;
     }
 
+    /**
+     * Sets the Array of indices that correspond to the order items array.
+     *
+     * @param orderItemIndices the new Array of indices that correspond to the order items array
+     */
     public void setOrderItemIndices(List<Number> orderItemIndices) {
         this.orderItemIndices = orderItemIndices;
     }
 
+    /**
+     * Gets the Shipping price for an order that has been reshipped after being returned.
+     *
+     * @return the Shipping price for an order that has been reshipped after being returned
+     */
     public Number getPrice() {
         return price;
     }
 
+    /**
+     * Sets the Shipping price for an order that has been reshipped after being returned.
+     *
+     * @param price the new Shipping price for an order that has been reshipped after being returned
+     */
     public void setPrice(Number price) {
         this.price = price;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "Reship [createdAt=" + createdAt + ", reshipId=" + reshipId

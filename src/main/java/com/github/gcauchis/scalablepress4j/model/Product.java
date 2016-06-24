@@ -28,129 +28,261 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * The Product json object.
+ * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-information
+ * @see https://scalablepress.com/docs/#product-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
-    /** Comments on the product (its fit and/or feel) */
+    /** Comments on the product (its fit and/or feel). */
     private String comments;
-    /** Description of the product */
+
+    /** Description of the product. */
     private String description;
-    /** Actual name of the product */
+
+    /** Actual name of the product. */
     private String name;
-    /** Printing categorization. Garment, Case, or Mug */
+
+    /** Printing categorization. <code>Garment</code>, <code>Case</code>, <code>Mug</code>, or <code>Poster</code> */
     private String type;
-    /** Product properties object */
+
+    /** {@link ProductProperties Product properties object}. */
     private ProductProperties properties;
-    /** Array of available color objects */
+
+    /** Array of available {@link Color color objects}. */
     private List<Color> colors;
-    /** Whether the product is available to order */
+
+    /** Whether the product is available to order. */
     private String available;
-    /** API endpoint for product information (the current url) */
+
+    /** API endpoint for product information (the current url). */
     private String url;
-    /** Primary image object */
+
+    /** {@link Image Primary image object}. */
     private Image image;
-    /** Unique identifier for the product */
+
+    /** Unique identifier for the product. */
     private String productId;
-    /** Array of image objects */
+
+    /** Array of {@link Image image objects}. */
     private List<Image> additionalImages;
-    /** API endpoint for product availability information */
+
+    /** API endpoint for product availability information. */
     private String availabilityUrl;
 
+    /**
+     * Gets the Comments on the product (its fit and/or feel).
+     *
+     * @return the Comments on the product (its fit and/or feel)
+     */
     public String getComments() {
         return comments;
     }
 
+    /**
+     * Sets the Comments on the product (its fit and/or feel).
+     *
+     * @param comments the new Comments on the product (its fit and/or feel)
+     */
     public void setComments(String comments) {
         this.comments = comments;
     }
 
+    /**
+     * Gets the Description of the product.
+     *
+     * @return the Description of the product
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets the Description of the product.
+     *
+     * @param description the new Description of the product
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Gets the Actual name of the product.
+     *
+     * @return the Actual name of the product
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the Actual name of the product.
+     *
+     * @param name the new Actual name of the product
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the Printing categorization. <code>Garment</code>, <code>Case</code>, <code>Mug</code>, or <code>Poster</code>.
+     *
+     * @return the Printing categorization
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Sets the Printing categorization. <code>Garment</code>, <code>Case</code>, <code>Mug</code>, or <code>Poster</code>.
+     *
+     * @param type the new Printing categorization
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /**
+     * Gets the {@link ProductProperties Product properties object}.
+     *
+     * @return the {@link ProductProperties Product properties object}
+     */
     public ProductProperties getProperties() {
         return properties;
     }
 
+    /**
+     * Sets the {@link ProductProperties Product properties object}.
+     *
+     * @param properties the new {@link ProductProperties Product properties object}
+     */
     public void setProperties(ProductProperties properties) {
         this.properties = properties;
     }
 
+    /**
+     * Gets the Array of available {@link Color color objects}.
+     *
+     * @return the Array of available {@link Color color objects}
+     */
     public List<Color> getColors() {
         return colors;
     }
 
+    /**
+     * Sets the Array of available {@link Color color objects}.
+     *
+     * @param colors the new Array of available {@link Color color objects}
+     */
     public void setColors(List<Color> colors) {
         this.colors = colors;
     }
 
+    /**
+     * Gets Whether the product is available to order.
+     *
+     * @return the availability to order
+     */
     public String getAvailable() {
         return available;
     }
 
+    /**
+     * Sets Whether the product is available to order.
+     *
+     * @param available the new availability to order
+     */
     public void setAvailable(String available) {
         this.available = available;
     }
 
+    /**
+     * Gets the API endpoint for product information (the current url).
+     *
+     * @return the API endpoint for product information (the current url)
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets the API endpoint for product information (the current url).
+     *
+     * @param url the new API endpoint for product information (the current url)
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * Gets the {@link Image Primary image object}.
+     *
+     * @return the {@link Image Primary image object}
+     */
     public Image getImage() {
         return image;
     }
 
+    /**
+     * Sets the {@link Image Primary image object}.
+     *
+     * @param image the new {@link Image Primary image object}
+     */
     public void setImage(Image image) {
         this.image = image;
     }
 
+    /**
+     * Gets the Unique identifier for the product.
+     *
+     * @return the Unique identifier for the product
+     */
     public String getProductId() {
         return productId;
     }
 
+    /**
+     * Sets the Unique identifier for the product.
+     *
+     * @param productId the new Unique identifier for the product
+     */
     public void setProductId(String productId) {
         this.productId = productId;
     }
 
+    /**
+     * Gets the Array of {@link Image image objects}.
+     *
+     * @return the Array of {@link Image image objects}
+     */
     public List<Image> getAdditionalImages() {
         return additionalImages;
     }
 
+    /**
+     * Sets the Array of {@link Image image objects}.
+     *
+     * @param additionalImages the new Array of {@link Image image objects}
+     */
     public void setAdditionalImages(List<Image> additionalImages) {
         this.additionalImages = additionalImages;
     }
 
+    /**
+     * Gets the API endpoint for product availability information.
+     *
+     * @return the API endpoint for product availability information
+     */
     public String getAvailabilityUrl() {
         return availabilityUrl;
     }
 
+    /**
+     * Sets the API endpoint for product availability information.
+     *
+     * @param availabilityUrl the new API endpoint for product availability information
+     */
     public void setAvailabilityUrl(String availabilityUrl) {
         this.availabilityUrl = availabilityUrl;
     }

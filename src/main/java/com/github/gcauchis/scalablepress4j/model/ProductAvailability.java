@@ -28,27 +28,45 @@ import java.util.stream.Collectors;
 /**
  * The Product Availability json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-availability
+ * @see https://scalablepress.com/docs/#product-availability-object
  */
 public class ProductAvailability {
 
-    /** A map with the color name as key and the color sizes availability as value */
+    /** A map with the color name as key and the color sizes availability as value. */
     private Map<String, ColorAvailability> colorsAvailability;
 
+    /**
+     * Gets the colors availability.
+     *
+     * @return the colors availability
+     */
     public Map<String, ColorAvailability> getColorsAvailability() {
         return colorsAvailability;
     }
 
+    /**
+     * Instantiates a new product availability.
+     */
     public ProductAvailability() {
         super();
     }
 
+    /**
+     * Instantiates a new product availability.
+     *
+     * @param colorsAvailability the colors availability
+     */
     public ProductAvailability(Map<String, Object> colorsAvailability) {
         super();
         this.colorsAvailability = colorsAvailability.entrySet().stream()
                 .collect(Collectors.toMap(e -> e.getKey(), e -> new ColorAvailability(e.getKey(), (Map<String, Object>) e.getValue())));
     }
 
+    /**
+     * Sets the colors availability.
+     *
+     * @param colorsAvailability the colors availability
+     */
     public void setColorsAvailability(
             Map<String, ColorAvailability> colorsAvailability) {
         this.colorsAvailability = colorsAvailability;

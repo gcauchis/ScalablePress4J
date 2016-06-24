@@ -24,7 +24,7 @@ package com.github.gcauchis.scalablepress4j.model;
 
 import java.util.Map;
 import java.util.stream.Collectors;
-
+// TODO: Auto-generated Javadoc
 /**
  * The Color Availability json object.
  * @author gcauchis
@@ -32,15 +32,25 @@ import java.util.stream.Collectors;
  */
 public class ColorAvailability {
 
-    /** Name of the color */
+    /**  Name of the color. */
     private String name;
-    /** A map with the size as key and the number of availability as value */
+    
+    /**  A map with the size as key and the number of availability as value. */
     private Map<String, Integer> sizesAvailability;
 
+    /**
+     * Instantiates a new color availability.
+     */
     public ColorAvailability() {
         super();
     }
 
+    /**
+     * Instantiates a new color availability.
+     *
+     * @param name the name
+     * @param sizesAvailability the sizes availability
+     */
     public ColorAvailability(String name, Map<String, Object> sizesAvailability) {
         super();
         this.name = name;

@@ -31,128 +31,248 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Quote Response json object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#standard-quote
+ * @see https://scalablepress.com/docs/#quote-response-object
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class QuoteResponse {
-    /** The returned status code */
+
+    /** The returned status code. */
     private Number statusCode;
-    /** Quoted price for the order */
+
+    /** Quoted price for the order. */
     private Number total;
-    /** Shipping component of quote total */
+
+    /** Shipping component of quote total. */
     private Number shipping;
-    /** Subtotal component of quote total */
+
+    /** Subtotal component of quote total. */
     private Number subtotal;
-    /** Tax component of quote total */
+
+    /** Tax component of quote total. */
     private Number tax;
-    /** Other fee components of quote total */
+
+    /** Other fee components of quote total. */
     private Number fees;
-    /** List of warnings as human readable strings */
+
+    /** List of warnings as human readable strings. */
     private List<String> warnings;
-    /** Array of error objects which are preventing a successful quote */
+
+    /** Array of {@link Error error objects} which are preventing a successful quote. */
     private List<Error> issues;
-    /**
-     * Array of error objects which are preventing your quote from being
-     * order-ready
-     */
+
+    /** Array of {@link Error error objects} which are preventing your quote from being order-ready. */
     private List<Error> orderIssues;
-    /**
-     * Unique identifier which can be used to place an order, can also be used
-     * to retrieve a quote
-     */
+
+    /** Unique identifier which can be used to place an order, can also be used to retrieve a quote. */
     private String orderToken;
-    /** "test" or "live" */
+
+    /** "test" or "live". */
     private String mode;
 
+    /**
+     * Gets the returned status code.
+     *
+     * @return the returned status code
+     */
     public Number getStatusCode() {
         return statusCode;
     }
 
+    /**
+     * Sets the returned status code.
+     *
+     * @param statusCode the new returned status code
+     */
     public void setStatusCode(Number statusCode) {
         this.statusCode = statusCode;
     }
 
+    /**
+     * Gets the Quoted price for the order.
+     *
+     * @return the Quoted price for the order
+     */
     public Number getTotal() {
         return total;
     }
 
+    /**
+     * Sets the Quoted price for the order.
+     *
+     * @param total the new Quoted price for the order
+     */
     public void setTotal(Number total) {
         this.total = total;
     }
 
+    /**
+     * Gets the Shipping component of quote total.
+     *
+     * @return the Shipping component of quote total
+     */
     public Number getShipping() {
         return shipping;
     }
 
+    /**
+     * Sets the Shipping component of quote total.
+     *
+     * @param shipping the new Shipping component of quote total
+     */
     public void setShipping(Number shipping) {
         this.shipping = shipping;
     }
 
+    /**
+     * Gets the Subtotal component of quote total.
+     *
+     * @return the Subtotal component of quote total
+     */
     public Number getSubtotal() {
         return subtotal;
     }
 
+    /**
+     * Sets the Subtotal component of quote total.
+     *
+     * @param subtotal the new Subtotal component of quote total
+     */
     public void setSubtotal(Number subtotal) {
         this.subtotal = subtotal;
     }
 
+    /**
+     * Gets the Tax component of quote total.
+     *
+     * @return the Tax component of quote total
+     */
     public Number getTax() {
         return tax;
     }
 
+    /**
+     * Sets the Tax component of quote total.
+     *
+     * @param tax the new Tax component of quote total
+     */
     public void setTax(Number tax) {
         this.tax = tax;
     }
 
+    /**
+     * Gets the Other fee components of quote total.
+     *
+     * @return the Other fee components of quote total
+     */
     public Number getFees() {
         return fees;
     }
 
+    /**
+     * Sets the Other fee components of quote total.
+     *
+     * @param fees the new Other fee components of quote total
+     */
     public void setFees(Number fees) {
         this.fees = fees;
     }
 
+    /**
+     * Gets the List of warnings as human readable strings.
+     *
+     * @return the List of warnings as human readable strings
+     */
     public List<String> getWarnings() {
         return warnings;
     }
 
+    /**
+     * Sets the List of warnings as human readable strings.
+     *
+     * @param warnings the new List of warnings as human readable strings
+     */
     public void setWarnings(List<String> warnings) {
         this.warnings = warnings;
     }
 
+    /**
+     * Gets the issues.
+     *
+     * @return the issues
+     */
     public List<Error> getIssues() {
         return issues;
     }
 
+    /**
+     * Sets the issues.
+     *
+     * @param issues the new issues
+     */
     public void setIssues(List<Error> issues) {
         this.issues = issues;
     }
 
+    /**
+     * Gets the Array of {@link Error error objects} which are preventing your quote from being order-ready.
+     *
+     * @return the Array of {@link Error error objects} which are preventing your quote from being order-ready
+     */
     public List<Error> getOrderIssues() {
         return orderIssues;
     }
 
+    /**
+     * Sets the Array of {@link Error error objects} which are preventing your quote from being order-ready.
+     *
+     * @param orderIssues the new Array of {@link Error error objects} which are preventing your quote from being order-ready
+     */
     public void setOrderIssues(List<Error> orderIssues) {
         this.orderIssues = orderIssues;
     }
 
+    /**
+     * Gets the Unique identifier which can be used to place an order, can also be used to retrieve a quote.
+     *
+     * @return the Unique identifier which can be used to place an order, can also be used to retrieve a quote
+     */
     public String getOrderToken() {
         return orderToken;
     }
 
+    /**
+     * Sets the Unique identifier which can be used to place an order, can also be used to retrieve a quote.
+     *
+     * @param orderToken the new Unique identifier which can be used to place an order, can also be used to retrieve a quote
+     */
     public void setOrderToken(String orderToken) {
         this.orderToken = orderToken;
     }
 
+    /**
+     * Gets the "test" or "live".
+     *
+     * @return the "test" or "live"
+     */
     public String getMode() {
         return mode;
     }
 
+    /**
+     * Sets the "test" or "live".
+     *
+     * @param mode the new "test" or "live"
+     */
     public void setMode(String mode) {
         this.mode = mode;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return "QuoteResponse [statusCode=" + statusCode + ", total=" + total
