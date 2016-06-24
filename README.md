@@ -13,5 +13,5 @@ This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs
   - ReshipService implement [Reship  API](https://scalablepress.com/docs/#reship-api)
 
 ##Configuration
-- You need an application.properties with the property `scalablepress.api.basicauth` who contain your API key.
+- You need an application.properties with the property `scalablepress.api.basicauth` who contain your API key. You can obtain you API key on [https://scalablepress.com/docs/#authentication](https://scalablepress.com/docs/#authentication).
 
