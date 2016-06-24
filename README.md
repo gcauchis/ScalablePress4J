@@ -2,7 +2,7 @@
 
 This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs/)
 
-##Spring Beans:
+## Spring Beans:
 - ScalablePress4J is a service provider bean who provide APIs:
   - ProductService implement [Product API](https://scalablepress.com/docs/#product-api)
   - QuoteService implement [Quote API](https://scalablepress.com/docs/#quote-api)
@@ -12,10 +12,10 @@ This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs
   - BillingService implement [Billing  API](https://scalablepress.com/docs/#billing-api)
   - ReshipService implement [Reship  API](https://scalablepress.com/docs/#reship-api)
 
-##Configuration
+## Configuration
 - You need an application.properties with the property `scalablepress.api.basicauth` who contain your API key. You can obtain you API key on [https://scalablepress.com/docs/#authentication](https://scalablepress.com/docs/#authentication).
 
-### Maven configuration
+## Maven configuration
 
 ScalablePress4J is available on [Maven Central](http://search.maven.org/#search|ga|1|a%3A%22ScalablePress4j%22). You just have to add the following dependency in your `pom.xml` file.
 
