@@ -24,7 +24,7 @@ package com.github.gcauchis.scalablepress4j.model;
 
 import java.util.Map;
 import java.util.stream.Collectors;
-// TODO: Auto-generated Javadoc
+
 /**
  * The Color Availability json object.
  * @author gcauchis
