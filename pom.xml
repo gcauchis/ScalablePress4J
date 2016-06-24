@@ -9,6 +9,7 @@
 
     <name>ScalablePress4j</name>
     <url>https://github.com/gcauchis/ScalablePress4J</url>
+    <description>A java 8 wrapper for Scalable Press Api (https://scalablepress.com)</description>
 
     <developers>
         <developer>
