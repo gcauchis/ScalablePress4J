@@ -48,47 +48,25 @@ public class EventApi extends AbstractRestApi {
     public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) throws ScalablePressBadRequestException {
         StringBuilder args = new StringBuilder();
         if (query != null) {
-            if (StringUtils.isNotBlank(query.getOrderId())) {
-                args.append("orderId=").append(query.getOrderId());
-            }
-            if (StringUtils.isNotBlank(query.getName())) {
-                if (args.length() > 0) {
-                    args.append("&");
-                }
-                args.append("name=").append(query.getName());
-            }
-            if (StringUtils.isNotBlank(query.getStart())) {
-                if (args.length() > 0) {
-                    args.append("&");
-                }
-                args.append("start=").append(query.getStart());
-            }
-            if (StringUtils.isNotBlank(query.getEnd())) {
-                if (args.length() > 0) {
-                    args.append("&");
-                }
-                args.append("end=").append(query.getEnd());
-            }
-            if (StringUtils.isNotBlank(query.getItemIndex())) {
-                if (args.length() > 0) {
-                    args.append("&");
-                }
-                args.append("itemIndex=").append(query.getItemIndex());
-            }
-            if (StringUtils.isNotBlank(query.getItemName())) {
-                if (args.length() > 0) {
-                    args.append("&");
-                }
-                args.append("itemName=").append(query.getItemName());
-            }
-            if (StringUtils.isNotBlank(query.getSort())) {
-                if (args.length() > 0) {
-                    args.append("&");
-                }
-                args.append("sort=").append(query.getSort());
-            }
+            appendArg(args, "orderId", query.getOrderId());
+            appendArg(args, "name", query.getName());
+            appendArg(args, "start", query.getStart());
+            appendArg(args, "end", query.getEnd());
+            appendArg(args, "itemIndex", query.getItemIndex());
+            appendArg(args, "itemName", query.getItemName());
+            appendArg(args, "sort", query.getSort());
         }
         return new PaginatedResultList<>(get("event?" + args.toString(), page, Event[].class));
+    }
+    
+    protected void appendArg(StringBuilder args, String argName, String argValue)
+    {
+        if (StringUtils.isNotBlank(argValue)) {
+            if (args.length() > 0) {
+                args.append("&");
+            }
+            args.append(argName).append("=").append(argValue);
+        }
     }
     
     /**

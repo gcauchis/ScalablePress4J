@@ -135,7 +135,7 @@ public abstract class AbstractRestApi {
         this.limit = limit;
     }
     
-    private String preparePaginatedUrl(String url, int page) {
+    private String preparePaginatedUrl(final String requestUrl, int page) {
         if (page < 1) {
             ErrorResponse errorResponse = new ErrorResponse();
             errorResponse.setStatusCode("500");
@@ -145,6 +145,7 @@ public abstract class AbstractRestApi {
             errorResponse.setIssues(Arrays.asList(error));
             throw new ScalablePressBadRequestException(errorResponse);
         }
+        String url = requestUrl;
         int argSeparatorIndex = url.indexOf("?");
         if (argSeparatorIndex < 0) {
             url += "?";
