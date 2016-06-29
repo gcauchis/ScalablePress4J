@@ -39,6 +39,9 @@ import com.github.gcauchis.scalablepress4j.model.Position;
 import com.github.gcauchis.scalablepress4j.model.PositionOffset;
 import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
+/**
+ * The Class AbstractApiTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
         classes = {
@@ -48,11 +51,18 @@ import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
         loader = AnnotationConfigContextLoader.class)
 public abstract class AbstractApiTest {
 
+    /** The test api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
+    /** The scalable press spring bean. */
     @Autowired
     protected ScalablePress4J scalablePress;
     
+    /**
+     * Builds the test design.
+     *
+     * @return the design
+     */
     public Design buildTestDesign() {
         Design design = new Design();
         design.setName("Test");

@@ -32,20 +32,33 @@ import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 
+/**
+ * The Class ProductApiTest.
+ */
 public class ProductApiTest extends AbstractApiTest {
 
+    /** The product api. */
     private ProductApi productApi;
 
+    /**
+     * Inits the test.
+     */
     @Before
     public void init() {
         productApi = scalablePress.productApi();
     }
 
+    /**
+     * Test context.
+     */
     @Test
     public void context() {
         Assert.assertNotNull(productApi);
     }
 
+    /**
+     * Test gets the categories.
+     */
     @Test
     public void getCategories() {
         List<Category> categories = productApi.getCategories();
@@ -54,6 +67,9 @@ public class ProductApiTest extends AbstractApiTest {
         Assert.assertFalse(categories.isEmpty());
     }
 
+    /**
+     * Test gets the category products.
+     */
     @Test
     public void getCategoryProducts() {
         Category category = productApi.getCategoryProducts("short-sleeve-shirts");
@@ -61,6 +77,9 @@ public class ProductApiTest extends AbstractApiTest {
         log.info(category.toString());
     }
 
+    /**
+     * Test gets the product information.
+     */
     @Test
     public void getProductInformation() {
         Product product = productApi.getProductInformation("gildan-ultra-cotton-t-shirt");
@@ -68,6 +87,9 @@ public class ProductApiTest extends AbstractApiTest {
         log.info(product.toString());
     }
 
+    /**
+     * Test gets the product availability.
+     */
     @Test
     public void getProductAvailability() {
         ProductAvailability productAvailability = productApi.getProductAvailability("gildan-ultra-cotton-t-shirt");

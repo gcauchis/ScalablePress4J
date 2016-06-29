@@ -53,6 +53,8 @@ public abstract class AbstractRestApi {
 
     /** The default items per page number. */
     public static final int DEFAULT_LIMIT = 50;
+    
+    /** The api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The base url */

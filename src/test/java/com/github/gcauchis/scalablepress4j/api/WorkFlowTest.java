@@ -28,13 +28,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.gcauchis.scalablepress4j.api.BillingApi;
-import com.github.gcauchis.scalablepress4j.api.DesignApi;
-import com.github.gcauchis.scalablepress4j.api.EventApi;
-import com.github.gcauchis.scalablepress4j.api.OrderApi;
-import com.github.gcauchis.scalablepress4j.api.ProductApi;
-import com.github.gcauchis.scalablepress4j.api.QuoteApi;
-import com.github.gcauchis.scalablepress4j.api.ReshipApi;
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Color;
 import com.github.gcauchis.scalablepress4j.model.ColorAvailability;
@@ -44,16 +37,35 @@ import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 import com.github.gcauchis.scalablepress4j.model.ProductOveriew;
 
+/**
+ * The Class WorkFlowTest.
+ */
 public class WorkFlowTest extends AbstractApiTest {
 
+    /** The billing api. */
     private BillingApi billingApi;
+    
+    /** The design api. */
     private DesignApi designApi;
+    
+    /** The event api. */
     private EventApi eventApi;
+    
+    /** The order api. */
     private OrderApi orderApi;
+    
+    /** The product api. */
     private ProductApi productApi;
+    
+    /** The quote api. */
     private QuoteApi quoteApi;
+    
+    /** The reship api. */
     private ReshipApi reshipApi;
 
+    /**
+     * Inits the test.
+     */
     @Before
     public void init() {
         billingApi = scalablePress.billingApi();
@@ -65,6 +77,9 @@ public class WorkFlowTest extends AbstractApiTest {
         reshipApi = scalablePress.reshipApi();
     }
 
+    /**
+     * Test context.
+     */
     @Test
     public void context() {
         Assert.assertNotNull(billingApi);
@@ -76,6 +91,9 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertNotNull(reshipApi);
     }
 
+    /**
+     * Workflow test.
+     */
     @Test
     public void workflow() {
         log.info("###################################################################################");
@@ -141,7 +159,7 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertEquals(designId, retieveDesign.getDesignId());
         log.info("Design retrieved: {} ", retieveDesign.toString());
         
-        
+        // TODO: make order, quotes, billing... 
         
         
         

@@ -30,7 +30,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
-import com.github.gcauchis.scalablepress4j.api.QuoteApi;
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Features;
 import com.github.gcauchis.scalablepress4j.model.OrderProduct;
@@ -38,20 +37,33 @@ import com.github.gcauchis.scalablepress4j.model.Quote;
 import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 import com.github.gcauchis.scalablepress4j.model.Sides;
 
+/**
+ * The Class QuoteApiTest.
+ */
 public class QuoteApiTest  extends AbstractApiTest{
 
+    /** The quote api. */
     private QuoteApi quoteApi;
 
+    /**
+     * Inits the test.
+     */
     @Before
     public void init() {
         quoteApi = scalablePress.quoteApi();
     }
 
+    /**
+     * Test context.
+     */
     @Test
     public void context() {
         Assert.assertNotNull(quoteApi);
     }
 
+    /**
+     * Test quote.
+     */
     //Invalid designId : found a valid one for testing
     @Test(expected = ScalablePressBadRequestException.class)
     public void quote()

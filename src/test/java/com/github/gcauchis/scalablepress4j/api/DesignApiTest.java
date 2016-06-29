@@ -27,24 +27,36 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
-import com.github.gcauchis.scalablepress4j.api.DesignApi;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignResponse;
 
+/**
+ * The Class DesignApiTest.
+ */
 public class DesignApiTest extends AbstractApiTest {
 
+    /** The design api. */
     private DesignApi designApi;
 
+    /**
+     * Inits the test.
+     */
     @Before
     public void init() {
         designApi = scalablePress.designApi();
     }
 
+    /**
+     * Test context.
+     */
     @Test
     public void context() {
         Assert.assertNotNull(designApi);
     }
     
+    /**
+     * Test design work flow.
+     */
     @Test
     public void designWorkFlow() {
         Design design = buildTestDesign();

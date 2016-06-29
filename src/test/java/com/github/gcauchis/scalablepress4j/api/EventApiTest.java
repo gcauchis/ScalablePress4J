@@ -26,24 +26,36 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.gcauchis.scalablepress4j.api.EventApi;
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 
+/**
+ * The Class EventApiTest.
+ */
 public class EventApiTest extends AbstractApiTest {
 
+    /** The event api. */
     private EventApi eventApi;
 
+    /**
+     * Inits the test.
+     */
     @Before
     public void init() {
         eventApi = scalablePress.eventApi();
     }
 
+    /**
+     * Test context.
+     */
     @Test
     public void context() {
         Assert.assertNotNull(eventApi);
     }
 
+    /**
+     * Test retrieve.
+     */
     @Test
     public void retrieve() {
         PaginatedResultList<Event> paginatedEventsList = eventApi.queryEvents(null, 1);
