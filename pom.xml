@@ -11,20 +11,24 @@
     <url>https://github.com/gcauchis/ScalablePress4J</url>
     <description>A java 8 wrapper for Scalable Press Api (https://scalablepress.com)</description>
 
-    <prerequisites>
-         <maven>3.3.9</maven>
-    </prerequisites>
-
-
     <developers>
         <developer>
+            <id>gcauchis</id>
             <name>Gabriel Cauchis</name>
+            <url>https://github.com/gcauchis</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Paris</timezone>
         </developer>
     </developers>
 
     <licenses>
         <license>
             <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
             <comments>All source code is under the MIT license.</comments>
         </license>
     </licenses>
