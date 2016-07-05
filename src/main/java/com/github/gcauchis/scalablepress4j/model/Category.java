@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Category json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-product-categories
+ * @see <a href="https://scalablepress.com/docs/#list-product-categories">https://scalablepress.com/docs/#list-product-categories</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Category {

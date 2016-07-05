@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Position json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#position-object
+ * @see <a href="https://scalablepress.com/docs/#position-object">https://scalablepress.com/docs/#position-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Position {

@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Design Response json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#retrieve-design-object
+ * @see <a href="https://scalablepress.com/docs/#retrieve-design-object">https://scalablepress.com/docs/#retrieve-design-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

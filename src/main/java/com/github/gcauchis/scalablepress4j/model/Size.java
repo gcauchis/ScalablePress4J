@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Size json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#size-object
+ * @see <a href="https://scalablepress.com/docs/#size-object">https://scalablepress.com/docs/#size-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

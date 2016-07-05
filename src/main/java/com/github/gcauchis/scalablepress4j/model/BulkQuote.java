@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Bulk Quote json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#bulk-quote
+ * @see <a href="https://scalablepress.com/docs/#bulk-quote">https://scalablepress.com/docs/#bulk-quote</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BulkQuote {

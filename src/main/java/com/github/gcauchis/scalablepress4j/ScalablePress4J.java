@@ -75,7 +75,7 @@ public class ScalablePress4J {
      *
      * @param basicAuth
      *            the api authentication key.
-     * @see https://scalablepress.com/docs/#authentication
+     * @see <a href="https://scalablepress.com/docs/#authentication">https://scalablepress.com/docs/#authentication</a>
      */
     @Value("${scalablepress.api.basicauth}")
     public void setBasicAuth(String basicAuth) {

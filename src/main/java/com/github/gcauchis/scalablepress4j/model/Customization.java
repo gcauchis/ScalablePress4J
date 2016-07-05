@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Customization json object
  * @author gcauchis
- * @see https://scalablepress.com/docs/#customization-object
+ * @see <a href="https://scalablepress.com/docs/#customization-object">https://scalablepress.com/docs/#customization-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customization {

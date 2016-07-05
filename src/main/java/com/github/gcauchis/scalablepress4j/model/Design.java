@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Design json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#design-object
+ * @see <a href="https://scalablepress.com/docs/#design-object">https://scalablepress.com/docs/#design-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Design {

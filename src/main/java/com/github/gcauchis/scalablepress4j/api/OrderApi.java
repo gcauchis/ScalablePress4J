@@ -40,7 +40,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * shipped.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#order-api
+ * @see <a href="https://scalablepress.com/docs/#order-api">https://scalablepress.com/docs/#order-api</a>
  */
 public class OrderApi extends AbstractRestApi{
 
@@ -52,7 +52,7 @@ public class OrderApi extends AbstractRestApi{
      * @param orderToken
      * @return an order object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#place-order
+     * @see <a href="https://scalablepress.com/docs/#place-order">https://scalablepress.com/docs/#place-order</a>
      */
     public Order place(String orderToken) throws ScalablePressBadRequestException {
         Map<String, String> args = new LinkedHashMap<>();
@@ -70,7 +70,7 @@ public class OrderApi extends AbstractRestApi{
      * @param orderItems
      * @return a quote response object
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#reprint-order
+     * @see <a href="https://scalablepress.com/docs/#reprint-order">https://scalablepress.com/docs/#reprint-order</a>
      */
     public QuoteResponse reprint(String orderId, List<OrderItem> orderItems) throws ScalablePressBadRequestException {
         return post("order/" + orderId + "/reprint", orderItems.toArray(new OrderItem[orderItems.size()]), QuoteResponse.class);
@@ -82,7 +82,7 @@ public class OrderApi extends AbstractRestApi{
      * 
      * @return an array of order objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#retrieve-orders
+     * @see <a href="https://scalablepress.com/docs/#retrieve-orders">https://scalablepress.com/docs/#retrieve-orders</a>
      */
     public List<Order> retrieve() throws ScalablePressBadRequestException {
         return Arrays.asList(get("order", Order[].class));
@@ -96,7 +96,7 @@ public class OrderApi extends AbstractRestApi{
      * @param orderId
      * @return an order object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#retrieve-single-order
+     * @see <a href="https://scalablepress.com/docs/#retrieve-single-order">https://scalablepress.com/docs/#retrieve-single-order</a>
      */
     public Order retrieve(String orderId) throws ScalablePressBadRequestException {
         return get("order/" + orderId, Order.class);
@@ -115,7 +115,7 @@ public class OrderApi extends AbstractRestApi{
      * @return an order object with an additional event with a meta that
      *         documents the original and new to address
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#change-order-address
+     * @see <a href="https://scalablepress.com/docs/#change-order-address">https://scalablepress.com/docs/#change-order-address</a>
      */
     public Order changeAddress(String orderId, int itemIndex, Address newAddress) throws ScalablePressBadRequestException {
         Map<String, Object> args = new LinkedHashMap<>();
@@ -134,7 +134,7 @@ public class OrderApi extends AbstractRestApi{
      * @return an order object with an deletedAt timestamp that records the time
      *         the order object was cancelled.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#cancel-entire-order
+     * @see <a href="https://scalablepress.com/docs/#cancel-entire-order">https://scalablepress.com/docs/#cancel-entire-order</a>
      */
     public Order cancel(String orderId) throws ScalablePressBadRequestException {
         return delete("order/" + orderId, Order.class);

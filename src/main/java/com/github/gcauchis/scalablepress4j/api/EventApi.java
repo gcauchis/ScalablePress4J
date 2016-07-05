@@ -32,7 +32,7 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
 /**
  * The Event API helps you keep track of event of your orders.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#event-api
+ * @see <a href="https://scalablepress.com/docs/#event-api">https://scalablepress.com/docs/#event-api</a>
  */
 public class EventApi extends AbstractRestApi {
 
@@ -43,7 +43,7 @@ public class EventApi extends AbstractRestApi {
      * @param page the page to view
      * @return Returns an array of event objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#query-events
+     * @see <a href="https://scalablepress.com/docs/#query-events">https://scalablepress.com/docs/#query-events</a>
      */
     public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) throws ScalablePressBadRequestException {
         StringBuilder args = new StringBuilder();
@@ -74,7 +74,7 @@ public class EventApi extends AbstractRestApi {
      * 
      * @return event object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @seehttps://scalablepress.com/docs/#retrieve-single-event
+     * @see <a href="https://scalablepress.com/docs/#retrieve-single-event">https://scalablepress.com/docs/#retrieve-single-event</a>
      */
     public Event retrieve(String eventId) throws ScalablePressBadRequestException {
         return get("event/" + eventId, Event.class);

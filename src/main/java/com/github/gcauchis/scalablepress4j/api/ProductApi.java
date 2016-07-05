@@ -44,7 +44,7 @@ import com.github.gcauchis.scalablepress4j.model.Size;
  * The Product API powers product catalog
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#product-api
+ * @see <a href="https://scalablepress.com/docs/#product-api">https://scalablepress.com/docs/#product-api</a>
  */
 public class ProductApi extends AbstractRestApi {
     
@@ -53,7 +53,7 @@ public class ProductApi extends AbstractRestApi {
      * The categories are not filled with the product, call {@link #getCategoryProducts(String)} the retrieve the {@link ProductOveriew}
      * @return an array with all available category objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#list-product-categories
+     * @see <a href="https://scalablepress.com/docs/#list-product-categories">https://scalablepress.com/docs/#list-product-categories</a>
      */
     public List<Category> getCategories() throws ScalablePressBadRequestException {
         return Arrays.asList(get("categories", Category[].class));
@@ -64,7 +64,7 @@ public class ProductApi extends AbstractRestApi {
      * @param categoryId
      * @return a category object which now contains an array of product overview objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#list-products
+     * @see <a href="https://scalablepress.com/docs/#list-products">https://scalablepress.com/docs/#list-products</a>
      */
     public Category getCategoryProducts(String categoryId) throws ScalablePressBadRequestException {
         return get("categories/" + categoryId, Category.class);
@@ -75,7 +75,7 @@ public class ProductApi extends AbstractRestApi {
      * @param productId
      * @return a product object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#list-product-information
+     * @see <a href="https://scalablepress.com/docs/#list-product-information">https://scalablepress.com/docs/#list-product-information</a>
      */
     public Product getProductInformation(String productId) throws ScalablePressBadRequestException {
         return get("products/" + productId, Product.class);
@@ -87,7 +87,7 @@ public class ProductApi extends AbstractRestApi {
      * @param productId
      * @return a product availability object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#list-product-availability
+     * @see <a href="https://scalablepress.com/docs/#list-product-availability">https://scalablepress.com/docs/#list-product-availability</a>
      */
     public ProductAvailability getProductAvailability(String productId) throws ScalablePressBadRequestException {
         return new ProductAvailability((Map<String, Object>) get("products/" + productId + "/availability", Object.class));
@@ -100,7 +100,7 @@ public class ProductApi extends AbstractRestApi {
      * @param productId
      * @return the detailed product items information
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#list-detailed-item-information
+     * @see <a href="https://scalablepress.com/docs/#list-detailed-item-information">https://scalablepress.com/docs/#list-detailed-item-information</a>
      */
     public ColorsItem getDetailedProductItemsInformation(String productId) throws ScalablePressBadRequestException {
         Map<String, Object> response = (Map<String, Object>) get("products/" + productId + "/items", Object.class);

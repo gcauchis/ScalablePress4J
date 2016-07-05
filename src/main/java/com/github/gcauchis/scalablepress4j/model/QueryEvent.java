@@ -26,7 +26,7 @@ package com.github.gcauchis.scalablepress4j.model;
  * The Query.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#query-events
+ * @see <a href="https://scalablepress.com/docs/#query-events">https://scalablepress.com/docs/#query-events</a>
  */
 public class QueryEvent {
     /** ID of an order. When given, only events of that order will be returned */

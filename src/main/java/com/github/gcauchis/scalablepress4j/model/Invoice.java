@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Invoice json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#invoice-object
+ * @see <a href="https://scalablepress.com/docs/#invoice-object">https://scalablepress.com/docs/#invoice-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

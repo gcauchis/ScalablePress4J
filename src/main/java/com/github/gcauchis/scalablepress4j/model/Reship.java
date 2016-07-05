@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Reship json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#reship-object
+ * @see <a href="https://scalablepress.com/docs/#reship-object">https://scalablepress.com/docs/#reship-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

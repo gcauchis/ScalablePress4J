@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Address json Object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#address-object
+ * @see <a href="https://scalablepress.com/docs/#address-object">https://scalablepress.com/docs/#address-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

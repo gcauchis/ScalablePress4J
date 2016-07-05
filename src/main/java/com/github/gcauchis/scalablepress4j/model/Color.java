@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Color json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#color-object
+ * @see <a href="https://scalablepress.com/docs/#color-object">https://scalablepress.com/docs/#color-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Color {

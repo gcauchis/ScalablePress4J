@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Event json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#event-object
+ * @see <a href="https://scalablepress.com/docs/#event-object">https://scalablepress.com/docs/#event-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

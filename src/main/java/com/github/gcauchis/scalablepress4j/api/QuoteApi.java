@@ -75,7 +75,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  * </ul>
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#quote-api
+ * @see <a href="https://scalablepress.com/docs/#quote-api">https://scalablepress.com/docs/#quote-api</a>
  */
 public class QuoteApi extends AbstractRestApi {
 
@@ -86,7 +86,7 @@ public class QuoteApi extends AbstractRestApi {
      * @param quote
      * @return a quote response object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#standard-quote
+     * @see <a href="https://scalablepress.com/docs/#standard-quote">https://scalablepress.com/docs/#standard-quote</a>
      */
     public QuoteResponse quote(Quote quote) throws ScalablePressBadRequestException {
         return post("quote", quote, QuoteResponse.class);
@@ -103,7 +103,7 @@ public class QuoteApi extends AbstractRestApi {
      * @param bulkQuote
      * @return a quote response object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#bulk-quote
+     * @see <a href="https://scalablepress.com/docs/#bulk-quote">https://scalablepress.com/docs/#bulk-quote</a>
      */
     public QuoteResponse bulkQuote(BulkQuote bulkQuote) throws ScalablePressBadRequestException {
         return post("quote/bulk", bulkQuote, QuoteResponse.class);
@@ -114,7 +114,7 @@ public class QuoteApi extends AbstractRestApi {
      * @param orderToken
      * @return an order object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#retrieve-quote
+     * @see <a href="https://scalablepress.com/docs/#retrieve-quote">https://scalablepress.com/docs/#retrieve-quote</a>
      */
     public Order retrieve(String orderToken) throws ScalablePressBadRequestException {
         return get("quote/" + orderToken, Order.class);

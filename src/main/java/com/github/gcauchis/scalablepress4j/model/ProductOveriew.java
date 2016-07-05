@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Product Overview json object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#product-overview-object
+ * @see <a href="https://scalablepress.com/docs/#product-overview-object">https://scalablepress.com/docs/#product-overview-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductOveriew {

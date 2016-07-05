@@ -35,7 +35,7 @@ import com.github.gcauchis.scalablepress4j.model.Reship;
  * Reship API
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#reship-api
+ * @see <a href="https://scalablepress.com/docs/#reship-api">https://scalablepress.com/docs/#reship-api</a>
  */
 public class ReshipApi extends AbstractRestApi {
 
@@ -45,7 +45,7 @@ public class ReshipApi extends AbstractRestApi {
      * 
      * @return Array of reship objects
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#retrieve-reship-orders
+     * @see <a href="https://scalablepress.com/docs/#retrieve-reship-orders">https://scalablepress.com/docs/#retrieve-reship-orders</a>
      */
     public List<Reship> retrieve() throws ScalablePressBadRequestException {
         return Arrays.asList(get("reship", Reship[].class));
@@ -59,7 +59,7 @@ public class ReshipApi extends AbstractRestApi {
      * @param reshipId
      * @return a reship object
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#retrieve-single-reship-order
+     * @see <a href="https://scalablepress.com/docs/#retrieve-single-reship-order">https://scalablepress.com/docs/#retrieve-single-reship-order</a>
      */
     public Reship retrieve(String reshipId) throws ScalablePressBadRequestException {
         return get("reship/" + reshipId, Reship.class);
@@ -75,7 +75,7 @@ public class ReshipApi extends AbstractRestApi {
      * @param address
      * @return
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#place-reship-order
+     * @see <a href="https://scalablepress.com/docs/#place-reship-order">https://scalablepress.com/docs/#place-reship-order</a>
      */
     public Reship place(String reshipId, Address address) throws ScalablePressBadRequestException {
         Map<String, Object> args = new LinkedHashMap<>();
@@ -91,7 +91,7 @@ public class ReshipApi extends AbstractRestApi {
      * @param reshipId
      * @return
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#cancel-reship-order
+     * @see <a href="https://scalablepress.com/docs/#cancel-reship-order">https://scalablepress.com/docs/#cancel-reship-order</a>
      */
     public Reship cancel(String reshipId) throws ScalablePressBadRequestException {
         return post("reship/" + reshipId + "/cancel", null, Reship.class);

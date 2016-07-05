@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Position Offset json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#position-offset-object
+ * @see <a href="https://scalablepress.com/docs/#position-offset-object">https://scalablepress.com/docs/#position-offset-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PositionOffset {

@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Sides json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#sides-object
+ * @see <a href="https://scalablepress.com/docs/#sides-object">https://scalablepress.com/docs/#sides-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

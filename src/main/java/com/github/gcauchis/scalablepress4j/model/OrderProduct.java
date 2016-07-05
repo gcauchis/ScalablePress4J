@@ -29,7 +29,7 @@ import com.github.gcauchis.scalablepress4j.api.ProductApi;
  * The Order Product json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#order-product-object
+ * @see <a href="https://scalablepress.com/docs/#order-product-object">https://scalablepress.com/docs/#order-product-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderProduct {

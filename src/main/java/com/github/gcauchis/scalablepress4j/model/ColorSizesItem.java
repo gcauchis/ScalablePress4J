@@ -28,7 +28,7 @@ import java.util.Map;
  * The Color Items object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#list-detailed-item-information
+ * @see <a href="https://scalablepress.com/docs/#list-detailed-item-information">https://scalablepress.com/docs/#list-detailed-item-information</a>
  */
 public class ColorSizesItem {
     /** The color sizes */

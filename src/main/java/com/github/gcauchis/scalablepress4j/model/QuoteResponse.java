@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Quote Response json object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#quote-response-object
+ * @see <a href="https://scalablepress.com/docs/#quote-response-object">https://scalablepress.com/docs/#quote-response-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

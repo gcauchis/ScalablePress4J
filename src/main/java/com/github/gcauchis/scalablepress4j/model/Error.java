@@ -28,7 +28,7 @@ import java.util.Map;
  * The Error json object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#error-object
+ * @see <a href="https://scalablepress.com/docs/#error-object">https://scalablepress.com/docs/#error-object</a>
  */
 public class Error {
     

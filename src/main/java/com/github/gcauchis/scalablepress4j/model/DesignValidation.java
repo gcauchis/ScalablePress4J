@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Design Validation json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#design-validation-object
+ * @see <a href="https://scalablepress.com/docs/#design-validation-object">https://scalablepress.com/docs/#design-validation-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DesignValidation {

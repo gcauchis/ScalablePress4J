@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Product json object.
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#product-object
+ * @see <a href="https://scalablepress.com/docs/#product-object">https://scalablepress.com/docs/#product-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {

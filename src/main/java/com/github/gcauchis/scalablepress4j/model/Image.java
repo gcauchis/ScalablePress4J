@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * The Image json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#image-object
+ * @see <a href="https://scalablepress.com/docs/#image-object">https://scalablepress.com/docs/#image-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Image {

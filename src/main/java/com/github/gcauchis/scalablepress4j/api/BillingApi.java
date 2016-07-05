@@ -51,7 +51,7 @@ import com.github.gcauchis.scalablepress4j.model.Invoice;
  * </ul>
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#billing-api
+ * @see <a href="https://scalablepress.com/docs/#billing-api">https://scalablepress.com/docs/#billing-api</a>
  */
 public class BillingApi extends AbstractRestApi {
 
@@ -60,7 +60,7 @@ public class BillingApi extends AbstractRestApi {
      *
      * @return the list
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#list-invoice-objects
+     * @see <a href="https://scalablepress.com/docs/#list-invoice-objects">https://scalablepress.com/docs/#list-invoice-objects</a>
      */
     public List<Invoice> listInvoice() throws ScalablePressBadRequestException {
         // "billing/invoice" or "billing" ? definition and example different...
@@ -73,7 +73,7 @@ public class BillingApi extends AbstractRestApi {
      * @param invoiceId
      * @return
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#retrieve-invoice-object
+     * @see <a href="https://scalablepress.com/docs/#retrieve-invoice-object">https://scalablepress.com/docs/#retrieve-invoice-object</a>
      */
     public Invoice retrieveInvoice(String invoiceId) throws ScalablePressBadRequestException {
         return get("billing/invoice/" + invoiceId, Invoice.class);
@@ -102,7 +102,7 @@ public class BillingApi extends AbstractRestApi {
      *            Email address of payer of PayPal transaction
      * @return a Invoice object with updated balance.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction
+     * @see <a href="https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction">https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction</a>
      */
     public Invoice payInvoiceWithPayPalTransaction(String invoiceId, String transactionId, Number amount, String email) throws ScalablePressBadRequestException {
         Map<String, Object> args = new LinkedHashMap<>();

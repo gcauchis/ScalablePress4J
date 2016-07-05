@@ -24,20 +24,39 @@ package com.github.gcauchis.scalablepress4j;
 
 import com.github.gcauchis.scalablepress4j.model.ErrorResponse;
 
+/**
+ * The Class ScalablePressBadRequestException.
+ */
 public class ScalablePressBadRequestException extends RuntimeException {
 
-    /** the error response */
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 5250945263556128109L;
+    
+    /**  the error response. */
     private final ErrorResponse errorResponse;
 
+    /**
+     * Instantiates a new scalable press bad request exception.
+     *
+     * @param errorResponse the error response
+     */
     public ScalablePressBadRequestException(ErrorResponse errorResponse) {
         super(errorResponse.getStatusCode());
         this.errorResponse = errorResponse;
     }
 
+    /**
+     * Gets the error response.
+     *
+     * @return the error response
+     */
     public ErrorResponse getErrorResponse() {
         return errorResponse;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Throwable#toString()
+     */
     @Override
     public String toString() {
         return "ScalablePressBadRequestException [errorResponse="

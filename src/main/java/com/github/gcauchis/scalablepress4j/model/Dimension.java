@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Dimension json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#dimension-object
+ * @see <a href="https://scalablepress.com/docs/#dimension-object">https://scalablepress.com/docs/#dimension-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Dimension {

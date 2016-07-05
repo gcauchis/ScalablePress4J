@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * The Product Availability json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#product-availability-object
+ * @see <a href="https://scalablepress.com/docs/#product-availability-object">https://scalablepress.com/docs/#product-availability-object</a>
  */
 public class ProductAvailability {
 

@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 /**
  * The Color Availability json object.
  * @author gcauchis
- * @see https://scalablepress.com/docs/#color-availability-object
+ * @see <a href="https://scalablepress.com/docs/#color-availability-object">https://scalablepress.com/docs/#color-availability-object</a>
  */
 public class ColorAvailability {
 

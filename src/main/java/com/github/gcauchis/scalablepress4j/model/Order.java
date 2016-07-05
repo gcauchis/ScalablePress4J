@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * The Order json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#order-object
+ * @see <a href="https://scalablepress.com/docs/#order-object">https://scalablepress.com/docs/#order-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Feature json object.
  *
  * @author gcauchis
- * @see https://scalablepress.com/docs/#custom-order-features
+ * @see <a href="https://scalablepress.com/docs/#custom-order-features">https://scalablepress.com/docs/#custom-order-features</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Features {

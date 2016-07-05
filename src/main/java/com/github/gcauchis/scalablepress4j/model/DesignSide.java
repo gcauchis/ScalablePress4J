@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * The Design Side json object
  * 
  * @author gcauchis
- * @see https://scalablepress.com/docs/#design-side-object
+ * @see <a href="https://scalablepress.com/docs/#design-side-object">https://scalablepress.com/docs/#design-side-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DesignSide {
