@@ -222,10 +222,13 @@ public class WorkFlowTest extends AbstractApiTest {
         
         for (Order orderToCancel : currentOrders)
         {
-        	Order canceledOrder = orderApi.cancel(orderToCancel.getOrderId());
-            log.info("Canceled order: {} ", canceledOrder.toString());
-            Assert.assertEquals("cancelled", canceledOrder.getStatus());
-            Assert.assertEquals(orderToCancel.getOrderId(), canceledOrder.getOrderId());
+        	if (!orderToCancel.getStatus().equals("cancelled"))
+        	{
+	        	Order canceledOrder = orderApi.cancel(orderToCancel.getOrderId());
+	            log.info("Canceled order: {} ", canceledOrder.toString());
+	            Assert.assertEquals("cancelled", canceledOrder.getStatus());
+	            Assert.assertEquals(orderToCancel.getOrderId(), canceledOrder.getOrderId());
+        	}
         }
         
         //TODO Billing
