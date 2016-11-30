@@ -29,6 +29,7 @@ import com.github.gcauchis.scalablepress4j.api.AbstractRestApi;
 import com.github.gcauchis.scalablepress4j.api.BillingApi;
 import com.github.gcauchis.scalablepress4j.api.DesignApi;
 import com.github.gcauchis.scalablepress4j.api.EventApi;
+import com.github.gcauchis.scalablepress4j.api.MockupApi;
 import com.github.gcauchis.scalablepress4j.api.OrderApi;
 import com.github.gcauchis.scalablepress4j.api.ProductApi;
 import com.github.gcauchis.scalablepress4j.api.QuoteApi;
@@ -70,11 +71,13 @@ public class ScalablePress4J {
     /** The reship. */
     private ReshipApi reshipApi;
 
+    /** The mockup. */
+    private MockupApi mockupApi;
+
     /**
      * Sets the api authentication key.
      *
-     * @param basicAuth
-     *            the api authentication key.
+     * @param basicAuth the api authentication key.
      * @see <a href="https://scalablepress.com/docs/#authentication">https://scalablepress.com/docs/#authentication</a>
      */
     @Value("${scalablepress.api.basicauth}")
@@ -100,6 +103,9 @@ public class ScalablePress4J {
         }
         if (reshipApi != null) {
             reshipApi.setBasicAuth(basicAuth);
+        }
+        if (mockupApi != null) {
+            mockupApi.setBasicAuth(basicAuth);
         }
     }
 
@@ -202,5 +208,18 @@ public class ScalablePress4J {
             prepareV2Api(reshipApi);
         }
         return reshipApi;
+    }
+
+    /**
+     * Retrieve the mockup api.
+     *
+     * @return {@link MockupApi}
+     */
+    public MockupApi getMockupApi() {
+        if (mockupApi == null) {
+            mockupApi = new MockupApi();
+            prepareV3Api(mockupApi);
+        }
+        return mockupApi;
     }
 }

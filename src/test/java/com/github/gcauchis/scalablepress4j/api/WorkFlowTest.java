@@ -68,6 +68,9 @@ public class WorkFlowTest extends AbstractApiTest {
 
     /** The reship api. */
     private ReshipApi reshipApi;
+    
+    /** The mockup api. */
+    private MockupApi mockupApi;
 
     /**
      * Inits the test.
@@ -81,6 +84,7 @@ public class WorkFlowTest extends AbstractApiTest {
         productApi = scalablePress.productApi();
         quoteApi = scalablePress.quoteApi();
         reshipApi = scalablePress.reshipApi();
+        mockupApi = scalablePress.getMockupApi();
     }
 
     /**
@@ -95,6 +99,7 @@ public class WorkFlowTest extends AbstractApiTest {
         Assert.assertNotNull(productApi);
         Assert.assertNotNull(quoteApi);
         Assert.assertNotNull(reshipApi);
+        Assert.assertNotNull(mockupApi);
     }
 
     /**
