@@ -22,6 +22,7 @@
  */
 package com.github.gcauchis.scalablepress4j.model;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -30,8 +31,11 @@ import java.util.Map;
  * @author gcauchis
  * @see <a href="https://scalablepress.com/docs/#error-object">https://scalablepress.com/docs/#error-object</a>
  */
-public class Error {
+public class Error implements Serializable{
     
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 1L;
+
     /** Identifier for type of error message. */
     private String code;
     

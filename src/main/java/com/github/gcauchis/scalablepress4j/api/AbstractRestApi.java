@@ -240,10 +240,10 @@ public abstract class AbstractRestApi {
         HttpHeaders headers = resultEntity.getHeaders();
         List<String> xspPages = headers.get("X-SP-Pages");
         if (xspPages != null && !xspPages.isEmpty())
-            paginatedResult.setPagesCount(Integer.parseInt(xspPages.get(0).toString()));
+            paginatedResult.setPagesCount(Integer.parseInt(xspPages.get(0)));
         List<String> xspCount = headers.get("X-SP-Count");
         if (xspCount != null && !xspCount.isEmpty())
-            paginatedResult.setItemsCount(Integer.parseInt(xspCount.get(0).toString()));
+            paginatedResult.setItemsCount(Integer.parseInt(xspCount.get(0)));
         return paginatedResult;
     }
 

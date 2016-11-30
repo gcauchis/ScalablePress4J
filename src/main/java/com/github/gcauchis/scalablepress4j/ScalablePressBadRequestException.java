@@ -54,9 +54,6 @@ public class ScalablePressBadRequestException extends RuntimeException {
         return errorResponse;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Throwable#toString()
-     */
     @Override
     public String toString() {
         return "ScalablePressBadRequestException [errorResponse="

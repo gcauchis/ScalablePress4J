@@ -22,6 +22,7 @@
  */
 package com.github.gcauchis.scalablepress4j.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -32,8 +33,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author gcauchis
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ErrorResponse {
+public class ErrorResponse implements Serializable {
     
+    /** The Constant serialVersionUID. */
+    private static final long serialVersionUID = 5881440703029137699L;
+
     /** The Status Code. */
     private String statusCode;
     
