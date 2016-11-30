@@ -34,4 +34,4 @@ For ***snapshots***, add the following repository to your `pom.xml` file.
     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
 </repository>
 ```
-The current snapshot version is `0.1.1-SNAPSHOT`.
+The current snapshot version is `0.1.2-SNAPSHOT`.
