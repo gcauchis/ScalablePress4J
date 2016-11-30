@@ -23,7 +23,7 @@ ScalablePress4J is available on [Maven Central](http://search.maven.org/#search|
 <dependency>
     <groupId>com.github.gcauchis</groupId>
     <artifactId>ScalablePress4j</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
