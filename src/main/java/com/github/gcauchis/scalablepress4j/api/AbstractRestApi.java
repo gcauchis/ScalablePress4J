@@ -211,7 +211,7 @@ public abstract class AbstractRestApi {
             throw new ScalablePressBadRequestException(errorResponse);
         }
         String url = requestUrl;
-        int argSeparatorIndex = url.indexOf("?");
+        int argSeparatorIndex = url.indexOf('?');
         if (argSeparatorIndex < 0) {
             url += "?";
         } else if (argSeparatorIndex < url.length() - 1) {
