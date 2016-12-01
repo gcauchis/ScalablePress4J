@@ -46,7 +46,7 @@ public class Error implements Serializable{
     private String message;
     
     /** Optional specification. */
-    private Map<String, Object> spec;
+    private transient Map<String, Object> spec;
 
     /**
      * Gets the Identifier for type of error message.
