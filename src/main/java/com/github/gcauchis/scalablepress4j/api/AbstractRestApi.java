@@ -56,21 +56,22 @@ public abstract class AbstractRestApi {
 
     /** The default items per page number. */
     public static final int DEFAULT_LIMIT = 50;
-    
+
     /** The api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /**  The base url. */
     private String baseUrl;
-    
+
     /**  The basic auth. */
     private String basicAuth;
-    
+
     /**  The rest template. */
     private RestTemplate restTemplate;
-    
+
     /**  The json object mapper. */
     private ObjectMapper objectMapper = new ObjectMapper();
+
     /** Items per page. Defaults to 50. */
     private int limit = DEFAULT_LIMIT;
 
@@ -260,7 +261,7 @@ public abstract class AbstractRestApi {
         log.trace("Call GET for: {}, to url: {}", responseType.toString(), url);
         return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
     }
-    
+
     /**
      * Gets the paginated GET response.
      *
@@ -290,7 +291,7 @@ public abstract class AbstractRestApi {
         log.trace("Call GET for: {}, to url: {}, with var: {}", responseType.toString(), url, urlVariables);
         return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
     }
-    
+
     /**
      * Gets the paginated GET response.
      *

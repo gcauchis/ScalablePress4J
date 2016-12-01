@@ -55,6 +55,7 @@ public class Address {
      * Instantiates a new address.
      */
     public Address() {
+        super();
     }
 
     /**

@@ -120,9 +120,6 @@ public class Error implements Serializable{
         this.spec = spec;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return "Error [code=" + code + ", path=" + path + ", message="

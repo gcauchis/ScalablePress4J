@@ -34,9 +34,18 @@ public class ColorSizesItem {
     /** The color sizes */
     private Map<String, Size> sizes;
 
+    /**
+     * Instantiates a new color sizes item.
+     */
     public ColorSizesItem() {
+        super();
     }
 
+    /**
+     * Instantiates a new color sizes item.
+     *
+     * @param sizes the sizes
+     */
     public ColorSizesItem(Map<String, Size> sizes) {
         this.sizes = sizes;
     }
