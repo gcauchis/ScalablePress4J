@@ -51,7 +51,7 @@ public class ColorAvailability {
      * @param name the name
      * @param sizesAvailability the sizes availability
      */
-    public ColorAvailability(String name, Map<String, Object> sizesAvailability) {
+    public ColorAvailability(String name, Map<String, ?> sizesAvailability) {
         super();
         this.name = name;
         this.sizesAvailability = sizesAvailability.entrySet().stream()

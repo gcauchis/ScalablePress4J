@@ -89,8 +89,9 @@ public class ProductApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-product-availability">https://scalablepress.com/docs/#list-product-availability</a>
      */
+    @SuppressWarnings("unchecked")
     public ProductAvailability getProductAvailability(String productId) throws ScalablePressBadRequestException {
-        return new ProductAvailability((Map<String, Object>) get("products/" + productId + "/availability", Object.class));
+        return new ProductAvailability((Map<String, ?>) get("products/" + productId + "/availability", Object.class));
     }
     
     /**
@@ -102,15 +103,16 @@ public class ProductApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-detailed-item-information">https://scalablepress.com/docs/#list-detailed-item-information</a>
      */
+    @SuppressWarnings("unchecked")
     public ColorsItem getDetailedProductItemsInformation(String productId) throws ScalablePressBadRequestException {
-        Map<String, Object> response = (Map<String, Object>) get("products/" + productId + "/items", Object.class);
+        Map<String, ?> response = (Map<String, ?>) get("products/" + productId + "/items", Object.class);
         Map<String, ColorSizesItem> colorsItem = new LinkedHashMap<>();
         ObjectMapper mapper = getObjectMapper();
-        for (Map.Entry<String, Object> entryResponse : response.entrySet()) {
+        for (Map.Entry<String, ?> entryResponse : response.entrySet()) {
             String color = entryResponse.getKey();
-            Map<String, Object> colorSizes = (Map<String, Object>) entryResponse .getValue();
+            Map<String, ?> colorSizes = (Map<String, ?>) entryResponse .getValue();
             Map<String, Size> colorSizesItem = new LinkedHashMap<>();
-            for (Map.Entry<String, Object> entrySize : colorSizes.entrySet()) {
+            for (Map.Entry<String, ?> entrySize : colorSizes.entrySet()) {
                 colorSizesItem.put(entrySize.getKey(), mapper.convertValue(entrySize.getValue(), Size.class));
             }
             colorsItem.put(color, new ColorSizesItem(colorSizesItem));

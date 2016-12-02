@@ -22,6 +22,9 @@
  */
 package com.github.gcauchis.scalablepress4j;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -74,6 +77,9 @@ public class ScalablePress4J {
     /** The mockup. */
     private MockupApi mockupApi;
 
+    /** The prepared apis. */
+    private final List<AbstractRestApi> apis = new ArrayList<>();
+
     /**
      * Sets the api authentication key.
      *
@@ -83,40 +89,19 @@ public class ScalablePress4J {
     @Value("${scalablepress.api.basicauth}")
     public void setBasicAuth(String basicAuth) {
         this.basicAuth = basicAuth;
-        if (billingApi != null) {
-            billingApi.setBasicAuth(basicAuth);
-        }
-        if (designApi != null) {
-            designApi.setBasicAuth(basicAuth);
-        }
-        if (eventApi != null) {
-            eventApi.setBasicAuth(basicAuth);
-        }
-        if (orderApi != null) {
-            orderApi.setBasicAuth(basicAuth);
-        }
-        if (productApi != null) {
-            productApi.setBasicAuth(basicAuth);
-        }
-        if (quoteApi != null) {
-            quoteApi.setBasicAuth(basicAuth);
-        }
-        if (reshipApi != null) {
-            reshipApi.setBasicAuth(basicAuth);
-        }
-        if (mockupApi != null) {
-            mockupApi.setBasicAuth(basicAuth);
-        }
+        apis.forEach(api -> api.setBasicAuth(basicAuth));
     }
 
     private void prepareV2Api(AbstractRestApi service) {
         service.setBaseUrl(SCALABLE_PRESS_V2_BASE_URL);
         service.setBasicAuth(basicAuth);
+        apis.add(service);
     }
 
     private void prepareV3Api(AbstractRestApi service) {
         service.setBaseUrl(SCALABLE_PRESS_V3_BASE_URL);
         service.setBasicAuth(basicAuth);
+        apis.add(service);
     }
 
     /**

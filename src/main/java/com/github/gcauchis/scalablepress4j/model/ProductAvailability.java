@@ -56,10 +56,11 @@ public class ProductAvailability {
      *
      * @param colorsAvailability the colors availability
      */
-    public ProductAvailability(Map<String, Object> colorsAvailability) {
+    @SuppressWarnings("unchecked")
+    public ProductAvailability(Map<String, ?> colorsAvailability) {
         super();
         this.colorsAvailability = colorsAvailability.entrySet().stream()
-                .collect(Collectors.toMap(e -> e.getKey(), e -> new ColorAvailability(e.getKey(), (Map<String, Object>) e.getValue())));
+                .collect(Collectors.toMap(e -> e.getKey(), e -> new ColorAvailability(e.getKey(), (Map<String, ?>) e.getValue())));
     }
 
     /**
