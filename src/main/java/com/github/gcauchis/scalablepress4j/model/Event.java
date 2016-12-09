@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Event {
     /** Name of the event (quote, order, etc.) */
-    public String name;
+    private String name;
     /** Description of the event. */
-    public String description;
+    private String description;
     /** Optional additional data. <a href="https://scalablepress.com/docs/#order-status">Event examples</a> */
-    public Map<String, Object> meta;
+    private Map<String, Object> meta;
     /** Time at which the event occurred. */
-    public String createdAt;
+    private String createdAt;
 
     /**
      * Gets the Name of the event (quote, order, etc.).
@@ -117,9 +117,6 @@ public class Event {
         this.createdAt = createdAt;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return "Event [name=" + name + ", description=" + description

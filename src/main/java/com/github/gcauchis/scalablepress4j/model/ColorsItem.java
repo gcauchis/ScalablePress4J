@@ -34,6 +34,11 @@ public class ColorsItem {
     /** The colors */
     private Map<String, ColorSizesItem> colors;
 
+    /**
+     * Instantiates a new colors item.
+     *
+     * @param colors the colors
+     */
     public ColorsItem(Map<String, ColorSizesItem> colors) {
         this.colors = colors;
     }
