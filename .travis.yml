@@ -16,5 +16,5 @@ install:
 script:
 - mvn --settings .travis/settings.xml test -B
 after_success:
-- mvn org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar --settings .travis/settings.xml -Dsource.skip=true -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN
+- mvn org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar --settings .travis/settings.xml -Dsource.skip=true -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN
 - mvn deploy --settings .travis/settings.xml -P ossrhdeploy -DskipTests=true
