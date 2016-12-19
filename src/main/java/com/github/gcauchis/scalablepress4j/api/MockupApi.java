@@ -22,6 +22,7 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
+import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Mockup;
 import com.github.gcauchis.scalablepress4j.model.Url;
 
@@ -40,9 +41,10 @@ public class MockupApi extends AbstractRestApi {
      *
      * @param mockup the mockup
      * @return the mockup url
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#create-mockup">https://scalablepress.com/docs/#create-mockup</a>
      */
-    public String create(Mockup mockup) {
+    public String create(Mockup mockup) throws ScalablePressBadRequestException {
         return post("mockup", mockup, Url.class).getUrl();
     }
 }
