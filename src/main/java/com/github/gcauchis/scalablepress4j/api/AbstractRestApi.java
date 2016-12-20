@@ -40,7 +40,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -234,7 +233,7 @@ public abstract class AbstractRestApi {
      * @return the paginated result
      */
     private <T> PaginatedResult<T> buildPaginatedResult(ResponseEntity<T> resultEntity, int page) {
-        PaginatedResult<T> paginatedResult = new PaginatedResult<T>();
+        PaginatedResult<T> paginatedResult = new PaginatedResult<>();
         paginatedResult.setResult(resultEntity.getBody());
         paginatedResult.setPageNumber(page);
         paginatedResult.setLimit(limit);
@@ -255,9 +254,8 @@ public abstract class AbstractRestApi {
      * @param url the url
      * @param responseType the response type
      * @return the t
-     * @throws RestClientException the rest client exception
      */
-    protected <T> T get(String url, Class<T> responseType) throws RestClientException {
+    protected <T> T get(String url, Class<T> responseType) {
         log.trace("Call GET for: {}, to url: {}", responseType.toString(), url);
         return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
     }
@@ -270,9 +268,8 @@ public abstract class AbstractRestApi {
      * @param page the page
      * @param responseType the response type
      * @return the paginated result
-     * @throws RestClientException the rest client exception
      */
-    protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType) throws RestClientException {
+    protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType) {
         log.trace("Call GET page {} for: {}, to url: {}", page, responseType.toString(), url);
         return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType), page);
     }
@@ -285,9 +282,8 @@ public abstract class AbstractRestApi {
      * @param responseType the response type
      * @param urlVariables the url variables
      * @return the t
-     * @throws RestClientException the rest client exception
      */
-    protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
+    protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) {
         log.trace("Call GET for: {}, to url: {}, with var: {}", responseType.toString(), url, urlVariables);
         return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
     }
@@ -301,9 +297,8 @@ public abstract class AbstractRestApi {
      * @param responseType the response type
      * @param urlVariables the url variables
      * @return the paginated result
-     * @throws RestClientException the rest client exception
      */
-    protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType, Map<String, ?> urlVariables) throws RestClientException {
+    protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType, Map<String, ?> urlVariables) {
         log.trace("Call GET page {} for: {}, to url: {}, with var: {}", page, responseType.toString(), url, urlVariables);
         return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType, urlVariables), page);
     }
@@ -316,9 +311,8 @@ public abstract class AbstractRestApi {
      * @param request the request
      * @param responseType the response type
      * @return the t
-     * @throws RestClientException the rest client exception
      */
-    protected <T> T post(String url, Object request, Class<T> responseType) throws RestClientException {
+    protected <T> T post(String url, Object request, Class<T> responseType) {
         log.trace("Call POST for: {}, to url: {}, with req {}", responseType.toString(), url, request);
         return getRestTemplate().postForEntity(baseUrl + url, request, responseType).getBody();
     }
@@ -332,9 +326,8 @@ public abstract class AbstractRestApi {
      * @param request the request
      * @param responseType the response type
      * @return the paginated result
-     * @throws RestClientException the rest client exception
      */
-    protected <T> PaginatedResult<T> post(String url, int page, Object request, Class<T> responseType) throws RestClientException {
+    protected <T> PaginatedResult<T> post(String url, int page, Object request, Class<T> responseType) {
         log.trace("Call POST page {} for: {}, to url: {}, with req {}", page, responseType.toString(), url, request);
         return buildPaginatedResult(getRestTemplate().postForEntity(preparePaginatedUrl(baseUrl + url, page), request, responseType), page);
     }
@@ -346,9 +339,8 @@ public abstract class AbstractRestApi {
      * @param url the url
      * @param responseType the response type
      * @return the t
-     * @throws RestClientException the rest client exception
      */
-    protected <T> T delete(String url, Class<T> responseType) throws RestClientException {
+    protected <T> T delete(String url, Class<T> responseType) {
         log.trace("Call DELETE for: {}, to url: {}", responseType.toString(), url);
         return getRestTemplate().exchange(baseUrl + url, HttpMethod.DELETE, null, responseType).getBody();
     }
