@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Url json object.
@@ -30,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author gcauchis
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Url {
 
     /** The url. */

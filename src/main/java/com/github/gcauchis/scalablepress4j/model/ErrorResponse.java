@@ -26,6 +26,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Error Response Object.
@@ -33,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author gcauchis
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ErrorResponse implements Serializable {
     
     /** The Constant serialVersionUID. */

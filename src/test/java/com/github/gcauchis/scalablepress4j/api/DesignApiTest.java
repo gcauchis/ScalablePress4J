@@ -26,6 +26,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignResponse;
@@ -56,11 +57,12 @@ public class DesignApiTest extends AbstractApiTest {
     
     /**
      * Test design work flow.
+     * @throws JsonProcessingException 
      */
     @Test
-    public void designWorkFlow() {
+    public void designWorkFlow() throws JsonProcessingException {
         Design design = buildTestDesign();
-        log.info("Create design");
+        log.info("Create design: {}", objectMapper.writeValueAsString(design));
         DesignResponse response = designApi.create(design);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getDesignId());

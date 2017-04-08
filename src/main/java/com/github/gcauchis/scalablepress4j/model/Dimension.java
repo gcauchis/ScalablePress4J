@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Dimension json object
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#dimension-object">https://scalablepress.com/docs/#dimension-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Dimension {
     /** <b>Screenprint/DTG/poster only</b>, width in inches of the print on the garment, or the width of the poster, specify this OR the height of the print */
     private Number width;

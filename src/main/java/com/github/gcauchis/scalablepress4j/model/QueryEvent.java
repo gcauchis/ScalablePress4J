@@ -22,12 +22,17 @@
  */
 package com.github.gcauchis.scalablepress4j.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * The Query.
  *
  * @author gcauchis
  * @see <a href="https://scalablepress.com/docs/#query-events">https://scalablepress.com/docs/#query-events</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class QueryEvent {
     /** ID of an order. When given, only events of that order will be returned */
     private String orderId;

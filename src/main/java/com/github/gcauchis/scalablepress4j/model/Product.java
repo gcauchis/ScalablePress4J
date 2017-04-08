@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress4j.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Product json object.
@@ -33,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#product-object">https://scalablepress.com/docs/#product-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Product {
 
     /** Comments on the product (its fit and/or feel). */

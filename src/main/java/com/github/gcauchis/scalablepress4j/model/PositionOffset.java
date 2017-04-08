@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Position Offset json object.
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#position-offset-object">https://scalablepress.com/docs/#position-offset-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PositionOffset {
 
     /** top offset in inches, specify this OR the bottom offset of the print. */
@@ -75,11 +77,6 @@ public class PositionOffset {
         this.bottom = bottom;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return "PositionOffset [top=" + top + ", bottom=" + bottom + "]";

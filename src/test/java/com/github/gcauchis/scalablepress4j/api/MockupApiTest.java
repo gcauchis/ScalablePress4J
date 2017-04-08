@@ -61,12 +61,45 @@ public class MockupApiTest extends AbstractApiTest {
     @Test
     @Ignore
     public void create() {
+//        curl "https://api.scalablepress.com/v3/mockup" \
+//        -u ":YOURAPIKEY"
+//        -F "template[name]=tshirt-front"
+//        -F "product[id]=gildan-cotton-t-shirt"
+//        -F "product[color]=Navy"
+//        -F "design[type]=dtg"
+//        -F "design[sides][front][artwork]=@image.png"
+//        -F "design[sides][front][dimensions][width]=5" \
+//        -F "design[sides][front][position][horizontal]=C" \
+//        -F "design[sides][front][position][offset][top]=2.5" \
+//        -F "output[width]=1000"
+//        -F "output[height]=1000"
+//        -F "padding[height]=10"
+//        -F "output[format]=png"
+//        Mockup mockup = new Mockup();
+//        Design design = buildTestDesign();
+//        mockup.setDesign(design);
+//        Template template = new Template();
+//        template.setName("tshirt-front");
+//        mockup.setTemplate(template);
+//        MockupProduct mockupProduct = new MockupProduct();
+//        mockupProduct.setId("gildan-cotton-t-shirt");
+//        mockupProduct.setColor("Navy");
+//        mockup.setProduct(mockupProduct);
+//        MockupOutput output = new MockupOutput();
+//        output.setWidth(1000);
+//        output.setHeight(1000);
+//        output.setPadding(10);
+//        output.setFormat("png");
+//        mockup.setOutput(output);
+        
+//
         Mockup mockup = new Mockup();
         Design design = buildTestDesign();
         mockup.setDesign(design);
         Template template = new Template();
-        template.setName("gildan-cotton-t-shirt");
-        template.setBackground("dark-wood");
+        template.setName("tshirt-front");
+//        template.setName("gildan-cotton-t-shirt");
+//        template.setBackground("dark-wood");
         mockup.setTemplate(template);
         MockupProduct mockupProduct = new MockupProduct();
         mockupProduct.setId("gildan-cotton-t-shirt");

@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Design json object
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#design-object">https://scalablepress.com/docs/#design-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Design {
     /** Optional reference name for design */
     private String name;

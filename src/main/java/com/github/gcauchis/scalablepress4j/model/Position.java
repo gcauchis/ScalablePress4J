@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Position json object.
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#position-object">https://scalablepress.com/docs/#position-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Position {
     /** <b>Screenprint/DTG only</b>, horizontal position. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a>. */
     private String horizontal;

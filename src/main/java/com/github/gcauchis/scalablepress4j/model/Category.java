@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress4j.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Category json object.
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#list-product-categories">https://scalablepress.com/docs/#list-product-categories</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Category {
 
     /** Printing categorization. <code>Garment</code>, <code>Case</code>, <code>Mug</code>, or <code>Poster</code>. */

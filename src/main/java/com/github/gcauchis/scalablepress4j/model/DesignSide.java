@@ -25,6 +25,7 @@ package com.github.gcauchis.scalablepress4j.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * The Design Side json object
@@ -33,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="https://scalablepress.com/docs/#design-side-object">https://scalablepress.com/docs/#design-side-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DesignSide {
     /** Artwork file or absolute URL for this side of the design. <a href="https://scalablepress.com/services#artwork_requirements">Artwork requirements</a> */
     private String artwork;

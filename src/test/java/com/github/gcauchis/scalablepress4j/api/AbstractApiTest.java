@@ -30,6 +30,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gcauchis.scalablepress4j.ScalablePress4J;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignSide;
@@ -57,6 +58,9 @@ public abstract class AbstractApiTest {
     /** The scalable press spring bean. */
     @Autowired
     protected ScalablePress4J scalablePress;
+    
+    /**  The json object mapper. */
+    protected final ObjectMapper objectMapper = new ObjectMapper();
     
     /**
      * Builds the test design.

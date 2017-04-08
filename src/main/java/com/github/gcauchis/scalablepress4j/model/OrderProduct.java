@@ -23,6 +23,7 @@
 package com.github.gcauchis.scalablepress4j.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.gcauchis.scalablepress4j.api.ProductApi;
 
 /**
@@ -32,6 +33,7 @@ import com.github.gcauchis.scalablepress4j.api.ProductApi;
  * @see <a href="https://scalablepress.com/docs/#order-product-object">https://scalablepress.com/docs/#order-product-object</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderProduct {
     /**
      * <code>productId</code> of the product you wish to order, retrieved from the {@link ProductApi Product API}, this product must be compatible with the
