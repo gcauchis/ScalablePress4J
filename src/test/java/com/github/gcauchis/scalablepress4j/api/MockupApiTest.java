@@ -27,10 +27,16 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.gcauchis.scalablepress4j.model.Design;
+import com.github.gcauchis.scalablepress4j.model.DesignSide;
+import com.github.gcauchis.scalablepress4j.model.DesignSides;
+import com.github.gcauchis.scalablepress4j.model.Dimension;
 import com.github.gcauchis.scalablepress4j.model.Mockup;
 import com.github.gcauchis.scalablepress4j.model.MockupOutput;
 import com.github.gcauchis.scalablepress4j.model.MockupProduct;
+import com.github.gcauchis.scalablepress4j.model.Position;
+import com.github.gcauchis.scalablepress4j.model.PositionOffset;
 import com.github.gcauchis.scalablepress4j.model.Template;
 
 /**
@@ -60,7 +66,18 @@ public class MockupApiTest extends AbstractApiTest {
 
     @Test
     @Ignore
-    public void create() {
+    public void create() throws JsonProcessingException {
+        
+        // create Mockup 
+        // {"template":{"name":"tshirt-front"},
+        // "product":{"id":"gildan-cotton-t-shirt","color":"Navy"},
+        // "design":{"type":"dtg","sides":{"front":{"artwork":"https://raw.githubusercontent.com/gcauchis/ScalablePressWrapper/master/src/test/resources/lena_150dpi.png",
+        //                                "dimensions":{"width":5},"position":{"horizontal":"C","offset":{"top":2.5}}}}},
+        // "output":{"width":1000,"height":1000,"padding":10,"format":"png"}}
+        // ...
+        // Response error object: ErrorResponse [statusCode=400, issues=null, path=null, message=Template tshirt-front is not available for Gildan Cotton T-Shirt]
+        
+        
 //        curl "https://api.scalablepress.com/v3/mockup" \
 //        -u ":YOURAPIKEY"
 //        -F "template[name]=tshirt-front"
@@ -75,43 +92,60 @@ public class MockupApiTest extends AbstractApiTest {
 //        -F "output[height]=1000"
 //        -F "padding[height]=10"
 //        -F "output[format]=png"
-//        Mockup mockup = new Mockup();
-//        Design design = buildTestDesign();
-//        mockup.setDesign(design);
-//        Template template = new Template();
-//        template.setName("tshirt-front");
-//        mockup.setTemplate(template);
-//        MockupProduct mockupProduct = new MockupProduct();
-//        mockupProduct.setId("gildan-cotton-t-shirt");
-//        mockupProduct.setColor("Navy");
-//        mockup.setProduct(mockupProduct);
-//        MockupOutput output = new MockupOutput();
-//        output.setWidth(1000);
-//        output.setHeight(1000);
-//        output.setPadding(10);
-//        output.setFormat("png");
-//        mockup.setOutput(output);
-        
-//
         Mockup mockup = new Mockup();
-        Design design = buildTestDesign();
+        Design design = new Design();
+        design.setType("dtg");
+        DesignSides designSides = new DesignSides();
+        DesignSide front = new DesignSide();
+        front.setArtwork("https://raw.githubusercontent.com/gcauchis/ScalablePressWrapper/master/src/test/resources/lena_150dpi.png");
+        Dimension dimension = new Dimension();
+        dimension.setWidth(5);
+        front.setDimensions(dimension);
+        Position position = new Position();
+        position.setHorizontal("C");
+        PositionOffset positionOffset = new PositionOffset();
+        positionOffset.setTop(2.5);
+        position.setOffset(positionOffset);
+        front.setPosition(position);
+        designSides.setFront(front);
+        design.setSides(designSides);
         mockup.setDesign(design);
         Template template = new Template();
         template.setName("tshirt-front");
-//        template.setName("gildan-cotton-t-shirt");
-//        template.setBackground("dark-wood");
         mockup.setTemplate(template);
         MockupProduct mockupProduct = new MockupProduct();
         mockupProduct.setId("gildan-cotton-t-shirt");
-        mockupProduct.setColor("Black");
+        mockupProduct.setColor("Navy");
         mockup.setProduct(mockupProduct);
         MockupOutput output = new MockupOutput();
-        output.setWidth(512);
-        output.setHeight(512);
+        output.setWidth(1000);
+        output.setHeight(1000);
         output.setPadding(10);
         output.setFormat("png");
         mockup.setOutput(output);
         
+//
+//        Mockup mockup = new Mockup();
+//        Design design = buildTestDesign();
+//        mockup.setDesign(design);
+//        Template template = new Template();
+////        template.setName("tshirt-front");
+//        template.setName("test");
+////        template.setName("gildan-cotton-t-shirt");
+////        template.setBackground("dark-wood");
+//        mockup.setTemplate(template);
+//        MockupProduct mockupProduct = new MockupProduct();
+//        mockupProduct.setId("gildan-cotton-t-shirt");
+//        mockupProduct.setColor("Black");
+//        mockup.setProduct(mockupProduct);
+//        MockupOutput output = new MockupOutput();
+//        output.setWidth(512);
+//        output.setHeight(512);
+//        output.setPadding(10);
+//        output.setFormat("png");
+//        mockup.setOutput(output);
+
+        log.info("create Mockup {}", objectMapper.writeValueAsString(mockup));
         String url = mockupApi.create(mockup);
         Assert.assertNotNull(url);
         log.info("Mockup url {}", url);

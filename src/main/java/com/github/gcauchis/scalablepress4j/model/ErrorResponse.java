@@ -36,15 +36,21 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ErrorResponse implements Serializable {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5881440703029137699L;
 
     /** The Status Code. */
     private String statusCode;
-    
+
     /** Array of {@link Error error objects} which are preventing a successful call. */
     private List<Error> issues;
+
+    /** Path causing error. */
+    private String path;
+
+    /** The error message. */
+    private String message;
 
     /**
      * Gets The Status Code.
@@ -82,12 +88,45 @@ public class ErrorResponse implements Serializable {
         this.issues = issues;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
+    /**
+     * Gets the path.
+     *
+     * @return the path
      */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * Sets the path.
+     *
+     * @param path the new path
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    /**
+     * Gets the message.
+     *
+     * @return the message
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Sets the message.
+     *
+     * @param message the new message
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String toString() {
-        return "ErrorResponse [statusCode=" + statusCode + ", issues=" + issues
-                + "]";
+        return "ErrorResponse [statusCode=" + statusCode + ", issues=" + issues + ", path=" + path + ", message=" + message + "]";
     }
+
 }
