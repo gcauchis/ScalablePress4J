@@ -84,7 +84,7 @@ public class WorkFlowTest extends AbstractApiTest {
         productApi = scalablePress.productApi();
         quoteApi = scalablePress.quoteApi();
         reshipApi = scalablePress.reshipApi();
-        mockupApi = scalablePress.getMockupApi();
+        mockupApi = scalablePress.mockupApi();
     }
 
     /**

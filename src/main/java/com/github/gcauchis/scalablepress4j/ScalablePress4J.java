@@ -200,7 +200,7 @@ public class ScalablePress4J {
      *
      * @return {@link MockupApi}
      */
-    public MockupApi getMockupApi() {
+    public MockupApi mockupApi() {
         if (mockupApi == null) {
             mockupApi = new MockupApi();
             prepareV3Api(mockupApi);

@@ -207,7 +207,7 @@ public class Product {
      *
      * @return the {@link ProductTemplates templates}
      */
-    public ProductTemplates getTemplate() {
+    public ProductTemplates getTemplates() {
         return templates;
     }
 
@@ -216,7 +216,7 @@ public class Product {
      *
      * @param template the new {@link ProductTemplates templates}
      */
-    public void setTemplate(ProductTemplates templates) {
+    public void setTemplates(ProductTemplates templates) {
         this.templates = templates;
     }
 
