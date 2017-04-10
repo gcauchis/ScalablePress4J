@@ -58,8 +58,8 @@ public class Product {
     /** Whether the product is available to order. */
     private String available;
     
-    /** The {@link ProductTemplate template} names. */
-    private ProductTemplate template;
+    /** The {@link ProductTemplates templates} names. */
+    private ProductTemplates templates;
 
     /** API endpoint for product information (the current url). */
     private String url;
@@ -203,21 +203,21 @@ public class Product {
     }
 
     /**
-     * Gets the {@link ProductTemplate template}.
+     * Gets the {@link ProductTemplates templates}.
      *
-     * @return the {@link ProductTemplate template}
+     * @return the {@link ProductTemplates templates}
      */
-    public ProductTemplate getTemplate() {
-        return template;
+    public ProductTemplates getTemplate() {
+        return templates;
     }
 
     /**
-     * Sets the {@link ProductTemplate template}.
+     * Sets the {@link ProductTemplates templates}.
      *
-     * @param template the new {@link ProductTemplate template}
+     * @param template the new {@link ProductTemplates templates}
      */
-    public void setTemplate(ProductTemplate template) {
-        this.template = template;
+    public void setTemplate(ProductTemplates templates) {
+        this.templates = templates;
     }
 
     /**
@@ -315,7 +315,7 @@ public class Product {
         return "Product [comments=" + comments + ", description=" + description
                 + ", name=" + name + ", type=" + type + ", properties="
                 + properties + ", colors=" + colors + ", available=" + available
-                + ", template=" + template + ", url=" + url + ", image=" + image
+                + ", templates=" + templates + ", url=" + url + ", image=" + image
                 + ", productId=" + productId + ", additionalImages="
                 + additionalImages + ", availabilityUrl=" + availabilityUrl
                 + "]";
