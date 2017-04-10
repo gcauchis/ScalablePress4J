@@ -62,7 +62,7 @@ public class DesignApiTest extends AbstractApiTest {
     @Test
     public void designWorkFlow() throws JsonProcessingException {
         Design design = buildTestDesign();
-        log.info("Create design: {}", objectMapper.writeValueAsString(design));
+        log.info("Create design: {}", toJsonString(design));
         DesignResponse response = designApi.create(design);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getDesignId());

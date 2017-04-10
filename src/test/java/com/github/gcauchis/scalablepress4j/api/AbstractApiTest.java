@@ -30,7 +30,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.gcauchis.scalablepress4j.ScalablePress4J;
 import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignSide;
@@ -87,5 +89,26 @@ public abstract class AbstractApiTest {
         designSides.setFront(front);
         design.setSides(designSides);
         return design;
+    }
+    
+    /**
+     * To json string.
+     *
+     * @param object the object
+     * @return the string
+     */
+    public String toJsonString(Object object) {
+        String result;
+        if (object == null) {
+            result = "null";
+        } else {
+            try {
+                objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+                result = objectMapper.writeValueAsString(object);
+            } catch (JsonProcessingException e) {
+                result = object.toString();
+            }
+        }
+        return result;
     }
 }

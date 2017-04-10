@@ -145,7 +145,7 @@ public class MockupApiTest extends AbstractApiTest {
 //        output.setFormat("png");
 //        mockup.setOutput(output);
 
-        log.info("create Mockup {}", objectMapper.writeValueAsString(mockup));
+        log.info("create Mockup {}", toJsonString(mockup));
         String url = mockupApi.create(mockup);
         Assert.assertNotNull(url);
         log.info("Mockup url {}", url);
