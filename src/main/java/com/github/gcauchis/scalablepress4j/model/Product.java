@@ -57,6 +57,9 @@ public class Product {
 
     /** Whether the product is available to order. */
     private String available;
+    
+    /** The {@link ProductTemplate template} names. */
+    private ProductTemplate template;
 
     /** API endpoint for product information (the current url). */
     private String url;
@@ -200,6 +203,24 @@ public class Product {
     }
 
     /**
+     * Gets the {@link ProductTemplate template}.
+     *
+     * @return the {@link ProductTemplate template}
+     */
+    public ProductTemplate getTemplate() {
+        return template;
+    }
+
+    /**
+     * Sets the {@link ProductTemplate template}.
+     *
+     * @param template the new {@link ProductTemplate template}
+     */
+    public void setTemplate(ProductTemplate template) {
+        this.template = template;
+    }
+
+    /**
      * Gets the API endpoint for product information (the current url).
      *
      * @return the API endpoint for product information (the current url)
@@ -293,10 +314,11 @@ public class Product {
     public String toString() {
         return "Product [comments=" + comments + ", description=" + description
                 + ", name=" + name + ", type=" + type + ", properties="
-                + properties + ", colors=" + colors + ", available="
-                + available + ", url=" + url + ", image=" + image
+                + properties + ", colors=" + colors + ", available=" + available
+                + ", template=" + template + ", url=" + url + ", image=" + image
                 + ", productId=" + productId + ", additionalImages="
                 + additionalImages + ", availabilityUrl=" + availabilityUrl
                 + "]";
     }
+
 }
