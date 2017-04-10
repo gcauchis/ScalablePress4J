@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/51a70ee3f0f14a949da114e1c717498b)](https://www.codacy.com/app/gcauchis/ScalablePress4J?utm_source=github.com&utm_medium=referral&utm_content=gcauchis/ScalablePress4J&utm_campaign=badger)
 # Scalable Press java Wrapper [![Build Status](https://travis-ci.org/gcauchis/ScalablePress4J.svg?branch=master)](https://travis-ci.org/gcauchis/ScalablePress4J) [![Javadocs](http://www.javadoc.io/badge/com.github.gcauchis/ScalablePress4j.svg)](http://www.javadoc.io/doc/com.github.gcauchis/ScalablePress4j) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gcauchis/ScalablePress4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.gcauchis/ScalablePress4j)
 
 This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs/)
