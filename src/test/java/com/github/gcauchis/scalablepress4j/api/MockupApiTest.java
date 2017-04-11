@@ -42,7 +42,6 @@ import com.github.gcauchis.scalablepress4j.model.Template;
 public class MockupApiTest extends AbstractApiTest {
     /** The design api. */
     private MockupApi mockupApi;
-
     /** The product api. */
     private ProductApi productApi;
 
@@ -61,11 +60,11 @@ public class MockupApiTest extends AbstractApiTest {
     @Test
     public void context() {
         Assert.assertNotNull(mockupApi);
+        Assert.assertNotNull(productApi);
     }
 
     @Test
     public void create() throws JsonProcessingException {
-
         Product product = productApi.getProductInformation("gildan-cotton-t-shirt");
         log.info("product {}", toJsonString(product));
         Assert.assertNotNull(product);
