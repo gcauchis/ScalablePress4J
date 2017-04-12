@@ -66,7 +66,7 @@ public class DesignApiTest extends AbstractApiTest {
         DesignResponse response = designApi.create(design);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getDesignId());
-        log.info("Returned design: {} ",response.toString());
+        log.info("Returned design: {} ", response);
         log.info("Design created with designId = {}", response.getDesignId());
         String designId = response.getDesignId();
         
@@ -74,13 +74,13 @@ public class DesignApiTest extends AbstractApiTest {
         DesignResponse retieveDesign = designApi.retrieve(designId);
         Assert.assertNotNull(retieveDesign);
         Assert.assertEquals(designId, retieveDesign.getDesignId());
-        log.info("Returned design: {} ", retieveDesign.toString());
+        log.info("Returned design: {} ", retieveDesign);
         
         log.info("Delete design: {} ", designId);
         DesignResponse deleted = designApi.delete(designId);
         Assert.assertNotNull(deleted);
         Assert.assertEquals(designId, deleted.getDesignId());
-        log.info("Returned design: {} ", deleted.toString());
+        log.info("Returned design: {} ", deleted);
         
         try {
             log.info("Retreive deleted design: {}", designId);

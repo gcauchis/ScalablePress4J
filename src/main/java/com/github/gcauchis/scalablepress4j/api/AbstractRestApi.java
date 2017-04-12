@@ -256,7 +256,7 @@ public abstract class AbstractRestApi {
      * @return the t
      */
     protected <T> T get(String url, Class<T> responseType) {
-        log.trace("Call GET for: {}, to url: {}", responseType.toString(), url);
+        log.trace("Call GET for: {}, to url: {}", responseType, url);
         return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
     }
 
@@ -270,7 +270,7 @@ public abstract class AbstractRestApi {
      * @return the paginated result
      */
     protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType) {
-        log.trace("Call GET page {} for: {}, to url: {}", page, responseType.toString(), url);
+        log.trace("Call GET page {} for: {}, to url: {}", page, responseType, url);
         return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType), page);
     }
 
@@ -284,7 +284,7 @@ public abstract class AbstractRestApi {
      * @return the t
      */
     protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) {
-        log.trace("Call GET for: {}, to url: {}, with var: {}", responseType.toString(), url, urlVariables);
+        log.trace("Call GET for: {}, to url: {}, with var: {}", responseType, url, urlVariables);
         return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
     }
 
@@ -299,7 +299,7 @@ public abstract class AbstractRestApi {
      * @return the paginated result
      */
     protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType, Map<String, ?> urlVariables) {
-        log.trace("Call GET page {} for: {}, to url: {}, with var: {}", page, responseType.toString(), url, urlVariables);
+        log.trace("Call GET page {} for: {}, to url: {}, with var: {}", page, responseType, url, urlVariables);
         return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType, urlVariables), page);
     }
 
@@ -313,7 +313,7 @@ public abstract class AbstractRestApi {
      * @return the t
      */
     protected <T> T post(String url, Object request, Class<T> responseType) {
-        log.trace("Call POST for: {}, to url: {}, with req {}", responseType.toString(), url, request);
+        log.trace("Call POST for: {}, to url: {}, with req {}", responseType, url, request);
         return getRestTemplate().postForEntity(baseUrl + url, request, responseType).getBody();
     }
 
@@ -328,7 +328,7 @@ public abstract class AbstractRestApi {
      * @return the paginated result
      */
     protected <T> PaginatedResult<T> post(String url, int page, Object request, Class<T> responseType) {
-        log.trace("Call POST page {} for: {}, to url: {}, with req {}", page, responseType.toString(), url, request);
+        log.trace("Call POST page {} for: {}, to url: {}, with req {}", page, responseType, url, request);
         return buildPaginatedResult(getRestTemplate().postForEntity(preparePaginatedUrl(baseUrl + url, page), request, responseType), page);
     }
 
@@ -341,7 +341,7 @@ public abstract class AbstractRestApi {
      * @return the t
      */
     protected <T> T delete(String url, Class<T> responseType) {
-        log.trace("Call DELETE for: {}, to url: {}", responseType.toString(), url);
+        log.trace("Call DELETE for: {}, to url: {}", responseType, url);
         return getRestTemplate().exchange(baseUrl + url, HttpMethod.DELETE, null, responseType).getBody();
     }
 
