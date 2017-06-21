@@ -54,7 +54,7 @@ public class OrderApi extends AbstractRestApi{
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#place-order">https://scalablepress.com/docs/#place-order</a>
      */
-    public Order place(String orderToken) throws ScalablePressBadRequestException {
+    public Order place(String orderToken) {
         Map<String, String> args = new LinkedHashMap<>();
         args.put("orderToken", orderToken);
         return post("order", args, Order.class);
@@ -72,7 +72,7 @@ public class OrderApi extends AbstractRestApi{
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#reprint-order">https://scalablepress.com/docs/#reprint-order</a>
      */
-    public QuoteResponse reprint(String orderId, List<OrderItem> orderItems) throws ScalablePressBadRequestException {
+    public QuoteResponse reprint(String orderId, List<OrderItem> orderItems) {
         return post("order/" + orderId + "/reprint", orderItems.toArray(new OrderItem[orderItems.size()]), QuoteResponse.class);
     }
     
@@ -84,7 +84,7 @@ public class OrderApi extends AbstractRestApi{
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-orders">https://scalablepress.com/docs/#retrieve-orders</a>
      */
-    public List<Order> retrieve() throws ScalablePressBadRequestException {
+    public List<Order> retrieve() {
         return Arrays.asList(get("order", Order[].class));
     }
     
@@ -98,7 +98,7 @@ public class OrderApi extends AbstractRestApi{
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-order">https://scalablepress.com/docs/#retrieve-single-order</a>
      */
-    public Order retrieve(String orderId) throws ScalablePressBadRequestException {
+    public Order retrieve(String orderId) {
         return get("order/" + orderId, Order.class);
     }
     
@@ -117,7 +117,7 @@ public class OrderApi extends AbstractRestApi{
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#change-order-address">https://scalablepress.com/docs/#change-order-address</a>
      */
-    public Order changeAddress(String orderId, int itemIndex, Address newAddress) throws ScalablePressBadRequestException {
+    public Order changeAddress(String orderId, int itemIndex, Address newAddress) {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("itemIndex", itemIndex);
         args.put("address", newAddress);
@@ -136,7 +136,7 @@ public class OrderApi extends AbstractRestApi{
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#cancel-entire-order">https://scalablepress.com/docs/#cancel-entire-order</a>
      */
-    public Order cancel(String orderId) throws ScalablePressBadRequestException {
+    public Order cancel(String orderId) {
         return delete("order/" + orderId, Order.class);
     }
 }

@@ -47,7 +47,7 @@ public class ReshipApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-reship-orders">https://scalablepress.com/docs/#retrieve-reship-orders</a>
      */
-    public List<Reship> retrieve() throws ScalablePressBadRequestException {
+    public List<Reship> retrieve() {
         return Arrays.asList(get("reship", Reship[].class));
     }
 
@@ -61,7 +61,7 @@ public class ReshipApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-reship-order">https://scalablepress.com/docs/#retrieve-single-reship-order</a>
      */
-    public Reship retrieve(String reshipId) throws ScalablePressBadRequestException {
+    public Reship retrieve(String reshipId) {
         return get("reship/" + reshipId, Reship.class);
     }
 
@@ -77,7 +77,7 @@ public class ReshipApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#place-reship-order">https://scalablepress.com/docs/#place-reship-order</a>
      */
-    public Reship place(String reshipId, Address address) throws ScalablePressBadRequestException {
+    public Reship place(String reshipId, Address address) {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("address", address);
         return post("reship/" + reshipId + "/request", args, Reship.class);
@@ -93,7 +93,7 @@ public class ReshipApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#cancel-reship-order">https://scalablepress.com/docs/#cancel-reship-order</a>
      */
-    public Reship cancel(String reshipId) throws ScalablePressBadRequestException {
+    public Reship cancel(String reshipId) {
         return post("reship/" + reshipId + "/cancel", null, Reship.class);
     }
 }

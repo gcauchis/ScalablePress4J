@@ -88,7 +88,7 @@ public class QuoteApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#standard-quote">https://scalablepress.com/docs/#standard-quote</a>
      */
-    public QuoteResponse quote(Quote quote) throws ScalablePressBadRequestException {
+    public QuoteResponse quote(Quote quote) {
         return post("quote", quote, QuoteResponse.class);
     }
 
@@ -105,7 +105,7 @@ public class QuoteApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#bulk-quote">https://scalablepress.com/docs/#bulk-quote</a>
      */
-    public QuoteResponse bulkQuote(BulkQuote bulkQuote) throws ScalablePressBadRequestException {
+    public QuoteResponse bulkQuote(BulkQuote bulkQuote) {
         return post("quote/bulk", bulkQuote, QuoteResponse.class);
     }
     
@@ -116,7 +116,7 @@ public class QuoteApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-quote">https://scalablepress.com/docs/#retrieve-quote</a>
      */
-    public Order retrieve(String orderToken) throws ScalablePressBadRequestException {
+    public Order retrieve(String orderToken) {
         return get("quote/" + orderToken, Order.class);
     }
 }

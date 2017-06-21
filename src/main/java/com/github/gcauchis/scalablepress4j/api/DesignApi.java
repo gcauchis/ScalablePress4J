@@ -45,7 +45,7 @@ public class DesignApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#create-design-object">https://scalablepress.com/docs/#create-design-object</a>
      */
-    public DesignResponse create(Design design) throws ScalablePressBadRequestException {
+    public DesignResponse create(Design design) {
         return post("design", design, DesignResponse.class);
     }
     
@@ -56,7 +56,7 @@ public class DesignApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-design-object">https://scalablepress.com/docs/#retrieve-design-object</a>
      */
-    public DesignResponse retrieve(String designId) throws ScalablePressBadRequestException {
+    public DesignResponse retrieve(String designId) {
         return get("design/" + designId, DesignResponse.class);
     }
     
@@ -67,7 +67,7 @@ public class DesignApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#delete-design">https://scalablepress.com/docs/#delete-design</a>
      */
-    public DesignResponse delete(String designId) throws ScalablePressBadRequestException {
+    public DesignResponse delete(String designId) {
         return delete("design/" + designId, DesignResponse.class);
     }
 }

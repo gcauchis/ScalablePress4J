@@ -297,6 +297,7 @@ public abstract class AbstractRestApi {
      * @param responseType the response type
      * @param urlVariables the url variables
      * @return the paginated result
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      */
     protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType, Map<String, ?> urlVariables) {
         log.trace("Call GET page {} for: {}, to url: {}, with var: {}", page, responseType, url, urlVariables);
@@ -311,6 +312,7 @@ public abstract class AbstractRestApi {
      * @param request the request
      * @param responseType the response type
      * @return the t
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      */
     protected <T> T post(String url, Object request, Class<T> responseType) {
         log.trace("Call POST for: {}, to url: {}, with req {}", responseType, url, request);
@@ -326,6 +328,7 @@ public abstract class AbstractRestApi {
      * @param request the request
      * @param responseType the response type
      * @return the paginated result
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      */
     protected <T> PaginatedResult<T> post(String url, int page, Object request, Class<T> responseType) {
         log.trace("Call POST page {} for: {}, to url: {}, with req {}", page, responseType, url, request);
@@ -339,6 +342,7 @@ public abstract class AbstractRestApi {
      * @param url the url
      * @param responseType the response type
      * @return the t
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      */
     protected <T> T delete(String url, Class<T> responseType) {
         log.trace("Call DELETE for: {}, to url: {}", responseType, url);

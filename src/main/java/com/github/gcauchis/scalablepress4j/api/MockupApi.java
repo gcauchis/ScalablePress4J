@@ -44,7 +44,7 @@ public class MockupApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#create-mockup">https://scalablepress.com/docs/#create-mockup</a>
      */
-    public String create(Mockup mockup) throws ScalablePressBadRequestException {
+    public String create(Mockup mockup) {
         return post("mockup", mockup, Url.class).getUrl();
     }
 }

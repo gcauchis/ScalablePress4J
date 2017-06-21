@@ -62,7 +62,7 @@ public class BillingApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-invoice-objects">https://scalablepress.com/docs/#list-invoice-objects</a>
      */
-    public List<Invoice> listInvoice() throws ScalablePressBadRequestException {
+    public List<Invoice> listInvoice() {
         // "billing/invoice" or "billing" ? definition and example different...
         return Arrays.asList(get("billing/invoice", Invoice[].class));
     }
@@ -75,7 +75,7 @@ public class BillingApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-invoice-object">https://scalablepress.com/docs/#retrieve-invoice-object</a>
      */
-    public Invoice retrieveInvoice(String invoiceId) throws ScalablePressBadRequestException {
+    public Invoice retrieveInvoice(String invoiceId) {
         return get("billing/invoice/" + invoiceId, Invoice.class);
     }
     
@@ -104,7 +104,7 @@ public class BillingApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction">https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction</a>
      */
-    public Invoice payInvoiceWithPayPalTransaction(String invoiceId, String transactionId, Number amount, String email) throws ScalablePressBadRequestException {
+    public Invoice payInvoiceWithPayPalTransaction(String invoiceId, String transactionId, Number amount, String email) {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("transactionId", transactionId);
         args.put("amount", amount);

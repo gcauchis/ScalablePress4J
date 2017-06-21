@@ -31,6 +31,7 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
 
 /**
  * The Event API helps you keep track of event of your orders.
+ * 
  * @author gcauchis
  * @see <a href="https://scalablepress.com/docs/#event-api">https://scalablepress.com/docs/#event-api</a>
  */
@@ -45,7 +46,7 @@ public class EventApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#query-events">https://scalablepress.com/docs/#query-events</a>
      */
-    public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) throws ScalablePressBadRequestException {
+    public PaginatedResultList<Event> queryEvents(QueryEvent query, int page) {
         StringBuilder args = new StringBuilder();
         if (query != null) {
             appendArg(args, "orderId", query.getOrderId());
@@ -56,11 +57,11 @@ public class EventApi extends AbstractRestApi {
             appendArg(args, "itemName", query.getItemName());
             appendArg(args, "sort", query.getSort());
         }
-        return new PaginatedResultList<>(get("event?" + args.toString(), page, Event[].class));
+        return new PaginatedResultList<>( get("event?" + args.toString(), page, Event[].class));
     }
-    
-    protected void appendArg(StringBuilder args, String argName, String argValue)
-    {
+
+    protected void appendArg(StringBuilder args, String argName,
+            String argValue) {
         if (StringUtils.isNotBlank(argValue)) {
             if (args.length() > 0) {
                 args.append("&");
@@ -68,7 +69,7 @@ public class EventApi extends AbstractRestApi {
             args.append(argName).append("=").append(argValue);
         }
     }
-    
+
     /**
      * Provide the eventId in order to receive the details of an event.
      * 
@@ -76,7 +77,7 @@ public class EventApi extends AbstractRestApi {
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-event">https://scalablepress.com/docs/#retrieve-single-event</a>
      */
-    public Event retrieve(String eventId) throws ScalablePressBadRequestException {
+    public Event retrieve(String eventId) {
         return get("event/" + eventId, Event.class);
     }
 }
