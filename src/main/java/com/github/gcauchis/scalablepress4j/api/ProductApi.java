@@ -51,8 +51,8 @@ public class ProductApi extends AbstractRestApi {
     /** The Constant URL_PRODUCTS. */
     private static final String URL_PRODUCTS = "products";
 
-    /** The url categories. */
-    private static String URL_CATEGORIES = "categories";
+    /** The Constant URL_CATEGORIES. */
+    private static final String URL_CATEGORIES = "categories";
 
     /**
      * Get a list of available product categories.
