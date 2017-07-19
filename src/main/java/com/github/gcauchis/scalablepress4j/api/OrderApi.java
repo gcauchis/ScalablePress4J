@@ -44,6 +44,9 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  */
 public class OrderApi extends AbstractRestApi{
 
+    /** The Constant URL_ORDER. */
+    private static final String URL_ORDER = "order";
+
     /**
      * In order to place an order, you first must make a quote request. After a
      * successful quote request, you will be provided with a orderToken. This
@@ -57,7 +60,7 @@ public class OrderApi extends AbstractRestApi{
     public Order place(String orderToken) {
         Map<String, String> args = new LinkedHashMap<>();
         args.put("orderToken", orderToken);
-        return post("order", args, Order.class);
+        return post(URL_ORDER, args, Order.class);
     }
 
     /**
@@ -73,9 +76,9 @@ public class OrderApi extends AbstractRestApi{
      * @see <a href="https://scalablepress.com/docs/#reprint-order">https://scalablepress.com/docs/#reprint-order</a>
      */
     public QuoteResponse reprint(String orderId, List<OrderItem> orderItems) {
-        return post("order/" + orderId + "/reprint", orderItems.toArray(new OrderItem[orderItems.size()]), QuoteResponse.class);
+        return post(buildUrl(URL_ORDER, orderId, "reprint"), orderItems.toArray(new OrderItem[orderItems.size()]), QuoteResponse.class);
     }
-    
+
     /**
      * After placing several orders you can get the status and other information
      * on each of your orders.
@@ -85,9 +88,9 @@ public class OrderApi extends AbstractRestApi{
      * @see <a href="https://scalablepress.com/docs/#retrieve-orders">https://scalablepress.com/docs/#retrieve-orders</a>
      */
     public List<Order> retrieve() {
-        return Arrays.asList(get("order", Order[].class));
+        return Arrays.asList(get(URL_ORDER, Order[].class));
     }
-    
+
     /**
      * Once an order has been placed, you can check on the status and other
      * information of an order by using the orderId field provided in the order
@@ -99,9 +102,9 @@ public class OrderApi extends AbstractRestApi{
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-order">https://scalablepress.com/docs/#retrieve-single-order</a>
      */
     public Order retrieve(String orderId) {
-        return get("order/" + orderId, Order.class);
+        return get(buildUrl(URL_ORDER, orderId), Order.class);
     }
-    
+
     /**
      * So long as an order’s status has been validated and is not cancelled or
      * shipping, an order’s shipping address can be changed using the orderId.
@@ -121,9 +124,9 @@ public class OrderApi extends AbstractRestApi{
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("itemIndex", itemIndex);
         args.put("address", newAddress);
-        return post("order/" + orderId + "/changeAddress", args, Order.class);
+        return post(buildUrl(URL_ORDER, orderId, "changeAddress"), args, Order.class);
     }
-    
+
     /**
      * So long as an order’s status has not reached printing, you can cancel an
      * order by using the orderId. An order’s status and orderId can both be
@@ -137,6 +140,6 @@ public class OrderApi extends AbstractRestApi{
      * @see <a href="https://scalablepress.com/docs/#cancel-entire-order">https://scalablepress.com/docs/#cancel-entire-order</a>
      */
     public Order cancel(String orderId) {
-        return delete("order/" + orderId, Order.class);
+        return delete(buildUrl(URL_ORDER, orderId), Order.class);
     }
 }

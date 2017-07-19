@@ -39,6 +39,9 @@ import com.github.gcauchis.scalablepress4j.model.Reship;
  */
 public class ReshipApi extends AbstractRestApi {
 
+    /** The Constant URL_RESHIP. */
+    private static final String URL_RESHIP = "reship";
+
     /**
      * You can get the status and other information on all orders that have been
      * shipped and returned.
@@ -48,7 +51,7 @@ public class ReshipApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#retrieve-reship-orders">https://scalablepress.com/docs/#retrieve-reship-orders</a>
      */
     public List<Reship> retrieve() {
-        return Arrays.asList(get("reship", Reship[].class));
+        return Arrays.asList(get(URL_RESHIP, Reship[].class));
     }
 
     /**
@@ -62,7 +65,7 @@ public class ReshipApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-reship-order">https://scalablepress.com/docs/#retrieve-single-reship-order</a>
      */
     public Reship retrieve(String reshipId) {
-        return get("reship/" + reshipId, Reship.class);
+        return get(buildUrl(URL_RESHIP, reshipId), Reship.class);
     }
 
     /**
@@ -80,7 +83,7 @@ public class ReshipApi extends AbstractRestApi {
     public Reship place(String reshipId, Address address) {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("address", address);
-        return post("reship/" + reshipId + "/request", args, Reship.class);
+        return post(buildUrl(URL_RESHIP, reshipId, "request"), args, Reship.class);
     }
 
     /**
@@ -94,6 +97,6 @@ public class ReshipApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#cancel-reship-order">https://scalablepress.com/docs/#cancel-reship-order</a>
      */
     public Reship cancel(String reshipId) {
-        return post("reship/" + reshipId + "/cancel", null, Reship.class);
+        return post(buildUrl(URL_RESHIP, reshipId, "cancel"), null, Reship.class);
     }
 }

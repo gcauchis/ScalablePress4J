@@ -38,6 +38,9 @@ import com.github.gcauchis.scalablepress4j.model.DesignResponse;
  */
 public class DesignApi extends AbstractRestApi {
 
+    /** The Constant URL_DESIGN. */
+    private static final String URL_DESIGN = "design";
+
     /**
      * Provide the details on your design in order to receive a designId, which is required to place an order.
      * @param design
@@ -46,9 +49,9 @@ public class DesignApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#create-design-object">https://scalablepress.com/docs/#create-design-object</a>
      */
     public DesignResponse create(Design design) {
-        return post("design", design, DesignResponse.class);
+        return post(URL_DESIGN, design, DesignResponse.class);
     }
-    
+
     /**
      * Provide the designId in order to receive the details of a previously submitted design.
      * @param designId
@@ -57,9 +60,9 @@ public class DesignApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#retrieve-design-object">https://scalablepress.com/docs/#retrieve-design-object</a>
      */
     public DesignResponse retrieve(String designId) {
-        return get("design/" + designId, DesignResponse.class);
+        return get(buildUrl(URL_DESIGN, designId), DesignResponse.class);
     }
-    
+
     /**
      * Provide the designId in order to delete a previously submitted design.
      * @param designId
@@ -68,6 +71,6 @@ public class DesignApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#delete-design">https://scalablepress.com/docs/#delete-design</a>
      */
     public DesignResponse delete(String designId) {
-        return delete("design/" + designId, DesignResponse.class);
+        return delete(buildUrl(URL_DESIGN, designId), DesignResponse.class);
     }
 }

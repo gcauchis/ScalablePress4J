@@ -55,6 +55,12 @@ import com.github.gcauchis.scalablepress4j.model.Invoice;
  */
 public class BillingApi extends AbstractRestApi {
 
+    /** The Constant URL_INVOICE. */
+    private static final String URL_INVOICE = "invoice";
+
+    /** The Constant URL_BILLING. */
+    private static final String URL_BILLING = "billing";
+
     /**
      * Shows all invoices for an account, sorted descending.
      *
@@ -64,7 +70,7 @@ public class BillingApi extends AbstractRestApi {
      */
     public List<Invoice> listInvoice() {
         // "billing/invoice" or "billing" ? definition and example different...
-        return Arrays.asList(get("billing/invoice", Invoice[].class));
+        return Arrays.asList(get(buildUrl(URL_BILLING, URL_INVOICE), Invoice[].class));
     }
 
     /**
@@ -76,9 +82,9 @@ public class BillingApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#retrieve-invoice-object">https://scalablepress.com/docs/#retrieve-invoice-object</a>
      */
     public Invoice retrieveInvoice(String invoiceId) {
-        return get("billing/invoice/" + invoiceId, Invoice.class);
+        return get(buildUrl(URL_BILLING, URL_INVOICE, invoiceId), Invoice.class);
     }
-    
+
     /**
      * Send the transaction ID of a confirmed PayPal transaction in order to
      * associate that payment with your billing account. The provided email
@@ -95,20 +101,22 @@ public class BillingApi extends AbstractRestApi {
      * 
      * @param invoiceId
      * @param transactionId
-     *            The PayPal transaction ID of a completed transaction
+     *        The PayPal transaction ID of a completed transaction
      * @param amount
-     *            Total amount of PayPal transaction
+     *        Total amount of PayPal transaction
      * @param email
-     *            Email address of payer of PayPal transaction
+     *        Email address of payer of PayPal transaction
      * @return a Invoice object with updated balance.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
-     * @see <a href="https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction">https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction</a>
+     * @see <a href=
+     *      "https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction">https://scalablepress.com/docs/#pay-invoice-with-paypal-transaction</a>
      */
-    public Invoice payInvoiceWithPayPalTransaction(String invoiceId, String transactionId, Number amount, String email) {
+    public Invoice payInvoiceWithPayPalTransaction(String invoiceId,
+            String transactionId, Number amount, String email) {
         Map<String, Object> args = new LinkedHashMap<>();
         args.put("transactionId", transactionId);
         args.put("amount", amount);
         args.put("email", email);
-        return post("billing/invoice/" + invoiceId + "/pay/paypal", args, Invoice.class);
+        return post(buildUrl(URL_BILLING, URL_INVOICE, invoiceId, "pay", "paypal"), args, Invoice.class);
     }
 }

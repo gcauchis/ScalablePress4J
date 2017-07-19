@@ -47,43 +47,53 @@ import com.github.gcauchis.scalablepress4j.model.Size;
  * @see <a href="https://scalablepress.com/docs/#product-api">https://scalablepress.com/docs/#product-api</a>
  */
 public class ProductApi extends AbstractRestApi {
-    
+
+    /** The Constant URL_PRODUCTS. */
+    private static final String URL_PRODUCTS = "products";
+
+    /** The url categories. */
+    private static String URL_CATEGORIES = "categories";
+
     /**
      * Get a list of available product categories.
      * The categories are not filled with the product, call {@link #getCategoryProducts(String)} the retrieve the {@link ProductOveriew}
+     * 
      * @return an array with all available category objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-product-categories">https://scalablepress.com/docs/#list-product-categories</a>
      */
     public List<Category> getCategories() {
-        return Arrays.asList(get("categories", Category[].class));
+        return Arrays.asList(get(URL_CATEGORIES, Category[].class));
     }
-    
+
     /**
      * Specify a category id to receive category information and a list of products in that category
+     * 
      * @param categoryId
      * @return a category object which now contains an array of product overview objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-products">https://scalablepress.com/docs/#list-products</a>
      */
     public Category getCategoryProducts(String categoryId) {
-        return get("categories/" + categoryId, Category.class);
+        return get(buildUrl(URL_CATEGORIES, categoryId), Category.class);
     }
-    
+
     /**
-     * Specify a product id to receive product information. 
+     * Specify a product id to receive product information.
+     * 
      * @param productId
      * @return a product object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-product-information">https://scalablepress.com/docs/#list-product-information</a>
      */
     public Product getProductInformation(String productId) {
-        return get("products/" + productId, Product.class);
+        return get(buildUrl(URL_PRODUCTS, productId), Product.class);
     }
-    
+
     /**
      * Specify a product id to receive product availability information.
      * If a color/size combination is not specified then it is unavailable.
+     * 
      * @param productId
      * @return a product availability object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
@@ -91,12 +101,13 @@ public class ProductApi extends AbstractRestApi {
      */
     @SuppressWarnings("unchecked")
     public ProductAvailability getProductAvailability(String productId) {
-        return new ProductAvailability((Map<String, ?>) get("products/" + productId + "/availability", Object.class));
+        return new ProductAvailability((Map<String, ?>) get(buildUrl(URL_PRODUCTS, productId, "availability"), Object.class));
     }
-    
+
     /**
      * Specify a product id to receive product information. For each color of the product, this information includes the following
-     * WARNING: Item information requests output a large amount of data. As a result, an authorized API key is required to make this request. To authorize your API key, contact api@scalablepress.com.
+     * WARNING: Item information requests output a large amount of data. As a result, an authorized API key is required to make this request. To authorize your
+     * API key, contact api@scalablepress.com.
      *
      * @param productId
      * @return the detailed product items information
@@ -105,12 +116,12 @@ public class ProductApi extends AbstractRestApi {
      */
     @SuppressWarnings("unchecked")
     public ColorsItem getDetailedProductItemsInformation(String productId) {
-        Map<String, ?> response = (Map<String, ?>) get("products/" + productId + "/items", Object.class);
+        Map<String, ?> response = (Map<String, ?>) get(buildUrl(URL_PRODUCTS, productId, "items"), Object.class);
         Map<String, ColorSizesItem> colorsItem = new LinkedHashMap<>();
         ObjectMapper mapper = getObjectMapper();
         for (Map.Entry<String, ?> entryResponse : response.entrySet()) {
             String color = entryResponse.getKey();
-            Map<String, ?> colorSizes = (Map<String, ?>) entryResponse .getValue();
+            Map<String, ?> colorSizes = (Map<String, ?>) entryResponse.getValue();
             Map<String, Size> colorSizesItem = new LinkedHashMap<>();
             for (Map.Entry<String, ?> entrySize : colorSizes.entrySet()) {
                 colorSizesItem.put(entrySize.getKey(), mapper.convertValue(entrySize.getValue(), Size.class));

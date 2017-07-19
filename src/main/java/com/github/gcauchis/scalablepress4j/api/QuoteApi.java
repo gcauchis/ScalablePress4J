@@ -79,6 +79,9 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
  */
 public class QuoteApi extends AbstractRestApi {
 
+    /** The Constant URL_QUOTE. */
+    private static final String URL_QUOTE = "quote";
+
     /**
      * The standard quote API allows a quote for a single design printed on one
      * or more products, shipped to a single address.
@@ -89,7 +92,7 @@ public class QuoteApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#standard-quote">https://scalablepress.com/docs/#standard-quote</a>
      */
     public QuoteResponse quote(Quote quote) {
-        return post("quote", quote, QuoteResponse.class);
+        return post(URL_QUOTE, quote, QuoteResponse.class);
     }
 
     /**
@@ -106,17 +109,19 @@ public class QuoteApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#bulk-quote">https://scalablepress.com/docs/#bulk-quote</a>
      */
     public QuoteResponse bulkQuote(BulkQuote bulkQuote) {
-        return post("quote/bulk", bulkQuote, QuoteResponse.class);
+        return post(buildUrl(URL_QUOTE, "bulk"), bulkQuote, QuoteResponse.class);
     }
-    
+
     /**
-     * After you have made a successful order-ready quote, you will be provided with an orderToken. This order token can be used to retrieve the quote it is associated with.
+     * After you have made a successful order-ready quote, you will be provided with an orderToken. This order token can be used to retrieve the quote it is
+     * associated with.
+     * 
      * @param orderToken
      * @return an order object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-quote">https://scalablepress.com/docs/#retrieve-quote</a>
      */
     public Order retrieve(String orderToken) {
-        return get("quote/" + orderToken, Order.class);
+        return get(buildUrl(URL_QUOTE, orderToken), Order.class);
     }
 }

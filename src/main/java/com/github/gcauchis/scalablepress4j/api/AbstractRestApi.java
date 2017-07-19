@@ -56,6 +56,9 @@ public abstract class AbstractRestApi {
     /** The default items per page number. */
     public static final int DEFAULT_LIMIT = 50;
 
+    /** The Constant URL_SEPARATOR. */
+    protected static final String URL_SEPARATOR = "/";
+
     /** The api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -347,6 +350,26 @@ public abstract class AbstractRestApi {
     protected <T> T delete(String url, Class<T> responseType) {
         log.trace("Call DELETE for: {}, to url: {}", responseType, url);
         return getRestTemplate().exchange(baseUrl + url, HttpMethod.DELETE, null, responseType).getBody();
+    }
+
+    /**
+     * Builds the url of the given path.
+     *
+     * @param path the path
+     * @return the url path[0](/path[1](/path[2](/path[3](...))))
+     */
+    protected String buildUrl(String... path) {
+        if (path == null || path.length == 0) {
+            return "";
+        } else if (path.length == 1) {
+            return path[0];
+        } else {
+            StringBuilder url = new StringBuilder(path[0]);
+            for (int i = 1; i < path.length; i++) {
+                url.append(URL_SEPARATOR).append(path[i]);
+            }
+            return url.toString();
+        }
     }
 
 }

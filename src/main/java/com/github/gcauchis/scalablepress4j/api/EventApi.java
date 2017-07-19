@@ -37,6 +37,9 @@ import com.github.gcauchis.scalablepress4j.model.QueryEvent;
  */
 public class EventApi extends AbstractRestApi {
 
+    /** The Constant URL_EVENT. */
+    private static final String URL_EVENT = "event";
+
     /**
      * Events contain useful information about the state of your order.
      *
@@ -57,7 +60,7 @@ public class EventApi extends AbstractRestApi {
             appendArg(args, "itemName", query.getItemName());
             appendArg(args, "sort", query.getSort());
         }
-        return new PaginatedResultList<>( get("event?" + args.toString(), page, Event[].class));
+        return new PaginatedResultList<>( get(URL_EVENT + "?" + args.toString(), page, Event[].class));
     }
 
     protected void appendArg(StringBuilder args, String argName,
@@ -78,6 +81,6 @@ public class EventApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-event">https://scalablepress.com/docs/#retrieve-single-event</a>
      */
     public Event retrieve(String eventId) {
-        return get("event/" + eventId, Event.class);
+        return get(buildUrl(URL_EVENT, eventId), Event.class);
     }
 }

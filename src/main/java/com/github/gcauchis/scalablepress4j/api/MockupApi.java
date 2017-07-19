@@ -36,6 +36,9 @@ import com.github.gcauchis.scalablepress4j.model.Url;
  */
 public class MockupApi extends AbstractRestApi {
 
+    /** The Constant URL_MOCKUP. */
+    private static final String URL_MOCKUP = "mockup";
+
     /**
      * Provide the details of your design and product in order to receive an URL of rendered mockup image.
      *
@@ -45,6 +48,6 @@ public class MockupApi extends AbstractRestApi {
      * @see <a href="https://scalablepress.com/docs/#create-mockup">https://scalablepress.com/docs/#create-mockup</a>
      */
     public String create(Mockup mockup) {
-        return post("mockup", mockup, Url.class).getUrl();
+        return post(URL_MOCKUP, mockup, Url.class).getUrl();
     }
 }
