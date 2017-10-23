@@ -34,9 +34,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/gcauchis/ScalablePressWrapper.git</connection>
-        <developerConnection>scm:git:git@github.com/gcauchis/ScalablePressWrapper.git</developerConnection>
-        <url>https://github.com/gcauchis/ScalablePressWrapper.git</url>
+        <connection>scm:git:git://github.com/gcauchis/ScalablePress4J.git</connection>
+        <developerConnection>scm:git:git@github.com/gcauchis/ScalablePress4J.git</developerConnection>
+        <url>https://github.com/gcauchis/ScalablePress4J.git</url>
     </scm>
 
     <properties>
