@@ -55,7 +55,7 @@ public class ColorAvailability {
         super();
         this.name = name;
         this.sizesAvailability = sizesAvailability.entrySet().stream()
-                .collect(Collectors.toMap(e -> e.getKey(), e -> Integer.valueOf(e.getValue().toString())));
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> Integer.valueOf(e.getValue().toString())));
     }
 
     /**

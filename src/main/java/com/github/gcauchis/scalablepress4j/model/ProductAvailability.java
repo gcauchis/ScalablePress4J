@@ -60,7 +60,7 @@ public class ProductAvailability {
     public ProductAvailability(Map<String, ?> colorsAvailability) {
         super();
         this.colorsAvailability = colorsAvailability.entrySet().stream()
-                .collect(Collectors.toMap(e -> e.getKey(), e -> new ColorAvailability(e.getKey(), (Map<String, ?>) e.getValue())));
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> new ColorAvailability(e.getKey(), (Map<String, ?>) e.getValue())));
     }
 
     /**
