@@ -46,6 +46,9 @@ public class ErrorResponse implements Serializable {
     /** Array of {@link Error error objects} which are preventing a successful call. */
     private List<Error> issues;
 
+    /** The {@link Error error objects information} which are preventing a successful call. */
+    private Error error;
+
     /** Path causing error. */
     private String path;
 
@@ -89,6 +92,24 @@ public class ErrorResponse implements Serializable {
     }
 
     /**
+     * Gets the error.
+     *
+     * @return the error
+     */
+    public Error getError() {
+        return error;
+    }
+
+    /**
+     * Sets the error.
+     *
+     * @param error the new error
+     */
+    public void setError(Error error) {
+        this.error = error;
+    }
+
+    /**
      * Gets the path.
      *
      * @return the path
@@ -126,7 +147,7 @@ public class ErrorResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "ErrorResponse [statusCode=" + statusCode + ", issues=" + issues + ", path=" + path + ", message=" + message + "]";
+        return "ErrorResponse [statusCode=" + statusCode + ", error=" + error + " issues=" + issues + ", path=" + path + ", message=" + message + "]";
     }
 
 }

@@ -31,20 +31,23 @@ import java.util.Map;
  * @author gcauchis
  * @see <a href="https://scalablepress.com/docs/#error-object">https://scalablepress.com/docs/#error-object</a>
  */
-public class Error implements Serializable{
-    
+public class Error implements Serializable {
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
 
     /** Identifier for type of error message. */
     private String code;
-    
+
+    /** Name of the error. */
+    private String name;
+
     /** Path causing error. */
     private String path;
-    
+
     /** User-friendly error message. */
     private String message;
-    
+
     /** Optional specification. */
     private transient Map<String, Object> spec;
 
@@ -64,6 +67,24 @@ public class Error implements Serializable{
      */
     public void setCode(String code) {
         this.code = code;
+    }
+
+    /**
+     * Gets the name of the error.
+     *
+     * @return the name of the error
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the error.
+     *
+     * @param name the new name of the error
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -122,8 +143,8 @@ public class Error implements Serializable{
 
     @Override
     public String toString() {
-        return "Error [code=" + code + ", path=" + path + ", message="
-                + message + ", spec=" + spec + "]";
+        return "Error [code=" + code + ", name=" + name + ", path=" + path + ", message=" + message
+                + ", spec=" + spec + "]";
     }
 
 }
