@@ -92,16 +92,19 @@ public class ScalablePress4J {
         apis.forEach(api -> api.setBasicAuth(basicAuth));
     }
 
-    private void prepareV2Api(AbstractRestApi service) {
-        service.setBaseUrl(SCALABLE_PRESS_V2_BASE_URL);
-        service.setBasicAuth(basicAuth);
-        apis.add(service);
+    private <S extends AbstractRestApi> S prepareV2Api(S service) {
+        return prepareApi(service, SCALABLE_PRESS_V2_BASE_URL);
     }
 
-    private void prepareV3Api(AbstractRestApi service) {
-        service.setBaseUrl(SCALABLE_PRESS_V3_BASE_URL);
+    private <S extends AbstractRestApi> S prepareV3Api(S service) {
+        return prepareApi(service, SCALABLE_PRESS_V3_BASE_URL);
+    }
+
+    private <S extends AbstractRestApi> S prepareApi(S service, String baseUrl) {
+        service.setBaseUrl(baseUrl);
         service.setBasicAuth(basicAuth);
         apis.add(service);
+        return service;
     }
 
     /**
@@ -111,8 +114,7 @@ public class ScalablePress4J {
      */
     public BillingApi billingApi() {
         if (billingApi == null) {
-            billingApi = new BillingApi();
-            prepareV2Api(billingApi);
+            billingApi = prepareV2Api(new BillingApi());
         }
         return billingApi;
     }
@@ -124,8 +126,7 @@ public class ScalablePress4J {
      */
     public DesignApi designApi() {
         if (designApi == null) {
-            designApi = new DesignApi();
-            prepareV2Api(designApi);
+            designApi = prepareV2Api(new DesignApi());
         }
         return designApi;
     }
@@ -137,8 +138,7 @@ public class ScalablePress4J {
      */
     public EventApi eventApi() {
         if (eventApi == null) {
-            eventApi = new EventApi();
-            prepareV3Api(eventApi);
+            eventApi = prepareV3Api(new EventApi());
         }
         return eventApi;
     }
@@ -150,8 +150,7 @@ public class ScalablePress4J {
      */
     public OrderApi orderApi() {
         if (orderApi == null) {
-            orderApi = new OrderApi();
-            prepareV2Api(orderApi);
+            orderApi = prepareV2Api(new OrderApi());
         }
         return orderApi;
     }
@@ -163,8 +162,7 @@ public class ScalablePress4J {
      */
     public ProductApi productApi() {
         if (productApi == null) {
-            productApi = new ProductApi();
-            prepareV2Api(productApi);
+            productApi = prepareV2Api(new ProductApi());
         }
         return productApi;
     }
@@ -176,8 +174,7 @@ public class ScalablePress4J {
      */
     public QuoteApi quoteApi() {
         if (quoteApi == null) {
-            quoteApi = new QuoteApi();
-            prepareV2Api(quoteApi);
+            quoteApi = prepareV2Api(new QuoteApi());
         }
         return quoteApi;
     }
@@ -189,8 +186,7 @@ public class ScalablePress4J {
      */
     public ReshipApi reshipApi() {
         if (reshipApi == null) {
-            reshipApi = new ReshipApi();
-            prepareV2Api(reshipApi);
+            reshipApi = prepareV2Api(new ReshipApi());
         }
         return reshipApi;
     }
@@ -202,8 +198,7 @@ public class ScalablePress4J {
      */
     public MockupApi mockupApi() {
         if (mockupApi == null) {
-            mockupApi = new MockupApi();
-            prepareV3Api(mockupApi);
+            mockupApi = prepareV3Api(new MockupApi());
         }
         return mockupApi;
     }
