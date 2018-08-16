@@ -76,8 +76,8 @@ public class BillingApi extends AbstractRestApi {
     /**
      * Provide the invoiceId in order to receive the details of an invoice
      * 
-     * @param invoiceId
-     * @return
+     * @param invoiceId the invoiceId
+     * @return an {@link Invoice invoice object}
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-invoice-object">https://scalablepress.com/docs/#retrieve-invoice-object</a>
      */
@@ -99,7 +99,7 @@ public class BillingApi extends AbstractRestApi {
      * invoice total, the associated order may remain on hold in the unpaid
      * status.<br/>
      * 
-     * @param invoiceId
+     * @param invoiceId the invoiceId
      * @param transactionId
      *        The PayPal transaction ID of a completed transaction
      * @param amount

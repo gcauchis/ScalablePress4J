@@ -42,7 +42,7 @@ public class MockupApi extends AbstractRestApi {
     /**
      * Provide the details of your design and product in order to receive an URL of rendered mockup image.
      *
-     * @param mockup the mockup
+     * @param mockup the {@link Mockup mockup}
      * @return the mockup url
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#create-mockup">https://scalablepress.com/docs/#create-mockup</a>

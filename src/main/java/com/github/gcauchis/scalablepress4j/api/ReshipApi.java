@@ -46,7 +46,7 @@ public class ReshipApi extends AbstractRestApi {
      * You can get the status and other information on all orders that have been
      * shipped and returned.
      * 
-     * @return Array of reship objects
+     * @return Array of {@link Reship reship objects}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-reship-orders">https://scalablepress.com/docs/#retrieve-reship-orders</a>
      */
@@ -59,8 +59,8 @@ public class ReshipApi extends AbstractRestApi {
      * shipping can be checked using the reshipId field, which is accessible
      * through retrieving all reship orders.
      * 
-     * @param reshipId
-     * @return a reship object
+     * @param reshipId the reshipId
+     * @return a {@link Reship reship object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-reship-order">https://scalablepress.com/docs/#retrieve-single-reship-order</a>
      */
@@ -74,9 +74,9 @@ public class ReshipApi extends AbstractRestApi {
      * cost additional shipping and will only be made if your account balance
      * has the required funds.
      * 
-     * @param reshipId
-     * @param address
-     * @return
+     * @param reshipId the reshipId
+     * @param address the {@link Address new reship address}
+     * @return a {@link Reship reship object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#place-reship-order">https://scalablepress.com/docs/#place-reship-order</a>
      */
@@ -91,8 +91,8 @@ public class ReshipApi extends AbstractRestApi {
      * This will revert the order status to returned and your account will be
      * refunded the additional shipping charge.
      * 
-     * @param reshipId
-     * @return
+     * @param reshipId the reshipId
+     * @return a {@link Reship reship object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#cancel-reship-order">https://scalablepress.com/docs/#cancel-reship-order</a>
      */

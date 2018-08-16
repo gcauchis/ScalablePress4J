@@ -87,7 +87,7 @@ public class QuoteApi extends AbstractRestApi {
      * or more products, shipped to a single address.
      * 
      * @param quote
-     * @return a quote response object.
+     * @return a {@link QuoteResponse quote response object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#standard-quote">https://scalablepress.com/docs/#standard-quote</a>
      */
@@ -103,8 +103,8 @@ public class QuoteApi extends AbstractRestApi {
      * The name property of each quote item accepts any string and can be used
      * for your reference.
      * 
-     * @param bulkQuote
-     * @return a quote response object.
+     * @param bulkQuote the {@link BulkQuote bulk quote object}
+     * @return a {@link QuoteResponse quote response object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#bulk-quote">https://scalablepress.com/docs/#bulk-quote</a>
      */
@@ -116,8 +116,8 @@ public class QuoteApi extends AbstractRestApi {
      * After you have made a successful order-ready quote, you will be provided with an orderToken. This order token can be used to retrieve the quote it is
      * associated with.
      * 
-     * @param orderToken
-     * @return an order object.
+     * @param orderToken the orderToken
+     * @return an {@link Order order object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-quote">https://scalablepress.com/docs/#retrieve-quote</a>
      */

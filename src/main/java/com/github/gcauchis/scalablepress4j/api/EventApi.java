@@ -43,8 +43,8 @@ public class EventApi extends AbstractRestApi {
     /**
      * Events contain useful information about the state of your order.
      *
-     * @param query the query
-     * @param page the page to view
+     * @param query the {@link QueryEvent query}
+     * @param page the page index to view
      * @return Returns an array of event objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#query-events">https://scalablepress.com/docs/#query-events</a>
@@ -76,7 +76,7 @@ public class EventApi extends AbstractRestApi {
     /**
      * Provide the eventId in order to receive the details of an event.
      * 
-     * @return event object.
+     * @return {@link Event event object}
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-event">https://scalablepress.com/docs/#retrieve-single-event</a>
      */

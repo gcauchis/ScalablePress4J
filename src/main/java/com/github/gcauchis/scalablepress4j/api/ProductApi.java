@@ -58,7 +58,7 @@ public class ProductApi extends AbstractRestApi {
      * Get a list of available product categories.
      * The categories are not filled with the product, call {@link #getCategoryProducts(String)} the retrieve the {@link ProductOveriew}
      * 
-     * @return an array with all available category objects.
+     * @return an array with all available {@link Category category objects}
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-product-categories">https://scalablepress.com/docs/#list-product-categories</a>
      */
@@ -69,8 +69,8 @@ public class ProductApi extends AbstractRestApi {
     /**
      * Specify a category id to receive category information and a list of products in that category
      * 
-     * @param categoryId
-     * @return a category object which now contains an array of product overview objects.
+     * @param categoryId the categoryId
+     * @return a {@link Category category object} which now contains an array of product overview objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-products">https://scalablepress.com/docs/#list-products</a>
      */
@@ -81,8 +81,8 @@ public class ProductApi extends AbstractRestApi {
     /**
      * Specify a product id to receive product information.
      * 
-     * @param productId
-     * @return a product object.
+     * @param productId the productId
+     * @return a {@link Product product object}
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-product-information">https://scalablepress.com/docs/#list-product-information</a>
      */
@@ -94,8 +94,8 @@ public class ProductApi extends AbstractRestApi {
      * Specify a product id to receive product availability information.
      * If a color/size combination is not specified then it is unavailable.
      * 
-     * @param productId
-     * @return a product availability object.
+     * @param productId the productId
+     * @return a {@link ProductAvailability product availability object}
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-product-availability">https://scalablepress.com/docs/#list-product-availability</a>
      */
@@ -109,8 +109,8 @@ public class ProductApi extends AbstractRestApi {
      * WARNING: Item information requests output a large amount of data. As a result, an authorized API key is required to make this request. To authorize your
      * API key, contact api@scalablepress.com.
      *
-     * @param productId
-     * @return the detailed product items information
+     * @param productId the productId
+     * @return the {@link ColorsItem detailed product items information}
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#list-detailed-item-information">https://scalablepress.com/docs/#list-detailed-item-information</a>
      */

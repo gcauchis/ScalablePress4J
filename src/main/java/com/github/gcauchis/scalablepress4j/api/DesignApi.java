@@ -43,7 +43,7 @@ public class DesignApi extends AbstractRestApi {
 
     /**
      * Provide the details on your design in order to receive a designId, which is required to place an order.
-     * @param design
+     * @param design the {@link Design design} to create
      * @return a design response object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#create-design-object">https://scalablepress.com/docs/#create-design-object</a>
@@ -54,8 +54,8 @@ public class DesignApi extends AbstractRestApi {
 
     /**
      * Provide the designId in order to receive the details of a previously submitted design.
-     * @param designId
-     * @return a design response object.
+     * @param designId the designId
+     * @return a {@link DesignResponse design response object}.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-design-object">https://scalablepress.com/docs/#retrieve-design-object</a>
      */
@@ -65,8 +65,8 @@ public class DesignApi extends AbstractRestApi {
 
     /**
      * Provide the designId in order to delete a previously submitted design.
-     * @param designId
-     * @return adesign response object with an extra deletedAt number that records the time at which the design was deleted.
+     * @param designId the designId
+     * @return a {@link DesignResponse design response object} with an extra deletedAt number that records the time at which the design was deleted.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#delete-design">https://scalablepress.com/docs/#delete-design</a>
      */

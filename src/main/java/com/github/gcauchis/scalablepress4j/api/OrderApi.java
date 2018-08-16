@@ -29,8 +29,10 @@ import java.util.Map;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Address;
+import com.github.gcauchis.scalablepress4j.model.Features;
 import com.github.gcauchis.scalablepress4j.model.Order;
 import com.github.gcauchis.scalablepress4j.model.OrderItem;
+import com.github.gcauchis.scalablepress4j.model.OrderProduct;
 import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 
 /**
@@ -52,7 +54,7 @@ public class OrderApi extends AbstractRestApi{
      * successful quote request, you will be provided with a orderToken. This
      * order token can then be used to place an order.
      * 
-     * @param orderToken
+     * @param orderToken Unique identifier which can be used to place an order, can also be used to retrieve a quote
      * @return an order object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#place-order">https://scalablepress.com/docs/#place-order</a>
@@ -69,8 +71,8 @@ public class OrderApi extends AbstractRestApi{
      * new address, a new product, and/or new features, the new object will
      * replace the corresponding old object.
      * 
-     * @param orderId
-     * @param orderItems
+     * @param orderId the orderId
+     * @param orderItems optional {@link Address address objects}, {@link OrderProduct order product objects}, and {@link Features features objects}
      * @return a quote response object
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#reprint-order">https://scalablepress.com/docs/#reprint-order</a>
@@ -96,7 +98,7 @@ public class OrderApi extends AbstractRestApi{
      * information of an order by using the orderId field provided in the order
      * object.
      * 
-     * @param orderId
+     * @param orderId the orderId
      * @return an order object.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
      * @see <a href="https://scalablepress.com/docs/#retrieve-single-order">https://scalablepress.com/docs/#retrieve-single-order</a>
@@ -112,9 +114,9 @@ public class OrderApi extends AbstractRestApi{
      * can be accessed when you retrieve a single order.<br /> WARNING : Shipping
      * addresses cannot be changed between domestic and international.
      * 
-     * @param orderId
-     * @param itemIndex
-     * @param newAddress
+     * @param orderId the orderId
+     * @param itemIndex the item index
+     * @param newAddress the {@link Address new address to send the order}
      * @return an order object with an additional event with a meta that
      *         documents the original and new to address
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
@@ -133,7 +135,7 @@ public class OrderApi extends AbstractRestApi{
      * found in order object, which can be accessed when you retrieve a single
      * order.
      * 
-     * @param orderId
+     * @param orderId the orderId
      * @return an order object with an deletedAt timestamp that records the time
      *         the order object was cancelled.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
