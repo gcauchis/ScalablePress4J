@@ -19,7 +19,7 @@ This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs
 
 ## Maven configuration
 
-ScalablePress4J is available on [Maven Central](http://search.maven.org/#search|ga|1|a%3A%22ScalablePress4j%22). You just have to add the following dependency in your `pom.xml` file.
+ScalablePress4J is available on [Maven Central](https://search.maven.org/search?q=g:com.github.gcauchis%20AND%20a:ScalablePress4j). You just have to add the following dependency in your `pom.xml` file.
 
 ```xml
 <dependency>
