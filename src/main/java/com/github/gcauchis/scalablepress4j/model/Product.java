@@ -214,7 +214,7 @@ public class Product {
     /**
      * Sets the {@link ProductTemplates templates}.
      *
-     * @param template the new {@link ProductTemplates templates}
+     * @param templates the new {@link ProductTemplates templates}
      */
     public void setTemplates(ProductTemplates templates) {
         this.templates = templates;
