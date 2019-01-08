@@ -23,7 +23,7 @@
 package com.github.gcauchis.scalablepress4j.api;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -117,7 +117,7 @@ public abstract class AbstractRestApi {
      */
     private Header getBasicAuthenticateHeader() {
         if (basicAuth != null) {
-            byte[] encodedAuth = Base64.encodeBase64(basicAuth.getBytes(Charset.forName("US-ASCII")));
+            byte[] encodedAuth = Base64.encodeBase64(basicAuth.getBytes(StandardCharsets.US_ASCII));
             return new BasicHeader("Authorization", "Basic " + new String(encodedAuth));
         }
         return null;
