@@ -276,7 +276,6 @@ public abstract class AbstractRestApi {
             DataOutputStream wr = null;
             if (request != null) {
                 String content = objectMapper.writeValueAsString(request);
-                log.debug("Set request: {}", content);
                 wr = new DataOutputStream(connection.getOutputStream());
                 wr.write(content.getBytes(StandardCharsets.UTF_8));
                 wr.flush();
@@ -294,7 +293,7 @@ public abstract class AbstractRestApi {
                 wr.close();
             }
             rd.close();
-            log.debug("Response {}", response);
+            log.trace("Response {}", response);
         } catch (IOException e) {
             log.error("Fail to send request", e);
             ErrorResponse errorResponse = new ErrorResponse();
