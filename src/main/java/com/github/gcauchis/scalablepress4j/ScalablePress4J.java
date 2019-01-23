@@ -25,9 +25,6 @@ package com.github.gcauchis.scalablepress4j;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import com.github.gcauchis.scalablepress4j.api.AbstractRestApi;
 import com.github.gcauchis.scalablepress4j.api.BillingApi;
 import com.github.gcauchis.scalablepress4j.api.DesignApi;
@@ -41,7 +38,6 @@ import com.github.gcauchis.scalablepress4j.api.ReshipApi;
 /**
  * The ScalablePress4J class is a Service who provide the Scalable Press APIs.
  */
-@Service
 public class ScalablePress4J {
 
     /** The Constant SCALABLE_PRESS_V2_BASE_URL. */
@@ -86,7 +82,6 @@ public class ScalablePress4J {
      * @param basicAuth the api authentication key.
      * @see <a href="https://scalablepress.com/docs/#authentication">https://scalablepress.com/docs/#authentication</a>
      */
-    @Value("${scalablepress.api.basicauth}")
     public void setBasicAuth(String basicAuth) {
         this.basicAuth = basicAuth;
         apis.forEach(api -> api.setBasicAuth(basicAuth));

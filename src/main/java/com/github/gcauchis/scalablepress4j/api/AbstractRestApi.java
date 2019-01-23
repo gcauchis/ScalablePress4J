@@ -22,25 +22,22 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.http.Header;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.message.BasicHeader;
+import org.apache.http.client.utils.URIBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.client.DefaultResponseErrorHandler;
-import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
@@ -62,66 +59,20 @@ public abstract class AbstractRestApi {
     /** The api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
-    /**  The base url. */
+    /** The base url. */
     private String baseUrl;
 
-    /**  The basic auth. */
+    /** The basic auth. */
     private String basicAuth;
 
-    /**  The rest template. */
-    private RestTemplate restTemplate;
+    /** The auth to put in the header. */
+    private String basicAuthHttp;
 
-    /**  The json object mapper. */
+    /** The json object mapper. */
     private ObjectMapper objectMapper = new ObjectMapper();
 
     /** Items per page. Defaults to 50. */
     private int limit = DEFAULT_LIMIT;
-
-    /**
-     * Gets the rest template.
-     *
-     * @return the rest template
-     */
-    private RestTemplate getRestTemplate() {
-        if (restTemplate == null) {
-            restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create()
-                                    .setDefaultHeaders(Arrays.asList(getBasicAuthenticateHeader()))
-                                    .build()));
-            restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
-
-                @Override
-                public void handleError(ClientHttpResponse response) throws IOException {
-                    log.error("Response error: {} {}", response.getStatusCode(), response.getStatusText());
-                    ErrorResponse errorResponse = null;
-                    try {
-                        errorResponse = objectMapper.readValue(response.getBody(), ErrorResponse.class);
-                    } catch (IOException ioe) {
-                        log.error("Fail to parse error", ioe);
-                    }
-                    if (errorResponse != null) {
-                        log.error("Response error object: {}", errorResponse);
-                        throw new ScalablePressBadRequestException(errorResponse);
-                    }
-
-                    super.handleError(response);
-                }
-            });
-        }
-        return restTemplate;
-    }
-
-    /**
-     * Gets the basic authenticate header.
-     *
-     * @return the basic authenticate header
-     */
-    private Header getBasicAuthenticateHeader() {
-        if (basicAuth != null) {
-            byte[] encodedAuth = Base64.encodeBase64(basicAuth.getBytes(StandardCharsets.US_ASCII));
-            return new BasicHeader("Authorization", "Basic " + new String(encodedAuth));
-        }
-        return null;
-    }
 
     /**
      * Gets the base url.
@@ -157,7 +108,11 @@ public abstract class AbstractRestApi {
      */
     public void setBasicAuth(String basicAuth) {
         this.basicAuth = basicAuth;
-        restTemplate = null;
+        if (basicAuth != null) {
+            basicAuthHttp = "Basic " + new String(Base64.encodeBase64(basicAuth.getBytes(StandardCharsets.US_ASCII)));
+        } else {
+            basicAuthHttp = null;
+        }
     }
 
     /**
@@ -195,7 +150,7 @@ public abstract class AbstractRestApi {
     public void setLimit(int limit) {
         this.limit = limit;
     }
-    
+
     /**
      * Prepare paginated url.
      *
@@ -226,7 +181,7 @@ public abstract class AbstractRestApi {
         }
         return url;
     }
-    
+
     /**
      * Builds the paginated result.
      *
@@ -235,19 +190,181 @@ public abstract class AbstractRestApi {
      * @param page the page
      * @return the paginated result
      */
-    private <T> PaginatedResult<T> buildPaginatedResult(ResponseEntity<T> resultEntity, int page) {
+    private <T> PaginatedResult<T> buildPaginatedResult(Response<T> resultEntity, int page) {
         PaginatedResult<T> paginatedResult = new PaginatedResult<>();
-        paginatedResult.setResult(resultEntity.getBody());
+        paginatedResult.setResult(resultEntity.response);
         paginatedResult.setPageNumber(page);
         paginatedResult.setLimit(limit);
-        HttpHeaders headers = resultEntity.getHeaders();
-        List<String> xspPages = headers.get("X-SP-Pages");
+        List<String> xspPages = resultEntity.headers.get("X-SP-Pages");
         if (xspPages != null && !xspPages.isEmpty())
             paginatedResult.setPagesCount(Integer.parseInt(xspPages.get(0)));
-        List<String> xspCount = headers.get("X-SP-Count");
+        List<String> xspCount = resultEntity.headers.get("X-SP-Count");
         if (xspCount != null && !xspCount.isEmpty())
             paginatedResult.setItemsCount(Integer.parseInt(xspCount.get(0)));
         return paginatedResult;
+    }
+
+    /**
+     * Get for entity.
+     *
+     * @param <T> the generic type
+     * @param url the url
+     * @param responseType the response type
+     * @return the for entity
+     */
+    private <T> Response<T> getForEntity(String url, Class<T> responseType) {
+        return forEntity(url, "GET", null, responseType, null);
+    }
+
+    /**
+     * Get for entity.
+     *
+     * @param <T> the generic type
+     * @param url the url
+     * @param responseType the response type
+     * @param urlVariables the url variables
+     * @return the for entity
+     */
+    private <T> Response<T> getForEntity(String url, Class<T> responseType, Map<String, ?> urlVariables) {
+        return forEntity(url, "GET", null, responseType, urlVariables);
+    }
+
+    /**
+     * Post for entity.
+     *
+     * @param <T> the generic type
+     * @param url the url
+     * @param request the request
+     * @param responseType the response type
+     * @return the response
+     */
+    protected <T> Response<T> postForEntity(String url, Object request, Class<T> responseType) {
+        return forEntity(url, "POST", request, responseType, null);
+    }
+
+    /**
+     * Post for entity.
+     *
+     * @param <T> the generic type
+     * @param url the url
+     * @param request the request
+     * @param responseType the response type
+     * @param urlVariables the url variables
+     * @return the response
+     */
+    protected <T> Response<T> postForEntity(String url, Object request, Class<T> responseType, Map<String, ?> urlVariables) {
+        return forEntity(url, "POST", request, responseType, urlVariables);
+    }
+
+    /**
+     * Call request for entity.
+     *
+     * @param <T> the generic type
+     * @param url the url
+     * @param requestMethod the http request method
+     * @param request the request
+     * @param responseType the response type
+     * @param urlVariables the url variables
+     * @return the response
+     */
+    private <T> Response<T> forEntity(String url, String requestMethod, Object request, Class<T> responseType, Map<String, ?> urlVariables) {
+        StringBuilder response = new StringBuilder();
+        HttpURLConnection connection = prepareConnection(url, requestMethod, urlVariables);
+        try {
+
+            // // Send request
+            DataOutputStream wr = null;
+            if (request != null) {
+                String content = objectMapper.writeValueAsString(request);
+                log.debug("Set request: {}", content);
+                wr = new DataOutputStream(connection.getOutputStream());
+                wr.write(content.getBytes(StandardCharsets.UTF_8));
+                wr.flush();
+            }
+
+            // Get Response
+            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                response.append(line);
+                response.append('\n');
+            }
+
+            if (wr != null) {
+                wr.close();
+            }
+            rd.close();
+            log.debug("Response {}", response);
+        } catch (IOException e) {
+            log.error("Fail to send request", e);
+            ErrorResponse errorResponse = new ErrorResponse();
+            try {
+                errorResponse.setStatusCode(connection.getResponseCode() + "");
+                errorResponse.setMessage(connection.getResponseMessage());
+            } catch (IOException e1) {
+                errorResponse.setStatusCode("500");
+                errorResponse.setMessage(e.getMessage());
+            }
+            throw new ScalablePressBadRequestException(errorResponse);
+        }
+
+        Response<T> responseEntity = new Response<>();
+        responseEntity.headers = connection.getHeaderFields();
+        log.debug("Header: {}", responseEntity.headers);
+        try {
+            responseEntity.response = objectMapper.readValue(response.toString(), responseType);
+        } catch (IOException e) {
+            log.error("Fail to parse response", e);
+            ErrorResponse errorResponse = null;
+            try {
+                log.error("Response error: {} {}", connection.getResponseCode(), connection.getResponseMessage());
+                errorResponse = objectMapper.readValue(response.toString(), ErrorResponse.class);
+            } catch (IOException ioe) {
+                log.error("Fail to parse error", ioe);
+            }
+            if (errorResponse != null) {
+                log.error("Response error object: {}", errorResponse);
+                throw new ScalablePressBadRequestException(errorResponse);
+            }
+        }
+        return responseEntity;
+    }
+
+    /**
+     * Prepare connection.
+     *
+     * @param url the url
+     * @param requestMethod the request method
+     * @param urlVariables the url variables
+     * @return the http URL connection
+     */
+    private HttpURLConnection prepareConnection(String url, String requestMethod, Map<String, ?> urlVariables) {
+        URL httpUrl;
+        HttpURLConnection connection;
+        try {
+            URIBuilder uriBuilder = new URIBuilder(url);
+            if (urlVariables != null) {
+                for (Map.Entry<String, ?> entry : urlVariables.entrySet()) {
+                    uriBuilder.addParameter(entry.getKey(), entry.getValue() == null ? "" : entry.getValue().toString());
+                }
+            }
+            httpUrl = uriBuilder.build().toURL();
+            connection = (HttpURLConnection) httpUrl.openConnection();
+            connection.setRequestMethod(requestMethod);
+            connection.setRequestProperty("Accept", "application/json, application/*+json");
+            connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+            if (basicAuthHttp != null) {
+                connection.setRequestProperty("Authorization", basicAuthHttp);
+            }
+            connection.setDoOutput(true);
+        } catch (IOException | URISyntaxException e) {
+            log.error("Fail to buil connection", e);
+            ErrorResponse errorResponse = new ErrorResponse();
+            errorResponse.setStatusCode("500");
+            errorResponse.setMessage(e.getMessage());
+            throw new ScalablePressBadRequestException(errorResponse);
+        }
+        return connection;
     }
 
     /**
@@ -260,7 +377,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T get(String url, Class<T> responseType) {
         log.trace("Call GET for: {}, to url: {}", responseType, url);
-        return getRestTemplate().getForEntity(baseUrl + url, responseType).getBody();
+        return getForEntity(baseUrl + url, responseType).response;
     }
 
     /**
@@ -274,7 +391,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType) {
         log.trace("Call GET page {} for: {}, to url: {}", page, responseType, url);
-        return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType), page);
+        return buildPaginatedResult(getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType), page);
     }
 
     /**
@@ -288,7 +405,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) {
         log.trace("Call GET for: {}, to url: {}, with var: {}", responseType, url, urlVariables);
-        return getRestTemplate().getForEntity(baseUrl + url, responseType, urlVariables).getBody();
+        return getForEntity(baseUrl + url, responseType, urlVariables).response;
     }
 
     /**
@@ -304,7 +421,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> PaginatedResult<T> get(String url, int page, Class<T> responseType, Map<String, ?> urlVariables) {
         log.trace("Call GET page {} for: {}, to url: {}, with var: {}", page, responseType, url, urlVariables);
-        return buildPaginatedResult(getRestTemplate().getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType, urlVariables), page);
+        return buildPaginatedResult(getForEntity(preparePaginatedUrl(baseUrl + url, page), responseType, urlVariables), page);
     }
 
     /**
@@ -319,7 +436,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T post(String url, Object request, Class<T> responseType) {
         log.trace("Call POST for: {}, to url: {}, with req {}", responseType, url, request);
-        return getRestTemplate().postForEntity(baseUrl + url, request, responseType).getBody();
+        return postForEntity(baseUrl + url, request, responseType).response;
     }
 
     /**
@@ -335,7 +452,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> PaginatedResult<T> post(String url, int page, Object request, Class<T> responseType) {
         log.trace("Call POST page {} for: {}, to url: {}, with req {}", page, responseType, url, request);
-        return buildPaginatedResult(getRestTemplate().postForEntity(preparePaginatedUrl(baseUrl + url, page), request, responseType), page);
+        return buildPaginatedResult(postForEntity(preparePaginatedUrl(baseUrl + url, page), request, responseType), page);
     }
 
     /**
@@ -349,7 +466,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T delete(String url, Class<T> responseType) {
         log.trace("Call DELETE for: {}, to url: {}", responseType, url);
-        return getRestTemplate().exchange(baseUrl + url, HttpMethod.DELETE, null, responseType).getBody();
+        return forEntity(baseUrl + url, "DELETE", null, responseType, null).response;
     }
 
     /**
@@ -370,6 +487,21 @@ public abstract class AbstractRestApi {
             }
             return url.toString();
         }
+    }
+
+    /**
+     * The Class Response.
+     *
+     * @param <T> the generic type
+     */
+    private static class Response<T> {
+
+        /** The headers. */
+        private Map<String, List<String>> headers;
+
+        /** The response. */
+        private T response;
+
     }
 
 }

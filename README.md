@@ -5,7 +5,7 @@
 
 This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs/)
 
-## Spring Bean
+## Beans
 - ScalablePress4J is a service provider bean who provide APIs:
   - ProductApi implement [Product API](https://scalablepress.com/docs/#product-api)
   - QuoteApi implement [Quote API](https://scalablepress.com/docs/#quote-api)
@@ -17,7 +17,7 @@ This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs
   - MockupApi implement [Mockup  API](https://scalablepress.com/docs/#mockup-api)
 
 ## Configuration
-- You need an application.properties with the property `scalablepress.api.basicauth` who contain your API key. You can obtain you API key on [https://scalablepress.com/docs/#authentication](https://scalablepress.com/docs/#authentication).
+- You need an instance of `ScalablePress4` and set `ScalablePress4J.setBasicAuth` with your API key. You can obtain you API key on [https://scalablepress.com/docs/#authentication](https://scalablepress.com/docs/#authentication).
 
 ## Maven configuration
 
@@ -38,4 +38,4 @@ For ***snapshots***, add the following repository to your `pom.xml` file.
     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
 </repository>
 ```
-The current snapshot version is `0.1.3-SNAPSHOT`.
+The current snapshot version is `0.2.0-SNAPSHOT`.

@@ -22,13 +22,9 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
-import org.junit.runner.RunWith;
+import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,30 +36,27 @@ import com.github.gcauchis.scalablepress4j.model.DesignSides;
 import com.github.gcauchis.scalablepress4j.model.Dimension;
 import com.github.gcauchis.scalablepress4j.model.Position;
 import com.github.gcauchis.scalablepress4j.model.PositionOffset;
-import com.github.gcauchis.scalablepress4j.test.PropertyTestConfiguration;
 
 /**
  * The Class AbstractApiTest.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-        classes = {
-                ScalablePress4J.class,
-                PropertyTestConfiguration.class
-                },
-        loader = AnnotationConfigContextLoader.class)
 public abstract class AbstractApiTest {
 
     /** The test api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     /** The scalable press spring bean. */
-    @Autowired
-    protected ScalablePress4J scalablePress;
-    
-    /**  The json object mapper. */
+    protected static ScalablePress4J scalablePress;
+
+    /** The json object mapper. */
     protected final ObjectMapper objectMapper = new ObjectMapper();
-    
+
+    @BeforeClass
+    public static void initClass() {
+        scalablePress = new ScalablePress4J();
+        scalablePress.setBasicAuth(":test_UrGvePVORHqYm_PQ1VzD0Q");
+    }
+
     /**
      * Builds the test design.
      *
@@ -90,7 +83,7 @@ public abstract class AbstractApiTest {
         design.setSides(designSides);
         return design;
     }
-    
+
     /**
      * To json string.
      *
