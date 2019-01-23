@@ -192,7 +192,7 @@ public abstract class AbstractRestApi {
      */
     private <T> PaginatedResult<T> buildPaginatedResult(Response<T> resultEntity, int page) {
         PaginatedResult<T> paginatedResult = new PaginatedResult<>();
-        paginatedResult.setResult(resultEntity.response);
+        paginatedResult.setResult(resultEntity.body);
         paginatedResult.setPageNumber(page);
         paginatedResult.setLimit(limit);
         List<String> xspPages = resultEntity.headers.get("X-SP-Pages");
@@ -311,7 +311,7 @@ public abstract class AbstractRestApi {
         responseEntity.headers = connection.getHeaderFields();
         log.debug("Header: {}", responseEntity.headers);
         try {
-            responseEntity.response = objectMapper.readValue(response.toString(), responseType);
+            responseEntity.body = objectMapper.readValue(response.toString(), responseType);
         } catch (IOException e) {
             log.error("Fail to parse response", e);
             ErrorResponse errorResponse = null;
@@ -376,7 +376,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T get(String url, Class<T> responseType) {
         log.trace("Call GET for: {}, to url: {}", responseType, url);
-        return getForEntity(baseUrl + url, responseType).response;
+        return getForEntity(baseUrl + url, responseType).body;
     }
 
     /**
@@ -404,7 +404,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T get(String url, Class<T> responseType, Map<String, ?> urlVariables) {
         log.trace("Call GET for: {}, to url: {}, with var: {}", responseType, url, urlVariables);
-        return getForEntity(baseUrl + url, responseType, urlVariables).response;
+        return getForEntity(baseUrl + url, responseType, urlVariables).body;
     }
 
     /**
@@ -435,7 +435,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T post(String url, Object request, Class<T> responseType) {
         log.trace("Call POST for: {}, to url: {}, with req {}", responseType, url, request);
-        return postForEntity(baseUrl + url, request, responseType).response;
+        return postForEntity(baseUrl + url, request, responseType).body;
     }
 
     /**
@@ -465,7 +465,7 @@ public abstract class AbstractRestApi {
      */
     protected <T> T delete(String url, Class<T> responseType) {
         log.trace("Call DELETE for: {}, to url: {}", responseType, url);
-        return forEntity(baseUrl + url, "DELETE", null, responseType, null).response;
+        return forEntity(baseUrl + url, "DELETE", null, responseType, null).body;
     }
 
     /**
@@ -498,8 +498,8 @@ public abstract class AbstractRestApi {
         /** The headers. */
         private Map<String, List<String>> headers;
 
-        /** The response. */
-        private T response;
+        /** The body. */
+        private T body;
 
     }
 
