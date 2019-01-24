@@ -37,6 +37,7 @@ import com.github.gcauchis.scalablepress4j.model.Design;
 import com.github.gcauchis.scalablepress4j.model.DesignResponse;
 import com.github.gcauchis.scalablepress4j.model.Order;
 import com.github.gcauchis.scalablepress4j.model.OrderProduct;
+import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 import com.github.gcauchis.scalablepress4j.model.Product;
 import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 import com.github.gcauchis.scalablepress4j.model.ProductOveriew;
@@ -85,6 +86,7 @@ public class WorkFlowTest extends AbstractApiTest {
         quoteApi = scalablePress.quoteApi();
         reshipApi = scalablePress.reshipApi();
         mockupApi = scalablePress.mockupApi();
+        scalablePress.setLimit(5);
     }
 
     /**
@@ -178,13 +180,13 @@ public class WorkFlowTest extends AbstractApiTest {
         log.info("Design created: {} ", response.toString());
         log.info("Design created with designId = {}", response.getDesignId());
         final String designId = response.getDesignId();
-        log.info("### Design created successfully with id " + designId);
+        log.info("### Design created successfully with id {}", designId);
 
         DesignResponse retieveDesign = designApi.retrieve(designId);
         Assert.assertNotNull(retieveDesign);
         Assert.assertEquals(designId, retieveDesign.getDesignId());
         log.info("Design retrieved: {} ", retieveDesign.toString());
-        log.info("### Design retrieve successfully for id " + designId);
+        log.info("### Design retrieve successfully for id {}", designId);
 
         Quote quote = new Quote();
         quote.setType("dtg");
@@ -225,11 +227,15 @@ public class WorkFlowTest extends AbstractApiTest {
         log.info("Order retrieved: {} ", retrieveOrder.toString());
         Assert.assertEquals(orderToken, retrieveOrder.getOrderToken());
         Assert.assertEquals("order", retrieveOrder.getStatus());
-        log.info("### Order found for id " + orderId);
+        log.info("### Order found for id {}", orderId);
 
-        List<Order> currentOrders = orderApi.retrieve();
-        Assert.assertNotNull(currentOrders);
+        int limit = 5;
+        orderApi.setLimit(limit);
+        PaginatedResultList<Order> pagined = orderApi.retrieve(1);
+        Assert.assertNotNull(pagined);
+        List<Order> currentOrders = pagined.getResult();
         Assert.assertFalse(currentOrders.isEmpty());
+        Assert.assertEquals(limit, currentOrders.size());
         log.info("Current Orders: {} ", currentOrders.toString());
 
         for (Order orderToCancel : currentOrders) {

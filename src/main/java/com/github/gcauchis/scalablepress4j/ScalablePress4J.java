@@ -87,6 +87,16 @@ public class ScalablePress4J {
         apis.forEach(api -> api.setBasicAuth(basicAuth));
     }
 
+    /**
+     * Sets the limit of element per page in pagination mode for all the currently instantiate services.
+     *
+     * @param limit the new limit
+     * @see AbstractRestApi#setLimit(int)
+     */
+    public void setLimit(int limit) {
+        apis.forEach(api -> api.setLimit(limit));
+    }
+
     private <S extends AbstractRestApi> S prepareV2Api(S service) {
         return prepareApi(service, SCALABLE_PRESS_V2_BASE_URL);
     }

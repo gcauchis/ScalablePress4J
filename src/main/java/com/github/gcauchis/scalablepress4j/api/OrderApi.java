@@ -33,6 +33,7 @@ import com.github.gcauchis.scalablepress4j.model.Features;
 import com.github.gcauchis.scalablepress4j.model.Order;
 import com.github.gcauchis.scalablepress4j.model.OrderItem;
 import com.github.gcauchis.scalablepress4j.model.OrderProduct;
+import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 
 /**
@@ -84,6 +85,7 @@ public class OrderApi extends AbstractRestApi{
     /**
      * After placing several orders you can get the status and other information
      * on each of your orders.
+     * Warning: this method take times, prefer the usage of {@link #retrieve(int)} instead.
      * 
      * @return an array of order objects.
      * @throws ScalablePressBadRequestException for invalid request or error occur during call.
@@ -91,6 +93,19 @@ public class OrderApi extends AbstractRestApi{
      */
     public List<Order> retrieve() {
         return Arrays.asList(get(URL_ORDER, Order[].class));
+    }
+
+    /**
+     * After placing several orders you can get the status and other information
+     * on each of your orders.
+     *
+     * @param page the page index to view
+     * @return an array of order objects.
+     * @throws ScalablePressBadRequestException for invalid request or error occur during call.
+     * @see <a href="https://scalablepress.com/docs/#retrieve-orders">https://scalablepress.com/docs/#retrieve-orders</a>
+     */
+    public PaginatedResultList<Order> retrieve(int page) {
+        return new PaginatedResultList<Order>(get(URL_ORDER, page, Order[].class));
     }
 
     /**

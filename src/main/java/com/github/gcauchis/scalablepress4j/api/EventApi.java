@@ -60,7 +60,7 @@ public class EventApi extends AbstractRestApi {
             appendArg(args, "itemName", query.getItemName());
             appendArg(args, "sort", query.getSort());
         }
-        return new PaginatedResultList<>( get(URL_EVENT + "?" + args.toString(), page, Event[].class));
+        return new PaginatedResultList<>(get(URL_EVENT + "?" + args.toString(), page, Event[].class));
     }
 
     protected void appendArg(StringBuilder args, String argName,

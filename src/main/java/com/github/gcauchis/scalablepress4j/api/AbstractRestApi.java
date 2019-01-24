@@ -134,7 +134,7 @@ public abstract class AbstractRestApi {
     }
 
     /**
-     * Gets the limit.
+     * Gets the limit of element per page in pagination mode.
      *
      * @return the limit
      */
@@ -143,7 +143,7 @@ public abstract class AbstractRestApi {
     }
 
     /**
-     * Sets the limit.
+     * Sets the limit of element per page in pagination mode.
      *
      * @param limit the new limit
      */
@@ -176,9 +176,7 @@ public abstract class AbstractRestApi {
             url += "&";
         }
         url += "page=" + page;
-        if (limit != DEFAULT_LIMIT) {
-            url += "&limit=" + limit;
-        }
+        url += "&limit=" + limit;
         return url;
     }
 
