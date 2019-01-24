@@ -17,7 +17,7 @@ This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs
   - MockupApi implement [Mockup  API](https://scalablepress.com/docs/#mockup-api)
 
 ## Configuration
-- You need an instance of `ScalablePress4` and set `ScalablePress4J.setBasicAuth` with your API key. You can obtain you API key on [https://scalablepress.com/docs/#authentication](https://scalablepress.com/docs/#authentication).
+- You need an instance of `ScalablePress4J` and set `ScalablePress4J.setBasicAuth` with your API key. You can obtain you API key on [https://scalablepress.com/docs/#authentication](https://scalablepress.com/docs/#authentication).
 
 ## Maven configuration
 
