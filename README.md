@@ -27,7 +27,7 @@ ScalablePress4J is available on [Maven Central](https://search.maven.org/search?
 <dependency>
     <groupId>com.github.gcauchis</groupId>
     <artifactId>ScalablePress4j</artifactId>
-    <version>0.2.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -38,4 +38,4 @@ For ***snapshots***, add the following repository to your `pom.xml` file.
     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
 </repository>
 ```
-The current snapshot version is `0.2.1-SNAPSHOT`.
+The current snapshot version is `1.0.1-SNAPSHOT`.
