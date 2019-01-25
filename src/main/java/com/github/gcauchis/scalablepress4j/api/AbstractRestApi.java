@@ -289,7 +289,6 @@ public abstract class AbstractRestApi {
             try {
                 errorResponse = new ErrorResponse(connection.getResponseCode() + "", connection.getResponseMessage());
             } catch (IOException e1) {
-                log.error("Fail to retreive response code or message.", e1);
                 errorResponse = new ErrorResponse(e);
             }
             throw new ScalablePressBadRequestException(errorResponse, e);
@@ -308,7 +307,6 @@ public abstract class AbstractRestApi {
                 log.info("Response error object: {}", errorResponse);
                 throw new ScalablePressBadRequestException(errorResponse, e);
             } catch (IOException ioe) {
-                log.error("Fail to parse error response", ioe);
                 throw new ScalablePressBadRequestException(new ErrorResponse(ioe), ioe);
             }
         }
@@ -343,7 +341,6 @@ public abstract class AbstractRestApi {
             }
             connection.setDoOutput(true);
         } catch (IOException | URISyntaxException e) {
-            log.error("Fail to buil connection", e);
             throw new ScalablePressBadRequestException(new ErrorResponse(e), e);
         }
         return connection;
