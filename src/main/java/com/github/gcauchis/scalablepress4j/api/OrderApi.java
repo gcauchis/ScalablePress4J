@@ -105,7 +105,7 @@ public class OrderApi extends AbstractRestApi{
      * @see <a href="https://scalablepress.com/docs/#retrieve-orders">https://scalablepress.com/docs/#retrieve-orders</a>
      */
     public PaginatedResultList<Order> retrieve(int page) {
-        return new PaginatedResultList<Order>(get(URL_ORDER, page, Order[].class));
+        return new PaginatedResultList<>(get(URL_ORDER, page, Order[].class));
     }
 
     /**

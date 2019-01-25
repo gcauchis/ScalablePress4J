@@ -30,7 +30,6 @@ import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +40,6 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
-import com.github.gcauchis.scalablepress4j.model.Error;
 import com.github.gcauchis.scalablepress4j.model.ErrorResponse;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResult;
 
@@ -160,13 +158,7 @@ public abstract class AbstractRestApi {
      */
     private String preparePaginatedUrl(final String requestUrl, int page) {
         if (page < 1) {
-            ErrorResponse errorResponse = new ErrorResponse();
-            errorResponse.setStatusCode("500");
-            Error error = new Error();
-            error.setCode("");
-            error.setMessage("Page number cannot be less than 1.");
-            errorResponse.setIssues(Arrays.asList(error));
-            throw new ScalablePressBadRequestException(errorResponse);
+            throw new ScalablePressBadRequestException(new ErrorResponse("400", "Page number cannot be less than 1."));
         }
         String url = requestUrl;
         int argSeparatorIndex = url.indexOf('?');
@@ -283,8 +275,7 @@ public abstract class AbstractRestApi {
             BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
             while ((line = rd.readLine()) != null) {
-                response.append(line);
-                response.append('\n');
+                response.append(line).append("\n");
             }
 
             if (wr != null) {
@@ -294,15 +285,14 @@ public abstract class AbstractRestApi {
             log.trace("Response {}", response);
         } catch (IOException e) {
             log.error("Fail to send request", e);
-            ErrorResponse errorResponse = new ErrorResponse();
+            ErrorResponse errorResponse;
             try {
-                errorResponse.setStatusCode(connection.getResponseCode() + "");
-                errorResponse.setMessage(connection.getResponseMessage());
+                errorResponse = new ErrorResponse(connection.getResponseCode() + "", connection.getResponseMessage());
             } catch (IOException e1) {
-                errorResponse.setStatusCode("500");
-                errorResponse.setMessage(e.getMessage());
+                log.error("Fail to retreive response code or message.", e1);
+                errorResponse = new ErrorResponse(e);
             }
-            throw new ScalablePressBadRequestException(errorResponse);
+            throw new ScalablePressBadRequestException(errorResponse, e);
         }
 
         Response<T> responseEntity = new Response<>();
@@ -311,17 +301,15 @@ public abstract class AbstractRestApi {
         try {
             responseEntity.body = objectMapper.readValue(response.toString(), responseType);
         } catch (IOException e) {
-            log.error("Fail to parse response", e);
-            ErrorResponse errorResponse = null;
+            log.debug("Fail to parse response", e);
             try {
-                log.error("Response error: {} {}", connection.getResponseCode(), connection.getResponseMessage());
-                errorResponse = objectMapper.readValue(response.toString(), ErrorResponse.class);
+                log.info("Response error: {} {}", connection.getResponseCode(), connection.getResponseMessage());
+                ErrorResponse errorResponse = objectMapper.readValue(response.toString(), ErrorResponse.class);
+                log.info("Response error object: {}", errorResponse);
+                throw new ScalablePressBadRequestException(errorResponse, e);
             } catch (IOException ioe) {
-                log.error("Fail to parse error", ioe);
-            }
-            if (errorResponse != null) {
-                log.error("Response error object: {}", errorResponse);
-                throw new ScalablePressBadRequestException(errorResponse);
+                log.error("Fail to parse error response", ioe);
+                throw new ScalablePressBadRequestException(new ErrorResponse(ioe), ioe);
             }
         }
         return responseEntity;
@@ -356,10 +344,7 @@ public abstract class AbstractRestApi {
             connection.setDoOutput(true);
         } catch (IOException | URISyntaxException e) {
             log.error("Fail to buil connection", e);
-            ErrorResponse errorResponse = new ErrorResponse();
-            errorResponse.setStatusCode("500");
-            errorResponse.setMessage(e.getMessage());
-            throw new ScalablePressBadRequestException(errorResponse);
+            throw new ScalablePressBadRequestException(new ErrorResponse(e), e);
         }
         return connection;
     }

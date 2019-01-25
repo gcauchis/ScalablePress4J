@@ -31,8 +31,8 @@ public class ScalablePressBadRequestException extends RuntimeException {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 5250945263556128109L;
-    
-    /**  the error response. */
+
+    /** the error response. */
     private final ErrorResponse errorResponse;
 
     /**
@@ -42,6 +42,17 @@ public class ScalablePressBadRequestException extends RuntimeException {
      */
     public ScalablePressBadRequestException(ErrorResponse errorResponse) {
         super(errorResponse.getStatusCode());
+        this.errorResponse = errorResponse;
+    }
+
+    /**
+     * Instantiates a new scalable press bad request exception.
+     *
+     * @param errorResponse the error response
+     * @param throwable the throwable
+     */
+    public ScalablePressBadRequestException(ErrorResponse errorResponse, Throwable throwable) {
+        super(errorResponse.getStatusCode(), throwable);
         this.errorResponse = errorResponse;
     }
 

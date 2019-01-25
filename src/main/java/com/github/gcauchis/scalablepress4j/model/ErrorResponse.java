@@ -56,6 +56,45 @@ public class ErrorResponse implements Serializable {
     private String message;
 
     /**
+     * Instantiates a new error response.
+     */
+    public ErrorResponse() {
+        super();
+    }
+
+    /**
+     * Instantiates a new error response with status code 520 (Unknown Error: The 520 error is used as a "catch-all response for when the origin server returns
+     * something unexpected", listing connection resets, large headers, and empty or invalid responses as common triggers.).
+     *
+     * @param throwable the throwable
+     */
+    public ErrorResponse(Throwable throwable) {
+        this("520", throwable);
+    }
+
+    /**
+     * Instantiates a new error response.
+     *
+     * @param statusCode the status code
+     * @param throwable the throwable
+     */
+    public ErrorResponse(String statusCode, Throwable throwable) {
+        this(statusCode, throwable.getMessage());
+    }
+
+    /**
+     * Instantiates a new error response.
+     *
+     * @param statusCode the status code
+     * @param message the message
+     */
+    public ErrorResponse(String statusCode, String message) {
+        super();
+        this.statusCode = statusCode;
+        this.message = message;
+    }
+
+    /**
      * Gets The Status Code.
      *
      * @return The Status Code
