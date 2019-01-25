@@ -284,7 +284,6 @@ public abstract class AbstractRestApi {
             rd.close();
             log.trace("Response {}", response);
         } catch (IOException e) {
-            log.error("Fail to send request", e);
             ErrorResponse errorResponse;
             try {
                 errorResponse = new ErrorResponse(connection.getResponseCode() + "", connection.getResponseMessage());
