@@ -25,9 +25,9 @@ package com.github.gcauchis.scalablepress4j.api;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Category;
@@ -76,7 +76,7 @@ public class WorkFlowTest extends AbstractApiTest {
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         billingApi = scalablePress.billingApi();
         designApi = scalablePress.designApi();
@@ -94,14 +94,14 @@ public class WorkFlowTest extends AbstractApiTest {
      */
     @Test
     public void context() {
-        Assert.assertNotNull(billingApi);
-        Assert.assertNotNull(designApi);
-        Assert.assertNotNull(orderApi);
-        Assert.assertNotNull(eventApi);
-        Assert.assertNotNull(productApi);
-        Assert.assertNotNull(quoteApi);
-        Assert.assertNotNull(reshipApi);
-        Assert.assertNotNull(mockupApi);
+        Assertions.assertNotNull(billingApi);
+        Assertions.assertNotNull(designApi);
+        Assertions.assertNotNull(orderApi);
+        Assertions.assertNotNull(eventApi);
+        Assertions.assertNotNull(productApi);
+        Assertions.assertNotNull(quoteApi);
+        Assertions.assertNotNull(reshipApi);
+        Assertions.assertNotNull(mockupApi);
     }
 
     /**
@@ -113,78 +113,76 @@ public class WorkFlowTest extends AbstractApiTest {
         log.info("############################### Start workflow test ###############################");
         log.info("###################################################################################");
         final List<Category> categories = productApi.getCategories();
-        Assert.assertNotNull(categories);
-        Assert.assertFalse(categories.isEmpty());
+        Assertions.assertNotNull(categories);
+        Assertions.assertFalse(categories.isEmpty());
         log.info("Categories: {}", categories.toString());
 
         final String categoryId = "short-sleeve-shirts";
         Category category = categories.stream().filter(c -> categoryId.equals(c.getCategoryId())).findFirst()
                 .orElse(null);
-        Assert.assertNotNull("category " + categoryId + " not found", category);
-        Assert.assertEquals(categoryId, category.getCategoryId());
-        Assert.assertNull(category.getProducts());
+        Assertions.assertNotNull(category, "category " + categoryId + " not found");
+        Assertions.assertEquals(categoryId, category.getCategoryId());
+        Assertions.assertNull(category.getProducts());
         log.info("### Category " + categoryId + " found");
 
         category = productApi.getCategoryProducts(categoryId);
-        Assert.assertNotNull("category " + categoryId + " not found", category);
-        Assert.assertNotNull(category.getProducts());
-        Assert.assertEquals(categoryId, category.getCategoryId());
+        Assertions.assertNotNull(category, "category " + categoryId + " not found");
+        Assertions.assertNotNull(category.getProducts());
+        Assertions.assertEquals(categoryId, category.getCategoryId());
         log.info("Category products: {}", category);
         log.info("### Category products " + categoryId + " found");
 
         final String productId = "gildan-ultra-cotton-t-shirt";
         ProductOveriew productOveriew = category.getProducts().stream().filter(p -> productId.equals(p.getId()))
                 .findFirst().orElse(null);
-        Assert.assertNotNull("Product " + productId + " not found in category " + categoryId, productOveriew);
-        Assert.assertEquals(productId, productOveriew.getId());
+        Assertions.assertNotNull(productOveriew, "Product " + productId + " not found in category " + categoryId);
+        Assertions.assertEquals(productId, productOveriew.getId());
         log.info("### Product " + productId + " found");
 
         final Product productItem = productApi.getProductInformation(productId);
-        Assert.assertNotNull("Product " + productId + " not found", productItem);
-        Assert.assertEquals(productId, productItem.getProductId());
+        Assertions.assertNotNull(productItem, "Product " + productId + " not found");
+        Assertions.assertEquals(productId, productItem.getProductId());
         log.info("Product: {}", productItem);
-        Assert.assertTrue("Product " + productItem + " should be available",
-                Boolean.parseBoolean(productItem.getAvailable()));
+        Assertions.assertTrue(Boolean.parseBoolean(productItem.getAvailable()), "Product " + productItem + " should be available");
         log.info("### Product " + productId + " available");
 
-        Assert.assertNotNull(productItem.getColors());
+        Assertions.assertNotNull(productItem.getColors());
         final String productColorId = "black";
         final Color productColor = productItem.getColors().stream()
                 .filter(c -> productColorId.equalsIgnoreCase(c.getName())).findFirst().orElse(null);
-        Assert.assertNotNull("Color " + productColorId + " not found in product " + productId, productColor);
+        Assertions.assertNotNull(productColor, "Color " + productColorId + " not found in product " + productId);
         log.info("### Color " + productColorId + " found in product " + productId);
 
         final String productColorSize = "xxl";
-        Assert.assertNotNull(productColor.getSizes());
-        Assert.assertTrue(
-                "Size " + productColorSize + " not found in color " + productColorId + " for product " + productId,
-                productColor.getSizes().stream().filter(s -> productColorSize.equals(s)).findFirst().isPresent());
+        Assertions.assertNotNull(productColor.getSizes());
+        Assertions.assertTrue(productColor.getSizes().stream().filter(s -> productColorSize.equals(s)).findFirst().isPresent(),
+                "Size " + productColorSize + " not found in color " + productColorId + " for product " + productId);
         log.info("### Size " + productColorSize + " found in color " + productColorId + " for product " + productId);
 
         final ProductAvailability productAvailability = productApi.getProductAvailability(productId);
-        Assert.assertNotNull(productAvailability);
+        Assertions.assertNotNull(productAvailability);
         log.info("ProductAvailability: {}", productAvailability);
-        Assert.assertNotNull(productAvailability.getColorsAvailability());
+        Assertions.assertNotNull(productAvailability.getColorsAvailability());
         final ColorAvailability colorAvailability = productAvailability.getColorsAvailability().get(productColorId);
-        Assert.assertNotNull("Color " + productColorId + " not available", colorAvailability);
-        Assert.assertNotNull(colorAvailability.getSizesAvailability());
-        Assert.assertNotNull(colorAvailability.getSizesAvailability().get(productColorSize));
-        Assert.assertTrue("Size " + productColorSize + " unavailable for color " + productColorId,
-                colorAvailability.getSizesAvailability().get(productColorSize) > 0);
+        Assertions.assertNotNull(colorAvailability, "Color " + productColorId + " not available");
+        Assertions.assertNotNull(colorAvailability.getSizesAvailability());
+        Assertions.assertNotNull(colorAvailability.getSizesAvailability().get(productColorSize));
+        Assertions.assertTrue(colorAvailability.getSizesAvailability().get(productColorSize) > 0,
+                "Size " + productColorSize + " unavailable for color " + productColorId);
         log.info("### Size " + productColorSize + " available in color " + productColorId);
 
         Design designRequest = buildTestDesign();
         DesignResponse response = designApi.create(designRequest);
-        Assert.assertNotNull(response);
-        Assert.assertNotNull(response.getDesignId());
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.getDesignId());
         log.info("Design created: {} ", response.toString());
         log.info("Design created with designId = {}", response.getDesignId());
         final String designId = response.getDesignId();
         log.info("### Design created successfully with id {}", designId);
 
         DesignResponse retieveDesign = designApi.retrieve(designId);
-        Assert.assertNotNull(retieveDesign);
-        Assert.assertEquals(designId, retieveDesign.getDesignId());
+        Assertions.assertNotNull(retieveDesign);
+        Assertions.assertEquals(designId, retieveDesign.getDesignId());
         log.info("Design retrieved: {} ", retieveDesign.toString());
         log.info("### Design retrieve successfully for id {}", designId);
 
@@ -201,57 +199,57 @@ public class WorkFlowTest extends AbstractApiTest {
         quote.setDesignId(designId);
 
         QuoteResponse quoteResponse = quoteApi.quote(quote);
-        Assert.assertNotNull(quoteResponse);
+        Assertions.assertNotNull(quoteResponse);
         log.info("QuoteResponse retrieved: {} ", quoteResponse.toString());
         String orderToken = quoteResponse.getOrderToken();
-        Assert.assertNotNull(orderToken);
+        Assertions.assertNotNull(orderToken);
         log.info("### Quote successfuly posted with order token " + orderToken);
 
         Order retrieveOrder = quoteApi.retrieve(orderToken);
-        Assert.assertNotNull(retrieveOrder);
+        Assertions.assertNotNull(retrieveOrder);
         log.info("Order retrieved: {} ", retrieveOrder.toString());
-        Assert.assertEquals(orderToken, retrieveOrder.getOrderToken());
-        Assert.assertEquals("quote", retrieveOrder.getStatus());
+        Assertions.assertEquals(orderToken, retrieveOrder.getOrderToken());
+        Assertions.assertEquals("quote", retrieveOrder.getStatus());
         String orderId = retrieveOrder.getOrderId();
         log.info("### Order found for token " + orderToken);
 
         Order placedOrder = orderApi.place(orderToken);
-        Assert.assertNotNull(placedOrder);
+        Assertions.assertNotNull(placedOrder);
         log.info("Order placed: {} ", placedOrder.toString());
-        Assert.assertEquals("order", placedOrder.getStatus());
-        Assert.assertEquals(orderId, placedOrder.getOrderId());
+        Assertions.assertEquals("order", placedOrder.getStatus());
+        Assertions.assertEquals(orderId, placedOrder.getOrderId());
         log.info("### Order placed for token " + orderToken);
 
         retrieveOrder = orderApi.retrieve(orderId);
-        Assert.assertNotNull(retrieveOrder);
+        Assertions.assertNotNull(retrieveOrder);
         log.info("Order retrieved: {} ", retrieveOrder.toString());
-        Assert.assertEquals(orderToken, retrieveOrder.getOrderToken());
-        Assert.assertEquals("order", retrieveOrder.getStatus());
+        Assertions.assertEquals(orderToken, retrieveOrder.getOrderToken());
+        Assertions.assertEquals("order", retrieveOrder.getStatus());
         log.info("### Order found for id {}", orderId);
 
         int limit = 5;
         orderApi.setLimit(limit);
         PaginatedResultList<Order> pagined = orderApi.retrieve(1);
-        Assert.assertNotNull(pagined);
+        Assertions.assertNotNull(pagined);
         List<Order> currentOrders = pagined.getResult();
-        Assert.assertFalse(currentOrders.isEmpty());
-        Assert.assertEquals(limit, currentOrders.size());
+        Assertions.assertFalse(currentOrders.isEmpty());
+        Assertions.assertEquals(limit, currentOrders.size());
         log.info("Current Orders: {} ", currentOrders.toString());
 
         for (Order orderToCancel : currentOrders) {
             if (!orderToCancel.getStatus().equals("cancelled")) {
                 Order canceledOrder = orderApi.cancel(orderToCancel.getOrderId());
                 log.info("Canceled order: {} ", canceledOrder.toString());
-                Assert.assertEquals("cancelled", canceledOrder.getStatus());
-                Assert.assertEquals(orderToCancel.getOrderId(), canceledOrder.getOrderId());
+                Assertions.assertEquals("cancelled", canceledOrder.getStatus());
+                Assertions.assertEquals(orderToCancel.getOrderId(), canceledOrder.getOrderId());
             }
         }
 
         // TODO Billing
 
         DesignResponse deleted = designApi.delete(designId);
-        Assert.assertNotNull(deleted);
-        Assert.assertEquals(designId, deleted.getDesignId());
+        Assertions.assertNotNull(deleted);
+        Assertions.assertEquals(designId, deleted.getDesignId());
         log.info("Deleted design: {} ", deleted.toString());
         log.info("### Design retrieve successfully for id " + designId);
 

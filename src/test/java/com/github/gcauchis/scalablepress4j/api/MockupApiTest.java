@@ -22,9 +22,9 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.gcauchis.scalablepress4j.model.Design;
@@ -48,7 +48,7 @@ public class MockupApiTest extends AbstractApiTest {
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         mockupApi = scalablePress.mockupApi();
         productApi = scalablePress.productApi();
@@ -59,17 +59,17 @@ public class MockupApiTest extends AbstractApiTest {
      */
     @Test
     public void context() {
-        Assert.assertNotNull(mockupApi);
-        Assert.assertNotNull(productApi);
+        Assertions.assertNotNull(mockupApi);
+        Assertions.assertNotNull(productApi);
     }
 
     @Test
     public void create() throws JsonProcessingException {
         Product product = productApi.getProductInformation("gildan-cotton-t-shirt");
         log.info("product {}", toJsonString(product));
-        Assert.assertNotNull(product);
-        Assert.assertNotNull(product.getTemplates());
-        Assert.assertNotNull(product.getTemplates().getFront());
+        Assertions.assertNotNull(product);
+        Assertions.assertNotNull(product.getTemplates());
+        Assertions.assertNotNull(product.getTemplates().getFront());
 
         Mockup mockup = new Mockup();
         Design design = buildTestDesign();
@@ -90,7 +90,7 @@ public class MockupApiTest extends AbstractApiTest {
 
         log.info("create Mockup {}", toJsonString(mockup));
         String url = mockupApi.create(mockup);
-        Assert.assertNotNull(url);
+        Assertions.assertNotNull(url);
         log.info("Mockup url {}", url);
     }
 }

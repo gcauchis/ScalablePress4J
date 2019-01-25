@@ -22,7 +22,7 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +51,7 @@ public abstract class AbstractApiTest {
     /** The json object mapper. */
     protected final ObjectMapper objectMapper = new ObjectMapper();
 
-    @BeforeClass
+    @BeforeAll
     public static void initClass() {
         scalablePress = new ScalablePress4J();
         scalablePress.setBasicAuth(":test_UrGvePVORHqYm_PQ1VzD0Q");

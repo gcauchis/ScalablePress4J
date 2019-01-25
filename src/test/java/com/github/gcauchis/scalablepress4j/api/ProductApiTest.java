@@ -24,9 +24,9 @@ package com.github.gcauchis.scalablepress4j.api;
 
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.github.gcauchis.scalablepress4j.model.Category;
 import com.github.gcauchis.scalablepress4j.model.Product;
@@ -43,7 +43,7 @@ public class ProductApiTest extends AbstractApiTest {
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         productApi = scalablePress.productApi();
     }
@@ -53,7 +53,7 @@ public class ProductApiTest extends AbstractApiTest {
      */
     @Test
     public void context() {
-        Assert.assertNotNull(productApi);
+        Assertions.assertNotNull(productApi);
     }
 
     /**
@@ -62,9 +62,9 @@ public class ProductApiTest extends AbstractApiTest {
     @Test
     public void getCategories() {
         List<Category> categories = productApi.getCategories();
-        Assert.assertNotNull(categories);
+        Assertions.assertNotNull(categories);
         log.info(categories.toString());
-        Assert.assertFalse(categories.isEmpty());
+        Assertions.assertFalse(categories.isEmpty());
     }
 
     /**
@@ -73,7 +73,7 @@ public class ProductApiTest extends AbstractApiTest {
     @Test
     public void getCategoryProducts() {
         Category category = productApi.getCategoryProducts("short-sleeve-shirts");
-        Assert.assertNotNull(category);
+        Assertions.assertNotNull(category);
         log.info(category.toString());
     }
 
@@ -83,7 +83,7 @@ public class ProductApiTest extends AbstractApiTest {
     @Test
     public void getProductInformation() {
         Product product = productApi.getProductInformation("gildan-ultra-cotton-t-shirt");
-        Assert.assertNotNull(product);
+        Assertions.assertNotNull(product);
         log.info(product.toString());
     }
 
@@ -93,7 +93,7 @@ public class ProductApiTest extends AbstractApiTest {
     @Test
     public void getProductAvailability() {
         ProductAvailability productAvailability = productApi.getProductAvailability("gildan-ultra-cotton-t-shirt");
-        Assert.assertNotNull(productAvailability);
+        Assertions.assertNotNull(productAvailability);
         log.info(productAvailability.toString());
     }
 }

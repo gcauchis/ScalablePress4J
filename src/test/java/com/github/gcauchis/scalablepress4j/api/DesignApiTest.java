@@ -22,9 +22,9 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
@@ -42,7 +42,7 @@ public class DesignApiTest extends AbstractApiTest {
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         designApi = scalablePress.designApi();
     }
@@ -52,7 +52,7 @@ public class DesignApiTest extends AbstractApiTest {
      */
     @Test
     public void context() {
-        Assert.assertNotNull(designApi);
+        Assertions.assertNotNull(designApi);
     }
     
     /**
@@ -64,30 +64,30 @@ public class DesignApiTest extends AbstractApiTest {
         Design design = buildTestDesign();
         log.info("Create design: {}", toJsonString(design));
         DesignResponse response = designApi.create(design);
-        Assert.assertNotNull(response);
-        Assert.assertNotNull(response.getDesignId());
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.getDesignId());
         log.info("Returned design: {} ", response);
         log.info("Design created with designId = {}", response.getDesignId());
         String designId = response.getDesignId();
         
         log.info("Retreive design: {} ", designId);
         DesignResponse retieveDesign = designApi.retrieve(designId);
-        Assert.assertNotNull(retieveDesign);
-        Assert.assertEquals(designId, retieveDesign.getDesignId());
+        Assertions.assertNotNull(retieveDesign);
+        Assertions.assertEquals(designId, retieveDesign.getDesignId());
         log.info("Returned design: {} ", retieveDesign);
         
         log.info("Delete design: {} ", designId);
         DesignResponse deleted = designApi.delete(designId);
-        Assert.assertNotNull(deleted);
-        Assert.assertEquals(designId, deleted.getDesignId());
+        Assertions.assertNotNull(deleted);
+        Assertions.assertEquals(designId, deleted.getDesignId());
         log.info("Returned design: {} ", deleted);
         
         try {
             log.info("Retreive deleted design: {}", designId);
             designApi.retrieve(designId);
-            Assert.fail("Error 404 must occur, the desing doesn't exist anymore");
+            Assertions.fail("Error 404 must occur, the desing doesn't exist anymore");
         } catch (ScalablePressBadRequestException e) {
-            Assert.assertEquals("404", e.getErrorResponse().getStatusCode());
+            Assertions.assertEquals("404", e.getErrorResponse().getStatusCode());
             log.info("Design deleted successfully");
         }
     }

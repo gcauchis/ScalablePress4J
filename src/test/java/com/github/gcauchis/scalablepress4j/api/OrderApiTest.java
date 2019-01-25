@@ -22,9 +22,10 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.github.gcauchis.scalablepress4j.model.Order;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
@@ -40,7 +41,7 @@ public class OrderApiTest extends AbstractApiTest {
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         orderApi = scalablePress.orderApi();
     }
@@ -50,14 +51,14 @@ public class OrderApiTest extends AbstractApiTest {
      */
     @Test
     public void context() {
-        Assert.assertNotNull(orderApi);
+        Assertions.assertNotNull(orderApi);
     }
 
     @Test
     public void retrieve() {
         orderApi.setLimit(5);
         PaginatedResultList<Order> pagined = orderApi.retrieve(1);
-        Assert.assertNotNull(pagined);
+        Assertions.assertNotNull(pagined);
         log.info("Retreive: {}", pagined);
     }
 

@@ -25,16 +25,15 @@ package com.github.gcauchis.scalablepress4j.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.github.gcauchis.scalablepress4j.ScalablePressBadRequestException;
 import com.github.gcauchis.scalablepress4j.model.Address;
 import com.github.gcauchis.scalablepress4j.model.Features;
 import com.github.gcauchis.scalablepress4j.model.OrderProduct;
 import com.github.gcauchis.scalablepress4j.model.Quote;
-import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 import com.github.gcauchis.scalablepress4j.model.Sides;
 
 /**
@@ -48,7 +47,7 @@ public class QuoteApiTest  extends AbstractApiTest{
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         quoteApi = scalablePress.quoteApi();
     }
@@ -58,14 +57,14 @@ public class QuoteApiTest  extends AbstractApiTest{
      */
     @Test
     public void context() {
-        Assert.assertNotNull(quoteApi);
+        Assertions.assertNotNull(quoteApi);
     }
 
     /**
      * Test quote.
      */
     //Invalid designId : found a valid one for testing
-    @Test(expected = ScalablePressBadRequestException.class)
+    @Test
     public void quote()
     {
         Quote quote = new Quote();
@@ -92,8 +91,9 @@ public class QuoteApiTest  extends AbstractApiTest{
         Features features = new Features();
         features.setShipping("US-STD");
         quote.setFeatures(features);
-        QuoteResponse quoteResponse = quoteApi.quote(quote);
-        Assert.assertNotNull(quoteResponse);
-        log.info(quoteResponse.toString());
+        ScalablePressBadRequestException exception = Assertions.assertThrows(ScalablePressBadRequestException.class, () -> quoteApi.quote(quote));
+        Assertions.assertNotNull(exception.getErrorResponse());
+        Assertions.assertEquals("400", exception.getErrorResponse().getStatusCode());
+        log.info(exception.getErrorResponse().toString());
     }
 }

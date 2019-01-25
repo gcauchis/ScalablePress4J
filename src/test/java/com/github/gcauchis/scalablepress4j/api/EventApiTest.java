@@ -22,9 +22,10 @@
  */
 package com.github.gcauchis.scalablepress4j.api;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.github.gcauchis.scalablepress4j.model.Event;
 import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
@@ -40,7 +41,7 @@ public class EventApiTest extends AbstractApiTest {
     /**
      * Inits the test.
      */
-    @Before
+    @BeforeEach
     public void init() {
         eventApi = scalablePress.eventApi();
     }
@@ -50,7 +51,7 @@ public class EventApiTest extends AbstractApiTest {
      */
     @Test
     public void context() {
-        Assert.assertNotNull(eventApi);
+        Assertions.assertNotNull(eventApi);
     }
 
     /**
@@ -59,8 +60,8 @@ public class EventApiTest extends AbstractApiTest {
     @Test
     public void retrieve() {
         PaginatedResultList<Event> paginatedEventsList = eventApi.queryEvents(null, 1);
-        Assert.assertNotNull(paginatedEventsList);
-        Assert.assertNotNull(paginatedEventsList.getResult());
+        Assertions.assertNotNull(paginatedEventsList);
+        Assertions.assertNotNull(paginatedEventsList.getResult());
         log.info("Result: {}", paginatedEventsList);
     }
 }
