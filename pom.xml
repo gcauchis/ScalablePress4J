@@ -5,7 +5,7 @@
 
     <groupId>com.github.gcauchis</groupId>
     <artifactId>ScalablePress4j</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>ScalablePress4j</name>
     <url>https://github.com/gcauchis/ScalablePress4J</url>
