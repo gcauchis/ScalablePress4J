@@ -118,17 +118,8 @@ public abstract class AbstractRestApi {
      *
      * @return the object mapper
      */
-    public ObjectMapper getObjectMapper() {
+    protected ObjectMapper getObjectMapper() {
         return objectMapper;
-    }
-
-    /**
-     * Sets the object mapper.
-     *
-     * @param objectMapper the new object mapper
-     */
-    public void setObjectMapper(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
     }
 
     /**
@@ -339,7 +330,7 @@ public abstract class AbstractRestApi {
                 connection.setRequestProperty("Authorization", basicAuthHttp);
             }
             connection.setDoOutput(true);
-        } catch (IOException | URISyntaxException e) {
+        } catch (IllegalArgumentException | IOException | URISyntaxException e) {
             throw new ScalablePressBadRequestException(new ErrorResponse(e), e);
         }
         return connection;
