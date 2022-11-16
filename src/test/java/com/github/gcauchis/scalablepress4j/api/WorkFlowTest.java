@@ -194,7 +194,7 @@ public class WorkFlowTest extends AbstractApiTest {
         orderProduct.setSize(productColorSize);
         orderProduct.setQuantity(1);
         quote.setProducts(Arrays.asList(orderProduct));
-        Address address = new Address("My Customer", "123 Scalable Drive", "West Pressfield", "CA", "12345", null);
+        Address address = new Address("My Customer", "123 Scalable Drive", "Marseille", "BR", "13000", "FR");
         quote.setAddress(address);
         quote.setDesignId(designId);
 
