@@ -47,7 +47,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 /**
  * The Class WorkFlowTest.
  */
-public class WorkFlowTest extends AbstractApiTest {
+class WorkFlowTest extends AbstractApiTest {
 
     /** The billing api. */
     private BillingApi billingApi;
@@ -77,7 +77,7 @@ public class WorkFlowTest extends AbstractApiTest {
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         billingApi = scalablePress.billingApi();
         designApi = scalablePress.designApi();
         orderApi = scalablePress.orderApi();
@@ -93,7 +93,7 @@ public class WorkFlowTest extends AbstractApiTest {
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(billingApi);
         Assertions.assertNotNull(designApi);
         Assertions.assertNotNull(orderApi);
@@ -108,7 +108,7 @@ public class WorkFlowTest extends AbstractApiTest {
      * Workflow test.
      */
     @Test
-    public void workflow() {
+    void workflow() {
         log.info("###################################################################################");
         log.info("############################### Start workflow test ###############################");
         log.info("###################################################################################");

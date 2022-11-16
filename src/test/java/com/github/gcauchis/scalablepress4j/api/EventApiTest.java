@@ -33,7 +33,7 @@ import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 /**
  * The Class EventApiTest.
  */
-public class EventApiTest extends AbstractApiTest {
+class EventApiTest extends AbstractApiTest {
 
     /** The event api. */
     private EventApi eventApi;
@@ -42,7 +42,7 @@ public class EventApiTest extends AbstractApiTest {
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         eventApi = scalablePress.eventApi();
     }
 
@@ -50,7 +50,7 @@ public class EventApiTest extends AbstractApiTest {
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(eventApi);
     }
 
@@ -58,7 +58,7 @@ public class EventApiTest extends AbstractApiTest {
      * Test retrieve.
      */
     @Test
-    public void retrieve() {
+    void retrieve() {
         PaginatedResultList<Event> paginatedEventsList = eventApi.queryEvents(null, 1);
         Assertions.assertNotNull(paginatedEventsList);
         Assertions.assertNotNull(paginatedEventsList.getResult());

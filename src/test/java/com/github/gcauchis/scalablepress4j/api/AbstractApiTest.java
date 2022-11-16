@@ -40,7 +40,7 @@ import com.github.gcauchis.scalablepress4j.model.PositionOffset;
 /**
  * The Class AbstractApiTest.
  */
-public abstract class AbstractApiTest {
+abstract class AbstractApiTest {
 
     /** The test api logger. */
     protected final Logger log = LoggerFactory.getLogger(getClass());
@@ -52,7 +52,7 @@ public abstract class AbstractApiTest {
     protected final ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeAll
-    public static void initClass() {
+    static void initClass() {
         scalablePress = new ScalablePress4J();
         scalablePress.setBasicAuth(":test_UrGvePVORHqYm_PQ1VzD0Q");
     }

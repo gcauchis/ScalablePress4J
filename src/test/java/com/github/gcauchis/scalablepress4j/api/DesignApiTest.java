@@ -34,7 +34,7 @@ import com.github.gcauchis.scalablepress4j.model.DesignResponse;
 /**
  * The Class DesignApiTest.
  */
-public class DesignApiTest extends AbstractApiTest {
+class DesignApiTest extends AbstractApiTest {
 
     /** The design api. */
     private DesignApi designApi;
@@ -43,7 +43,7 @@ public class DesignApiTest extends AbstractApiTest {
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         designApi = scalablePress.designApi();
     }
 
@@ -51,7 +51,7 @@ public class DesignApiTest extends AbstractApiTest {
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(designApi);
     }
     
@@ -60,7 +60,7 @@ public class DesignApiTest extends AbstractApiTest {
      * @throws JsonProcessingException 
      */
     @Test
-    public void designWorkFlow() throws JsonProcessingException {
+    void designWorkFlow() throws JsonProcessingException {
         Design design = buildTestDesign();
         log.info("Create design: {}", toJsonString(design));
         DesignResponse response = designApi.create(design);

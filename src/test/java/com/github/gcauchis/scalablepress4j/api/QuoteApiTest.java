@@ -39,7 +39,7 @@ import com.github.gcauchis.scalablepress4j.model.Sides;
 /**
  * The Class QuoteApiTest.
  */
-public class QuoteApiTest  extends AbstractApiTest{
+class QuoteApiTest  extends AbstractApiTest{
 
     /** The quote api. */
     private QuoteApi quoteApi;
@@ -48,7 +48,7 @@ public class QuoteApiTest  extends AbstractApiTest{
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         quoteApi = scalablePress.quoteApi();
     }
 
@@ -56,7 +56,7 @@ public class QuoteApiTest  extends AbstractApiTest{
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(quoteApi);
     }
 
@@ -65,7 +65,7 @@ public class QuoteApiTest  extends AbstractApiTest{
      */
     //Invalid designId : found a valid one for testing
     @Test
-    public void quote()
+    void quote()
     {
         Quote quote = new Quote();
         quote.setType("dtg");

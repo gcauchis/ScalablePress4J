@@ -11,10 +11,10 @@ This is a java 8 wrapper for [Scalable Press API](https://scalablepress.com/docs
   - QuoteApi implement [Quote API](https://scalablepress.com/docs/#quote-api)
   - OrderApi implement [Order API](https://scalablepress.com/docs/#order-api)
   - EventApi implement [Event API](https://scalablepress.com/docs/#event-api)
-  - DesignApi implement [Design  API](https://scalablepress.com/docs/#design-api)
-  - BillingApi implement [Billing  API](https://scalablepress.com/docs/#billing-api)
-  - ReshipApi implement [Reship  API](https://scalablepress.com/docs/#reship-api)
-  - MockupApi implement [Mockup  API](https://scalablepress.com/docs/#mockup-api)
+  - DesignApi implement [Design API](https://scalablepress.com/docs/#design-api)
+  - BillingApi implement [Billing API](https://scalablepress.com/docs/#billing-api)
+  - ReshipApi implement [Reship API](https://scalablepress.com/docs/#reship-api)
+  - MockupApi implement [Mockup API](https://scalablepress.com/docs/#mockup-api)
 
 ## Configuration
 

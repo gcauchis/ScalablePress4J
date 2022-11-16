@@ -35,7 +35,7 @@ import com.github.gcauchis.scalablepress4j.model.ProductAvailability;
 /**
  * The Class ProductApiTest.
  */
-public class ProductApiTest extends AbstractApiTest {
+class ProductApiTest extends AbstractApiTest {
 
     /** The product api. */
     private ProductApi productApi;
@@ -44,7 +44,7 @@ public class ProductApiTest extends AbstractApiTest {
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         productApi = scalablePress.productApi();
     }
 
@@ -52,7 +52,7 @@ public class ProductApiTest extends AbstractApiTest {
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(productApi);
     }
 
@@ -60,7 +60,7 @@ public class ProductApiTest extends AbstractApiTest {
      * Test gets the categories.
      */
     @Test
-    public void getCategories() {
+    void getCategories() {
         List<Category> categories = productApi.getCategories();
         Assertions.assertNotNull(categories);
         log.info(categories.toString());
@@ -71,7 +71,7 @@ public class ProductApiTest extends AbstractApiTest {
      * Test gets the category products.
      */
     @Test
-    public void getCategoryProducts() {
+    void getCategoryProducts() {
         Category category = productApi.getCategoryProducts("short-sleeve-shirts");
         Assertions.assertNotNull(category);
         log.info(category.toString());
@@ -81,7 +81,7 @@ public class ProductApiTest extends AbstractApiTest {
      * Test gets the product information.
      */
     @Test
-    public void getProductInformation() {
+    void getProductInformation() {
         Product product = productApi.getProductInformation("gildan-ultra-cotton-t-shirt");
         Assertions.assertNotNull(product);
         log.info(product.toString());
@@ -91,7 +91,7 @@ public class ProductApiTest extends AbstractApiTest {
      * Test gets the product availability.
      */
     @Test
-    public void getProductAvailability() {
+    void getProductAvailability() {
         ProductAvailability productAvailability = productApi.getProductAvailability("gildan-ultra-cotton-t-shirt");
         Assertions.assertNotNull(productAvailability);
         log.info(productAvailability.toString());
