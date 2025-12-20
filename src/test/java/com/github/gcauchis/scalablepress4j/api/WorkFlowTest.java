@@ -1,7 +1,7 @@
-/**
+/*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016-2019 Gabriel Cauchis
+ * Copyright (c) 2016-2023 Gabriel Cauchis
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -47,7 +47,7 @@ import com.github.gcauchis.scalablepress4j.model.QuoteResponse;
 /**
  * The Class WorkFlowTest.
  */
-public class WorkFlowTest extends AbstractApiTest {
+class WorkFlowTest extends AbstractApiTest {
 
     /** The billing api. */
     private BillingApi billingApi;
@@ -77,7 +77,7 @@ public class WorkFlowTest extends AbstractApiTest {
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         billingApi = scalablePress.billingApi();
         designApi = scalablePress.designApi();
         orderApi = scalablePress.orderApi();
@@ -93,7 +93,7 @@ public class WorkFlowTest extends AbstractApiTest {
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(billingApi);
         Assertions.assertNotNull(designApi);
         Assertions.assertNotNull(orderApi);
@@ -108,7 +108,7 @@ public class WorkFlowTest extends AbstractApiTest {
      * Workflow test.
      */
     @Test
-    public void workflow() {
+    void workflow() {
         log.info("###################################################################################");
         log.info("############################### Start workflow test ###############################");
         log.info("###################################################################################");
@@ -194,7 +194,7 @@ public class WorkFlowTest extends AbstractApiTest {
         orderProduct.setSize(productColorSize);
         orderProduct.setQuantity(1);
         quote.setProducts(Arrays.asList(orderProduct));
-        Address address = new Address("My Customer", "123 Scalable Drive", "West Pressfield", "CA", "12345", null);
+        Address address = new Address("My Customer", "123 Scalable Drive", "Marseille", "BR", "13000", "FR");
         quote.setAddress(address);
         quote.setDesignId(designId);
 

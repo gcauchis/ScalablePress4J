@@ -1,7 +1,7 @@
-/**
+/*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016-2019 Gabriel Cauchis
+ * Copyright (c) 2016-2023 Gabriel Cauchis
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -36,7 +36,7 @@ import com.github.gcauchis.scalablepress4j.model.ErrorResponse;
 /**
  * The Class AbstractRestApiTest.
  */
-public class AbstractRestApiTest {
+class AbstractRestApiTest {
 
     /** The rest api. */
     private AbstractRestApi restApi;
@@ -48,7 +48,7 @@ public class AbstractRestApiTest {
      * Inits the.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         restApi = new AbstractRestApi() {
         };
         restApi.setBaseUrl(baseUrl);
@@ -58,7 +58,7 @@ public class AbstractRestApiTest {
      * Initialization.
      */
     @Test
-    public void initialization() {
+    void initialization() {
         restApi.setBaseUrl(baseUrl);
         Assertions.assertEquals(baseUrl, restApi.getBaseUrl());
         restApi.setBasicAuth(null);
@@ -77,7 +77,7 @@ public class AbstractRestApiTest {
      * Pagination fail.
      */
     @Test
-    public void paginationFail() {
+    void paginationFail() {
         ScalablePressBadRequestException exception = Assertions.assertThrows(ScalablePressBadRequestException.class,
                 () -> restApi.get("test", 0, ErrorResponse.class));
         Assertions.assertNotNull(exception.getErrorResponse());
@@ -103,7 +103,7 @@ public class AbstractRestApiTest {
      * Prepare connection fail.
      */
     @Test
-    public void prepareConnectionFail() {
+    void prepareConnectionFail() {
         restApi.setBaseUrl("test");
         restApi.setBasicAuth("test");
         Map<String, String> urlVariables = new HashMap<>();
@@ -121,7 +121,7 @@ public class AbstractRestApiTest {
      * Builds the url.
      */
     @Test
-    public void buildUrl() {
+    void buildUrl() {
         Assertions.assertEquals("", restApi.buildUrl((String[]) null));
         Assertions.assertEquals("", restApi.buildUrl(new String[0]));
         Assertions.assertEquals("test", restApi.buildUrl("test"));

@@ -1,7 +1,7 @@
-/**
+/*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016-2019 Gabriel Cauchis
+ * Copyright (c) 2016-2023 Gabriel Cauchis
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -33,7 +33,7 @@ import com.github.gcauchis.scalablepress4j.model.PaginatedResultList;
 /**
  * The Class OrderApiTest.
  */
-public class OrderApiTest extends AbstractApiTest {
+class OrderApiTest extends AbstractApiTest {
 
     /** The design api. */
     private OrderApi orderApi;
@@ -42,7 +42,7 @@ public class OrderApiTest extends AbstractApiTest {
      * Inits the test.
      */
     @BeforeEach
-    public void init() {
+    void init() {
         orderApi = scalablePress.orderApi();
     }
 
@@ -50,12 +50,12 @@ public class OrderApiTest extends AbstractApiTest {
      * Test context.
      */
     @Test
-    public void context() {
+    void context() {
         Assertions.assertNotNull(orderApi);
     }
 
     @Test
-    public void retrieve() {
+    void retrieve() {
         orderApi.setLimit(5);
         PaginatedResultList<Order> pagined = orderApi.retrieve(1);
         Assertions.assertNotNull(pagined);

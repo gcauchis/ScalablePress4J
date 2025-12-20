@@ -1,7 +1,7 @@
-/**
+/*
  * The MIT License (MIT)
  *
- * Copyright (c) 2016-2019 Gabriel Cauchis
+ * Copyright (c) 2016-2023 Gabriel Cauchis
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -25,12 +25,17 @@ package com.github.gcauchis.scalablepress4j.model;
 import java.io.Serializable;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * The Error json object.
  * 
  * @author gcauchis
  * @see <a href="https://scalablepress.com/docs/#error-object">https://scalablepress.com/docs/#error-object</a>
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Error implements Serializable {
 
     /** The Constant serialVersionUID. */
